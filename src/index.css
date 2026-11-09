@@ -1,36 +1,69 @@
-@import url('/fonts/fonts.css');
+@import '@fontsource/rubik/latin-500.css';
+@import '@fontsource/rubik/latin-600.css';
+@import '@fontsource/rubik/latin-700.css';
+@import '@fontsource/poppins/latin-400.css';
+@import '@fontsource/poppins/latin-500.css';
+@import '@fontsource/poppins/latin-600.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --paper: #f3f1eb;
-  --paper-deep: #e7e4dc;
-  --ink: #171814;
-  --muted: #62645d;
-  --line: #c8c7bf;
-  --orange: #fe5000;
-  --white: #fffef9;
-  --font-sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  /* Brand primitives: sampled from the AIS logo and extended for accessible UI states. */
+  --blue-900: oklch(0.264 0.105 267.5);
+  --blue-800: oklch(0.314 0.132 267.5);
+  --blue-700: oklch(0.365 0.156 267.5);
+  --blue-100: oklch(0.951 0.025 257);
+  --blue-50: oklch(0.978 0.009 257);
+  --red-700: oklch(0.49 0.22 27.5);
+  --red-600: oklch(0.548 0.236 27.5);
+  --slate-800: oklch(0.29 0.035 255);
+  --slate-600: oklch(0.47 0.035 255);
+  --slate-300: oklch(0.86 0.016 255);
+  --white-tint: oklch(0.995 0.002 257);
+
+  --brand-primary: var(--blue-800);
+  --brand-primary-dark: var(--blue-900);
+  --brand-accent: var(--red-600);
+  --brand-accent-dark: var(--red-700);
+  --surface-page: var(--white-tint);
+  --surface-muted: var(--blue-50);
+  --surface-tint: var(--blue-100);
+  --text-primary: var(--slate-800);
+  --text-secondary: var(--slate-600);
+  --border-default: var(--slate-300);
+
+  /* Legacy semantic aliases kept local to the established component class names. */
+  --paper: var(--surface-page);
+  --paper-deep: var(--surface-muted);
+  --ink: var(--text-primary);
+  --navy: var(--brand-primary-dark);
+  --muted: var(--text-secondary);
+  --line: var(--border-default);
+  --orange: var(--brand-accent);
+  --white: var(--white-tint);
+  --font-sans: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Rubik', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
   font-family: var(--font-sans);
-  color: var(--ink);
-  background: var(--paper);
+  color: var(--text-primary);
+  background: var(--surface-page);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 112px; }
-body { margin: 0; min-width: 320px; background: var(--paper); color: var(--ink); }
+body { margin: 0; min-width: 320px; background: var(--surface-page); color: var(--text-primary); font-size: 16px; }
 body.menu-is-open { overflow: hidden; }
 button, input, textarea, select { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 button { color: inherit; }
-::selection { background: var(--orange); color: var(--white); }
-:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+h1, h2, h3, h4 { font-family: var(--font-display); }
+::selection { background: var(--brand-primary); color: var(--white); }
+:focus-visible { outline: 3px solid var(--brand-accent); outline-offset: 4px; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

@@ -7,8 +7,8 @@ import { contact, services } from '../data'
 export function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link to="/" className={`logo ${light ? 'logo-light' : ''}`} aria-label="AIS Environmental home">
-      <span className="logo-ais">AIS<span className="logo-dot">.</span></span>
-      <span className="logo-words">Environmental<br />Inc.</span>
+      <span className="logo-ais">AIS<span className="logo-dot" aria-hidden="true" /></span>
+      <span className="logo-words"><strong>Environmental</strong><span>Inc.</span></span>
     </Link>
   )
 }
@@ -72,8 +72,8 @@ export function SiteHeader() {
               </button>
               <div id="services-menu" className={`services-menu ${servicesOpen ? 'is-open' : ''}`}>
                 <div className="services-menu-intro">
-                  <span className="micro-label">What we do / 01—04</span>
-                  <p>Specialized work for safer, more comfortable properties.</p>
+                  <span className="micro-label">Our services</span>
+                  <p>Start with the right service for your property.</p>
                 </div>
                 <div className="services-menu-links">
                   {services.map(service => (
@@ -126,7 +126,7 @@ export function SiteFooter() {
         <div className="footer-column">
           <span className="micro-label">Company</span>
           <Link to="/about/">About AIS</Link>
-          <Link to="/blog/">Field notes</Link>
+          <Link to="/blog/">Property resources</Link>
           <Link to="/contact/">Contact</Link>
           <Link to="/get-a-quote/">Get a quote</Link>
         </div>
@@ -185,7 +185,7 @@ export function SectionLabel({ children, light = false }: { children: ReactNode;
   return <div className={`section-label ${light ? 'is-light' : ''}`}><span className="label-mark" aria-hidden="true" />{children}</div>
 }
 
-export function QuoteBand({ title = 'Let’s make a clear plan for your property.', text = 'Tell us what you are dealing with. We will help you understand the next step and provide a free project estimate.' }: { title?: string; text?: string }) {
+export function QuoteBand({ title = 'Need help with a property concern?', text = 'Tell us what you are dealing with. We will help you understand the next step and provide a free project estimate.' }: { title?: string; text?: string }) {
   return (
     <section className="quote-band">
       <div className="shell quote-band-grid">

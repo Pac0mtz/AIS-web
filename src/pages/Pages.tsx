@@ -9,37 +9,38 @@ import { useEmailDraft } from '../hooks/useEmailDraft'
 export function HomePage() {
   return (
     <Page title="Asbestos Removal in Chicago | AIS Environmental Inc." description="AIS Environmental provides asbestos, lead paint and mold services for Chicago homes, businesses and industrial properties, plus professional window installation." className="home-page">
-      <section className="home-hero shell">
-        <div className="home-hero-copy">
-          <SectionLabel>Environmental services / Chicago, IL</SectionLabel>
-          <h1>Asbestos removal<br /><span>in Chicago.</span></h1>
-          <p className="hero-intro">Asbestos, lead paint and mold services for homes, businesses and industrial properties.</p>
+      <section className="home-hero shell-wide">
+        <img className="home-hero-background" src="/images/asbestos-hero.webp" alt="Technicians in protective suits inside a contained asbestos work area" fetchPriority="high" />
+        <div className="shell home-hero-copy">
+          <SectionLabel light>Environmental & property services</SectionLabel>
+          <h1>Asbestos removal and property services <span>in Chicago.</span></h1>
+          <p className="hero-intro">Practical help for asbestos, lead paint, mold and window projects—delivered with careful work practices and clear communication.</p>
           <div className="hero-actions">
             <Link to="/get-a-quote/" className="button button-primary">Request a free estimate <ArrowUpRight size={20} /></Link>
-            <Link to="/asbestos-services/" className="text-link">Explore asbestos services <ArrowRight size={18} /></Link>
+            <a href="#services" className="button button-ghost">Explore our services <ArrowRight size={18} /></a>
+          </div>
+          <div className="hero-trust" aria-label="Service assurances">
+            <span><Check size={17} aria-hidden="true" />IDPH-licensed services</span>
+            <span><Check size={17} aria-hidden="true" />Fully insured</span>
+            <span><Check size={17} aria-hidden="true" />Free project estimates</span>
           </div>
         </div>
-        <div className="home-hero-media">
-          <img src="/images/asbestos-hero.webp" alt="Technicians in protective suits inside a contained asbestos work area" fetchPriority="high" />
-          <div className="hero-media-note"><span>Contained work area</span><span>Chicago / Illinois</span></div>
-        </div>
-        <div className="hero-rail" aria-hidden="true"><span>AIS</span><span>ENV / 001</span></div>
       </section>
 
-      <section className="proof-strip">
+      <section className="proof-strip" aria-label="Properties we serve">
         <div className="shell proof-grid">
-          <div><strong>IDPH</strong><span>Licensed services</span></div>
-          <div><strong>01—04</strong><span>Specialized services</span></div>
-          <div><strong>Free</strong><span>Project estimates</span></div>
           <div><strong>Local</strong><span>Chicago & surrounding areas</span></div>
+          <div><strong>Residential</strong><span>Homes and living spaces</span></div>
+          <div><strong>Commercial</strong><span>Businesses and workplaces</span></div>
+          <div><strong>Multi-family</strong><span>Buildings and shared properties</span></div>
         </div>
       </section>
 
-      <section className="section shell services-section">
+      <section className="section shell services-section" id="services">
         <div className="section-heading split-heading">
-          <SectionLabel>Expertise / 01—04</SectionLabel>
-          <h2>One property.<br />Four ways to help.</h2>
-          <p>From hazardous-material assessment to the finish of a new window, our work starts with a close reading of the space.</p>
+          <SectionLabel>Our services</SectionLabel>
+          <h2>Property services, from assessment to completion.</h2>
+          <p>Start with the concern you can see. We will help define the work, explain your options and plan the next step.</p>
         </div>
         <div className="service-list">
           {services.map(service => (
@@ -58,14 +59,14 @@ export function HomePage() {
         <div className="shell about-teaser-grid">
           <div className="about-teaser-image"><img src="/images/mold-hero.webp" alt="AIS technician checking moisture levels on a basement wall" loading="lazy" decoding="async" /><span className="vertical-caption">ASSESS / CONTAIN / CORRECT</span></div>
           <div className="about-teaser-copy">
-            <SectionLabel>Our approach</SectionLabel>
-            <h2>No guesswork.<br />No loose ends.</h2>
-            <p className="large-copy">Property issues are disruptive enough. The work plan should not be.</p>
+            <SectionLabel>Why choose AIS</SectionLabel>
+            <h2>A local team that puts people first.</h2>
+            <p className="large-copy">Clear answers. Careful work. Respect for your space.</p>
             <p>AIS Environmental serves commercial, residential and multi-family properties with a focus on safe work practices, straightforward communication and respect for the people using the space.</p>
-            <Link to="/about/" className="button button-outline">About AIS <ArrowUpRight size={18} /></Link>
+            <Link to="/about/" className="button button-outline">Learn about AIS <ArrowUpRight size={18} /></Link>
           </div>
           <div className="about-orange-panel">
-            <span className="micro-label">What guides us</span>
+            <span className="micro-label">Our commitment</span>
             <strong>Safety first.<br />Service always.</strong>
             <p>Integrity in the details. Care in the work.</p>
           </div>
@@ -74,9 +75,9 @@ export function HomePage() {
 
       <section className="section shell process-section">
         <div className="section-heading split-heading">
-          <SectionLabel>How it works</SectionLabel>
-          <h2>A clear path<br />from concern to closeout.</h2>
-          <p>Every property is different. The process stays understandable.</p>
+          <SectionLabel>What to expect</SectionLabel>
+          <h2>A straightforward process from first call to closeout.</h2>
+          <p>Every property is different. You should still know what happens next and why.</p>
         </div>
         <div className="process-grid">
           {processSteps.map(step => <div className="process-step" key={step.number}><span>{step.number}</span><h3>{step.title}</h3><p>{step.text}</p></div>)}
@@ -88,7 +89,7 @@ export function HomePage() {
       </section>
 
       <section className="section shell journal-section">
-        <div className="journal-heading"><div><SectionLabel>Field notes</SectionLabel><h2>Understand your property.</h2></div><Link to="/blog/" className="text-link">View all articles <ArrowUpRight size={18} /></Link></div>
+        <div className="journal-heading"><div><SectionLabel>Property resources</SectionLabel><h2>Practical guidance for your property.</h2></div><Link to="/blog/" className="text-link">View all articles <ArrowUpRight size={18} /></Link></div>
         <div className="journal-grid">
           {posts.slice(0, 3).map((post, index) => <PostCard post={post} number={`0${index + 1}`} key={post.path} />)}
         </div>
@@ -265,7 +266,26 @@ export function ContactPage() {
           <button className="button button-primary" type="submit">Prepare email <ArrowUpRight size={19} /></button><p className="form-footnote">This form opens a draft in your email application. No form data is stored on this website.</p><FormNotice>{form.notice}</FormNotice>
         </form>
       </section>
-      <section className="contact-map"><iframe title="Map showing AIS Environmental in Franklin Park, Illinois" src="https://www.google.com/maps?q=2524%20Scott%20St%20Franklin%20Park%20IL%2060131&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /><div className="map-label"><span className="micro-label">Home base</span><strong>Franklin Park, Illinois</strong><a href={contact.mapsUrl} target="_blank" rel="noreferrer">Open in Google Maps <ArrowUpRight size={16} /></a></div></section>
+      <section className="contact-map" aria-label="AIS Environmental service area">
+        <div className="service-area-visual" aria-hidden="true">
+          <svg viewBox="0 0 1440 440" preserveAspectRatio="xMidYMid slice">
+            <g className="area-roads area-roads-minor">
+              <path d="M-80 82 460 260 1510 56" /><path d="M-40 370 510 182 1490 326" />
+              <path d="M174-40 332 480" /><path d="M568-30 706 470" /><path d="M1110-30 1000 470" /><path d="M1320-40 1210 480" />
+              <path d="M-40 212 1480 212" /><path d="M60-20 1410 410" />
+            </g>
+            <g className="area-roads area-roads-major">
+              <path d="M-80 398 420 88 1510 158" /><path d="M850-50 922 490" />
+            </g>
+            <circle className="area-ring" cx="970" cy="202" r="74" />
+            <circle className="area-ring area-ring-outer" cx="970" cy="202" r="142" />
+            <circle className="area-center" cx="970" cy="202" r="7" />
+          </svg>
+          <div className="area-pin"><MapPin size={24} /><span><strong>AIS Environmental</strong><small>Franklin Park</small></span></div>
+          <span className="area-caption">Local service across Chicago & surrounding areas</span>
+        </div>
+        <div className="map-label"><span className="micro-label">Home base</span><strong>Franklin Park, Illinois</strong><a href={contact.mapsUrl} target="_blank" rel="noreferrer">Open in Google Maps <ArrowUpRight size={16} /></a></div>
+      </section>
     </Page>
   )
 }
