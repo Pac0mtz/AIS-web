@@ -1,0 +1,10 @@
+{
+  "name": "AIS Environmental Inc.",
+  "short_name": "AIS Environmental",
+  "description": "Environmental and property services for Chicago and surrounding areas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f1eb",
+  "theme_color": "#171814",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
