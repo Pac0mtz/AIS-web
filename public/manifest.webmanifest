@@ -1,10 +1,10 @@
 {
   "name": "AIS Environmental Inc.",
   "short_name": "AIS Environmental",
-  "description": "Environmental and property services for Chicago and surrounding areas.",
+  "description": "Environmental and property services across Illinois, Indiana and Wisconsin.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f3f1eb",
-  "theme_color": "#171814",
+  "background_color": "#fcfdff",
+  "theme_color": "#0a2456",
   "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
 }

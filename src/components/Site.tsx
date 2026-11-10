@@ -56,8 +56,8 @@ export function SiteHeader() {
       <a className="skip-link" href="#main-content">Skip to content</a>
       <div className="utility-bar">
         <div className="shell utility-inner">
-          <span>Chicago & surrounding areas</span>
-          <span className="utility-center">Residential · Commercial · Multi-family</span>
+          <span>Illinois · Indiana · Wisconsin</span>
+          <span className="utility-center">Residential · Commercial · Industrial</span>
           <a href={contact.phoneHref}><Phone size={12} aria-hidden="true" /> {contact.phoneDisplay}</a>
         </div>
       </div>
@@ -74,6 +74,7 @@ export function SiteHeader() {
                 <div className="services-menu-intro">
                   <span className="micro-label">Our services</span>
                   <p>Start with the right service for your property.</p>
+                  <Link to="/services/" className="text-link">View all 17 services <ArrowUpRight size={16} /></Link>
                 </div>
                 <div className="services-menu-links">
                   {services.map(service => (
@@ -84,6 +85,8 @@ export function SiteHeader() {
                 </div>
               </div>
             </div>
+            <NavLink to="/industries/">Industries</NavLink>
+            <NavLink to="/service-areas/">Service Areas</NavLink>
             <NavLink to="/blog/">Blog</NavLink>
             <NavLink to="/about/">About</NavLink>
             <NavLink to="/contact/">Contact</NavLink>
@@ -98,11 +101,17 @@ export function SiteHeader() {
             <NavLink to="/" end tabIndex={mobileOpen ? 0 : -1}><span>01</span>Home</NavLink>
             <div className="mobile-nav-group"><span>02</span><strong>Services</strong></div>
             <div className="mobile-service-links">
+              <NavLink to="/services/" tabIndex={mobileOpen ? 0 : -1}><strong>All 17 services</strong><ArrowUpRight size={18} /></NavLink>
               {services.map(service => <NavLink key={service.path} to={service.path} tabIndex={mobileOpen ? 0 : -1}>{service.name}<ArrowUpRight size={18} /></NavLink>)}
             </div>
-            <NavLink to="/blog/" tabIndex={mobileOpen ? 0 : -1}><span>03</span>Blog</NavLink>
-            <NavLink to="/about/" tabIndex={mobileOpen ? 0 : -1}><span>04</span>About</NavLink>
-            <NavLink to="/contact/" tabIndex={mobileOpen ? 0 : -1}><span>05</span>Contact</NavLink>
+            <NavLink to="/industries/" tabIndex={mobileOpen ? 0 : -1}><span>03</span>Industries</NavLink>
+            <NavLink to="/service-areas/" tabIndex={mobileOpen ? 0 : -1}><span>04</span>Service Areas</NavLink>
+            <NavLink to="/projects/" tabIndex={mobileOpen ? 0 : -1}><span>05</span>Projects</NavLink>
+            <NavLink to="/faq/" tabIndex={mobileOpen ? 0 : -1}><span>06</span>FAQ</NavLink>
+            <NavLink to="/reviews/" tabIndex={mobileOpen ? 0 : -1}><span>07</span>Reviews</NavLink>
+            <NavLink to="/blog/" tabIndex={mobileOpen ? 0 : -1}><span>08</span>Blog</NavLink>
+            <NavLink to="/about/" tabIndex={mobileOpen ? 0 : -1}><span>09</span>About</NavLink>
+            <NavLink to="/contact/" tabIndex={mobileOpen ? 0 : -1}><span>10</span>Contact</NavLink>
             <Link className="button button-primary mobile-quote" to="/get-a-quote/" tabIndex={mobileOpen ? 0 : -1}>Request a free estimate <ArrowUpRight size={18} /></Link>
           </nav>
         </div>
@@ -117,14 +126,20 @@ export function SiteFooter() {
       <div className="shell footer-top">
         <div className="footer-brand">
           <Logo light />
-          <p>Environmental and property services for Chicago homes, businesses and multi-family buildings.</p>
+          <p>Environmental and property services for homes, businesses and industrial properties across Illinois, Indiana and Wisconsin.</p>
         </div>
         <div className="footer-column">
           <span className="micro-label">Services</span>
-          {services.map(service => <Link key={service.path} to={service.path}>{service.name}</Link>)}
+          {services.slice(0, 6).map(service => <Link key={service.path} to={service.path}>{service.name}</Link>)}
+          <Link to="/services/"><strong>All 17 services</strong></Link>
         </div>
         <div className="footer-column">
           <span className="micro-label">Company</span>
+          <Link to="/industries/">Industries we serve</Link>
+          <Link to="/service-areas/">Service areas</Link>
+          <Link to="/projects/">Projects</Link>
+          <Link to="/reviews/">Customer feedback</Link>
+          <Link to="/faq/">FAQ</Link>
           <Link to="/about/">About AIS</Link>
           <Link to="/blog/">Property resources</Link>
           <Link to="/contact/">Contact</Link>
@@ -229,13 +244,14 @@ export function ImageComparison() {
 
 export function ServiceCarousel() {
   const [active, setActive] = useState(0)
-  const service = services[active]
-  const go = (direction: number) => setActive((active + direction + services.length) % services.length)
+  const carouselServices = services.filter(service => service.featured)
+  const service = carouselServices[active]
+  const go = (direction: number) => setActive((active + direction + carouselServices.length) % carouselServices.length)
   return (
     <div className="service-carousel">
       <div className="carousel-image-wrap">
         <img key={service.image} src={service.image} alt={service.imageAlt} className="carousel-image" loading="lazy" decoding="async" />
-        <span className="carousel-index">{service.number} / 04</span>
+        <span className="carousel-index">{service.number} / {String(carouselServices.length).padStart(2, '0')}</span>
       </div>
       <div className="carousel-info">
         <SectionLabel>In the field</SectionLabel>
@@ -244,7 +260,7 @@ export function ServiceCarousel() {
         <Link to={service.path} className="text-link">Explore this service <ArrowUpRight size={17} /></Link>
         <div className="carousel-controls">
           <button type="button" onClick={() => go(-1)} aria-label="Previous service"><ArrowLeft /></button>
-          <div className="carousel-progress" aria-hidden="true">{services.map((item, index) => <span key={item.slug} className={index === active ? 'active' : ''} />)}</div>
+          <div className="carousel-progress" aria-hidden="true">{carouselServices.map((item, index) => <span key={item.slug} className={index === active ? 'active' : ''} />)}</div>
           <button type="button" onClick={() => go(1)} aria-label="Next service"><ArrowRight /></button>
         </div>
       </div>

@@ -2,7 +2,9 @@ import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router'
 import { SiteFooter, SiteHeader } from './components/Site'
 import { posts, services } from './data'
+import { serviceAreas } from './siteContent'
 import { AboutPage, ArchivePage, ArticlePage, BlogPage, ContactPage, HomePage, NotFoundPage, QuotePage, ServicePage } from './pages/Pages'
+import { AreaPage, FaqPage, IndustriesPage, ProjectsPage, ReviewsPage, ServiceAreasPage, ServicesPage } from './pages/ExpandedPages'
 import './App.css'
 
 function RouteEffects() {
@@ -27,6 +29,13 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/2023/12/27/" element={<HomePage />} />
         <Route path="/about/" element={<AboutPage />} />
+        <Route path="/services/" element={<ServicesPage />} />
+        <Route path="/industries/" element={<IndustriesPage />} />
+        <Route path="/faq/" element={<FaqPage />} />
+        <Route path="/reviews/" element={<ReviewsPage />} />
+        <Route path="/projects/" element={<ProjectsPage />} />
+        <Route path="/service-areas/" element={<ServiceAreasPage />} />
+        {serviceAreas.map(area => <Route key={area.path} path={area.path} element={<AreaPage area={area} />} />)}
         {services.map(service => <Route key={service.path} path={service.path} element={<ServicePage service={service} />} />)}
         <Route path="/contact/" element={<ContactPage />} />
         <Route path="/get-a-quote/" element={<QuotePage />} />

@@ -4,17 +4,19 @@ import { Link, useLocation } from 'react-router'
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, Mail, MapPin, Phone } from 'lucide-react'
 import { contact, posts, processSteps, services, type Post, type Service } from '../data'
 import { FormNotice, ImageComparison, Page, QuoteBand, SectionLabel, ServiceCarousel, ShareLinks } from '../components/Site'
+import { ServiceCard } from '../components/ServiceCard'
+import { industries } from '../siteContent'
 import { useEmailDraft } from '../hooks/useEmailDraft'
 
 export function HomePage() {
   return (
-    <Page title="Asbestos Removal in Chicago | AIS Environmental Inc." description="AIS Environmental provides asbestos, lead paint and mold services for Chicago homes, businesses and industrial properties, plus professional window installation." className="home-page">
+    <Page title="Asbestos Removal & Property Services | AIS Environmental" description="AIS Environmental provides asbestos, lead paint, mold, water damage and exterior property services across Illinois, Indiana and Wisconsin." className="home-page">
       <section className="home-hero shell-wide">
         <img className="home-hero-background" src="/images/asbestos-hero.webp" alt="Technicians in protective suits inside a contained asbestos work area" fetchPriority="high" />
         <div className="shell home-hero-copy">
           <SectionLabel light>Environmental & property services</SectionLabel>
-          <h1>Asbestos removal and property services <span>in Chicago.</span></h1>
-          <p className="hero-intro">Practical help for asbestos, lead paint, mold and window projects—delivered with careful work practices and clear communication.</p>
+          <h1>Environmental and property services <span>across the Midwest.</span></h1>
+          <p className="hero-intro">Practical help for asbestos, lead paint, mold, water damage and exterior projects—delivered with careful work practices and clear communication.</p>
           <div className="hero-actions">
             <Link to="/get-a-quote/" className="button button-primary">Request a free estimate <ArrowUpRight size={20} /></Link>
             <a href="#services" className="button button-ghost">Explore our services <ArrowRight size={18} /></a>
@@ -29,10 +31,10 @@ export function HomePage() {
 
       <section className="proof-strip" aria-label="Properties we serve">
         <div className="shell proof-grid">
-          <div><strong>Local</strong><span>Chicago & surrounding areas</span></div>
+          <div><strong>IL · IN · WI</strong><span>41 city service areas</span></div>
           <div><strong>Residential</strong><span>Homes and living spaces</span></div>
           <div><strong>Commercial</strong><span>Businesses and workplaces</span></div>
-          <div><strong>Multi-family</strong><span>Buildings and shared properties</span></div>
+          <div><strong>Industrial</strong><span>Facilities and working buildings</span></div>
         </div>
       </section>
 
@@ -43,15 +45,16 @@ export function HomePage() {
           <p>Start with the concern you can see. We will help define the work, explain your options and plan the next step.</p>
         </div>
         <div className="service-list">
-          {services.map(service => (
-            <Link to={service.path} className="service-row" key={service.path}>
-              <span className="service-number">{service.number}</span>
-              <div className="service-row-title"><h3>{service.name}</h3><span>{service.eyebrow}</span></div>
-              <p>{service.intro}</p>
-              <div className="service-thumb"><img src={service.image} alt="" loading="lazy" decoding="async" /></div>
-              <span className="round-arrow"><ArrowUpRight aria-hidden="true" /></span>
-            </Link>
-          ))}
+          {services.filter(service => service.featured).map(service => <ServiceCard service={service} key={service.path} />)}
+        </div>
+        <Link to="/services/" className="button button-outline service-view-all">Explore all 17 services <ArrowUpRight size={18} /></Link>
+      </section>
+
+      <section className="section industries-teaser" id="industries">
+        <div className="shell">
+          <div className="section-heading split-heading"><SectionLabel>Industries we serve</SectionLabel><h2>Property support shaped around your space.</h2><p>Homes, workplaces and public buildings each need a different kind of coordination.</p></div>
+          <div className="industry-teaser-grid">{industries.map(industry => <Link to={`/industries/#${industry.id}`} key={industry.id}><span>{industry.number}</span><h3>{industry.shortName}</h3><p>{industry.summary}</p><ArrowUpRight size={18} /></Link>)}</div>
+          <Link to="/industries/" className="text-link industries-all-link">Explore every industry <ArrowUpRight size={17} /></Link>
         </div>
       </section>
 
@@ -112,14 +115,14 @@ function PostCard({ post, number }: { post: Post; number: string }) {
 }
 
 export function ServicePage({ service }: { service: Service }) {
-  const related = services.filter(item => item.path !== service.path).slice(0, 3)
+  const related = [...services.filter(item => item.path !== service.path && item.category === service.category), ...services.filter(item => item.path !== service.path && item.category !== service.category)].slice(0, 3)
   return (
-    <Page title={`${service.name} in Chicago | AIS Environmental Inc.`} description={service.description} className="service-page">
+    <Page title={`${service.name} | AIS Environmental Inc.`} description={service.description} className="service-page">
       <section className="service-hero shell">
-        <div className="breadcrumbs"><Link to="/">Home</Link><ChevronRight size={13} /><Link to="/#services">Services</Link><ChevronRight size={13} /><span>{service.shortName}</span></div>
+        <div className="breadcrumbs"><Link to="/">Home</Link><ChevronRight size={13} /><Link to="/services/">Services</Link><ChevronRight size={13} /><span>{service.shortName}</span></div>
         <div className="service-hero-grid">
           <div>
-            <SectionLabel>Service {service.number} / 04</SectionLabel>
+            <SectionLabel>Service {service.number} / {services.length}</SectionLabel>
             <h1>{service.headline}</h1>
           </div>
           <div className="service-hero-aside"><p>{service.intro}</p><Link to={`/get-a-quote/?service=${encodeURIComponent(service.quoteOption)}`} className="button button-primary">Request a free estimate <ArrowUpRight size={19} /></Link></div>
@@ -180,7 +183,7 @@ export function AboutPage() {
       <div className="about-image shell-wide"><img src="/images/asbestos-hero.webp" alt="Environmental technicians preparing a contained work area" /><div className="about-image-word" aria-hidden="true">CARE</div></div>
       <section className="section shell about-story">
         <div><SectionLabel>Who we are</SectionLabel><h2>Local knowledge.<br />Practical solutions.</h2></div>
-        <div className="about-story-copy"><p className="large-copy">AIS Environmental Inc. serves commercial, residential and multi-family properties across Chicago and surrounding areas.</p><p>Our services include asbestos testing, removal and abatement; lead-paint inspections and removal; mold inspection and remediation; and professional window installation. We are fully insured and provide IDPH-licensed services.</p><p>That range reflects a simple idea: property owners deserve a clear plan, careful work and a team that respects the building as much as the people inside it.</p></div>
+        <div className="about-story-copy"><p className="large-copy">AIS Environmental Inc. serves commercial, residential and multi-family properties across Chicago and surrounding areas.</p><p>Our services include asbestos testing, surveys, removal and abatement; lead-paint inspection and removal; mold inspection and remediation; water-damage restoration; and professional roofing, siding, gutter, window and door services. We are fully insured and provide IDPH-licensed services.</p><p>That range reflects a simple idea: property owners deserve a clear plan, careful work and a team that respects the building as much as the people inside it.</p></div>
       </section>
       <section className="mission-grid">
         <div className="mission-panel"><SectionLabel light>Our mission</SectionLabel><h2>Make properties safer—and the process clearer.</h2><p>We work to deliver reliable environmental and property services with careful methods, useful communication and respect for every client’s space.</p></div>
@@ -298,7 +301,7 @@ export function QuotePage() {
   const form = useEmailDraft(`Free estimate${selected ? `: ${selected}` : ''}`)
   function submit(event: FormEvent<HTMLFormElement>) { form.submit(event) }
   return (
-    <Page title="Get a Free Project Quote | AIS Environmental Inc." description="Request a free estimate for asbestos removal, lead paint removal, mold remediation or window installation in the Chicago area." className="quote-page">
+    <Page title="Get a Free Project Quote | AIS Environmental Inc." description="Request a free estimate for asbestos, lead paint, mold, water damage or exterior property services across Illinois, Indiana and Wisconsin." className="quote-page">
       <section className="quote-hero shell"><SectionLabel>Free estimate / No obligation</SectionLabel><h1>Let’s scope<br />your project.</h1><p>Share the basics below. Your email app will open a prepared draft for you to review and send.</p></section>
       <section className="shell quote-form-layout">
         <form className="quote-form" action={`mailto:${contact.email}`} method="get" onSubmit={submit}>

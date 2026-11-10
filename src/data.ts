@@ -1,3 +1,7 @@
+import { additionalServices } from './serviceCatalog'
+
+export type ServiceCategory = 'Asbestos' | 'Lead & Mold' | 'Water Damage' | 'Exterior'
+
 export type ServiceSection = {
   id: string
   title: string
@@ -18,6 +22,8 @@ export type Service = {
   image: string
   imageAlt: string
   quoteOption: string
+  category: ServiceCategory
+  featured?: boolean
   scope: string
   sections: ServiceSection[]
 }
@@ -28,7 +34,7 @@ export const services: Service[] = [
     eyebrow: 'Testing · Abatement · Documentation', headline: 'Asbestos removal in Chicago.',
     intro: 'A methodical approach to identifying, containing and removing asbestos-containing materials from residential, commercial and industrial properties.',
     description: 'Asbestos testing, removal and abatement for Chicago homes, businesses and industrial properties, with careful containment and clear documentation.',
-    image: '/images/asbestos-hero.webp', imageAlt: 'Protective-suited technicians working inside a contained asbestos abatement area', quoteOption: 'Asbestos',
+    image: '/images/asbestos-hero.webp', imageAlt: 'Protective-suited technicians working inside a contained asbestos abatement area', quoteOption: 'Asbestos', category: 'Asbestos', featured: true,
     scope: 'From suspect floor tile and pipe insulation to roofing materials, every project starts with a clear understanding of the material and the space around it.',
     sections: [
       { id: 'materials', title: 'Know the materials', intro: 'Asbestos can be present in building materials that look ordinary. Disturbing them without a plan can release microscopic fibers into the air.', points: ['Floor and ceiling tile', 'Vermiculite and pipe insulation', 'Roofing and siding materials', 'Adhesives, plaster and older building products'] },
@@ -43,7 +49,7 @@ export const services: Service[] = [
     eyebrow: 'Testing · Removal · Encapsulation', headline: 'Lead paint, handled with care.',
     intro: 'Inspection, removal and encapsulation strategies for older painted surfaces—with containment and cleaning built into the work plan.',
     description: 'Lead paint testing, removal and encapsulation for Chicago-area homes and properties, with careful containment, cleaning and safety procedures.',
-    image: '/images/lead-hero.webp', imageAlt: 'Respirator-equipped technician removing deteriorated paint from an older window frame', quoteOption: 'Lead',
+    image: '/images/lead-hero.webp', imageAlt: 'Respirator-equipped technician removing deteriorated paint from an older window frame', quoteOption: 'Lead', category: 'Lead & Mold', featured: true,
     scope: 'Lead paint becomes a particular concern when it chips, peels or is disturbed during repairs. We help property owners understand the condition and choose a practical next step.',
     sections: [
       { id: 'testing', title: 'Find where lead is present', intro: 'Testing helps distinguish suspect paint from confirmed lead-based paint and identifies the surfaces that need attention.', points: ['X-ray fluorescence (XRF) scanning', 'Chemical test kits where appropriate', 'Dust-wipe sampling', 'Soil sampling around the property'] },
@@ -57,7 +63,7 @@ export const services: Service[] = [
     eyebrow: 'Inspection · Remediation · Moisture control', headline: 'Mold removal starts with moisture.',
     intro: 'A source-first remediation process: inspect the space, contain the affected area, remove contamination and correct the conditions that allowed growth.',
     description: 'Mold inspection and remediation in Chicago, including containment, HEPA filtration, moisture correction and follow-up indoor-air-quality testing.',
-    image: '/images/mold-hero.webp', imageAlt: 'Technician using a moisture meter to assess a basement wall', quoteOption: 'Mold',
+    image: '/images/mold-hero.webp', imageAlt: 'Technician using a moisture meter to assess a basement wall', quoteOption: 'Mold', category: 'Lead & Mold', featured: true,
     scope: 'Visible mold is only part of the picture. Lasting remediation depends on finding water intrusion, humidity or condensation and addressing it alongside the cleanup.',
     sections: [
       { id: 'inspection', title: 'Read the whole room', intro: 'The inspection maps visible growth, likely moisture pathways and areas that may be affected beyond the first visible spot.', points: ['Moisture-meter readings', 'Air and surface sampling where appropriate', 'Laboratory analysis of collected samples', 'Thermal imaging to help locate hidden moisture'] },
@@ -71,7 +77,7 @@ export const services: Service[] = [
     eyebrow: 'Replacement · Efficiency · Finish', headline: 'Better windows. A better room.',
     intro: 'Thoughtful window replacement for comfort, efficiency and curb appeal—from the first measurement through the final cleanup.',
     description: 'Window replacement and installation for Chicago-area homes, with vinyl, wood, aluminum and fiberglass options and a clean, careful installation process.',
-    image: '/images/windows-hero.webp', imageAlt: 'Two installers fitting a dark-framed window into a brick residence', quoteOption: 'Windows',
+    image: '/images/windows-hero.webp', imageAlt: 'Two installers fitting a dark-framed window into a brick residence', quoteOption: 'Windows', category: 'Exterior', featured: true,
     scope: 'Drafts, difficult operation and damaged frames are practical signals that it may be time to review your windows. We help narrow the options and plan a clean installation.',
     sections: [
       { id: 'when-to-replace', title: 'When replacement makes sense', intro: 'One issue does not automatically mean every window needs replacing. A room-by-room review helps separate maintenance needs from broader performance problems.', points: ['Drafts and rising energy bills', 'Condensation or fogging between panes', 'Rot, water damage or deteriorated frames', 'Difficult operation, damaged screens and outside noise'] },
@@ -80,6 +86,7 @@ export const services: Service[] = [
       { id: 'benefits', title: 'Comfort you can feel', intro: 'Well-selected, correctly installed windows can improve day-to-day comfort while refreshing the look of the property.', points: ['Improved energy performance', 'More consistent room comfort', 'Reduced exterior noise and UV exposure', 'Updated appearance and durable operation'] },
     ],
   },
+  ...additionalServices,
 ]
 
 export type PostSection = { heading: string; paragraphs: string[]; points?: string[] }
