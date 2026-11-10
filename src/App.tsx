@@ -13,19 +13,90 @@ function RouteEffects() {
     if (hash) {
       window.requestAnimationFrame(() => {
         const target = document.getElementById(hash.slice(1))
-        target?.scrollIntoView({ block: 'start' })
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        target?.scrollIntoView({ block: 'start', behavior: reducedMotion ? 'auto' : 'smooth' })
       })
     }
   }, [pathname, hash])
   return null
 }
 
+function MotionEffects() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    let frame = 0
+    const updateProgress = () => {
+      frame = 0
+      const available = document.documentElement.scrollHeight - window.innerHeight
+      const progress = available > 0 ? Math.min(window.scrollY / available, 1) : 0
+      document.documentElement.style.setProperty('--scroll-progress', String(progress))
+    }
+    const requestUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateProgress)
+    }
+    updateProgress()
+    window.addEventListener('scroll', requestUpdate, { passive: true })
+    window.addEventListener('resize', requestUpdate)
+    return () => {
+      window.removeEventListener('scroll', requestUpdate)
+      window.removeEventListener('resize', requestUpdate)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [pathname])
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return
+    let observer: IntersectionObserver | undefined
+    let animatedElements: HTMLElement[] = []
+    const frame = window.requestAnimationFrame(() => {
+      const main = document.getElementById('main-content')
+      if (!main) return
+      const selector = [
+        '.section-heading', '.service-row', '.about-teaser-grid', '.process-step',
+        '.service-carousel', '.post-card', '.quote-band-grid', '.service-detail',
+        '.related-card', '.industry-teaser-grid > a', '.industry-overview > a',
+        '.industry-detail', '.project-type', '.state-card', '.city-link-grid > a',
+        '.area-service-link-grid > a', '.contact-detail', '.value-item',
+      ].join(',')
+      animatedElements = Array.from(main.querySelectorAll<HTMLElement>(selector)).filter(element => {
+        const rect = element.getBoundingClientRect()
+        return rect.top > window.innerHeight * 0.9 && !element.closest('.reveal-item')
+      })
+      observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return
+          entry.target.classList.add('is-visible')
+          observer?.unobserve(entry.target)
+        })
+      }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' })
+      animatedElements.forEach((element, index) => {
+        element.classList.add('reveal-item')
+        element.style.setProperty('--reveal-order', String(index % 4))
+        observer?.observe(element)
+      })
+    })
+    return () => {
+      window.cancelAnimationFrame(frame)
+      observer?.disconnect()
+      animatedElements.forEach(element => {
+        element.classList.remove('reveal-item', 'is-visible')
+        element.style.removeProperty('--reveal-order')
+      })
+    }
+  }, [pathname])
+
+  return <div className="scroll-progress" aria-hidden="true" />
+}
+
 export default function App() {
+  const location = useLocation()
   return (
     <>
       <RouteEffects />
+      <MotionEffects />
       <SiteHeader />
-      <Routes>
+      <Routes key={location.pathname}>
         <Route path="/" element={<HomePage />} />
         <Route path="/2023/12/27/" element={<HomePage />} />
         <Route path="/about/" element={<AboutPage />} />

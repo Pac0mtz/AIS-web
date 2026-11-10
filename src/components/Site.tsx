@@ -7,8 +7,14 @@ import { contact, services } from '../data'
 export function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link to="/" className={`logo ${light ? 'logo-light' : ''}`} aria-label="AIS Environmental home">
-      <span className="logo-ais">AIS<span className="logo-dot" aria-hidden="true" /></span>
-      <span className="logo-words"><strong>Environmental</strong><span>Inc.</span></span>
+      <img
+        className="logo-image"
+        src={light ? '/ais-logo.png' : '/ais-logo-wide.webp'}
+        width={light ? 1280 : 1800}
+        height={light ? 575 : 300}
+        alt="AIS Environmental Services, Inc."
+        decoding="async"
+      />
     </Link>
   )
 }

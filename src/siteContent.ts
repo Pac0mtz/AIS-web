@@ -118,8 +118,8 @@ export const faqs: Faq[] = [
 ]
 
 export const projectTypes = [
-  { number: '01', title: 'Pre-renovation asbestos assessment', text: 'Survey and sampling scopes organized around the materials and rooms that planned construction will disturb.', serviceSlugs: ['asbestos-surveys', 'asbestos-testing', 'asbestos-tile'], image: '/images/asbestos-hero.webp' },
-  { number: '02', title: 'Commercial abatement coordination', text: 'Containment, removal and closeout planning for offices, retail, industrial and multi-family properties.', serviceSlugs: ['commercial-asbestos', 'asbestos-demolition'], image: '/images/asbestos-hero.webp' },
+  { number: '01', title: 'Pre-renovation asbestos assessment', text: 'Survey and sampling scopes organized around the materials and rooms that planned construction will disturb.', serviceSlugs: ['asbestos-surveys', 'asbestos-testing', 'asbestos-tile'], image: '/images/asbestos-surveys.webp' },
+  { number: '02', title: 'Commercial abatement coordination', text: 'Containment, removal and closeout planning for offices, retail, industrial and multi-family properties.', serviceSlugs: ['commercial-asbestos', 'asbestos-demolition'], image: '/images/commercial-asbestos.webp' },
   { number: '03', title: 'Lead-safe property improvements', text: 'Inspection and surface-specific planning before older painted components are repaired, encapsulated or removed.', serviceSlugs: ['lead-inspection', 'lead'], image: '/images/lead-hero.webp' },
   { number: '04', title: 'Basement moisture and mold response', text: 'Moisture mapping, affected-material review, remediation and drying organized around the water source.', serviceSlugs: ['mold-testing', 'mold', 'flooded-basement'], image: '/images/mold-hero.webp' },
   { number: '05', title: 'Water-damage drying and repair', text: 'Extraction, selective material removal, structural drying and coordination with the repair phase.', serviceSlugs: ['water-damage', 'flooded-basement'], image: '/images/water-damage.webp' },
