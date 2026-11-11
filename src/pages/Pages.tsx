@@ -7,6 +7,8 @@ import { FormNotice, ImageComparison, Page, QuoteBand, SectionLabel, ServiceCaro
 import { ServiceCard } from '../components/ServiceCard'
 import { industries } from '../siteContent'
 import { useEmailDraft } from '../hooks/useEmailDraft'
+import { BrandIcon } from '../components/BrandIcon'
+import { serviceMedia } from '../serviceMedia'
 
 export function HomePage() {
   return (
@@ -53,7 +55,7 @@ export function HomePage() {
       <section className="section industries-teaser" id="industries">
         <div className="shell">
           <div className="section-heading split-heading"><SectionLabel>Industries we serve</SectionLabel><h2>Property support shaped around your space.</h2><p>Homes, workplaces and public buildings each need a different kind of coordination.</p></div>
-          <div className="industry-teaser-grid">{industries.map(industry => <Link to={`/industries/#${industry.id}`} key={industry.id}><span>{industry.number}</span><h3>{industry.shortName}</h3><p>{industry.summary}</p><ArrowUpRight size={18} /></Link>)}</div>
+          <div className="industry-teaser-grid">{industries.map(industry => <Link to={`/industries/#${industry.id}`} key={industry.id}><span className="brand-icon-badge industry-icon"><BrandIcon name={industry.id} /></span><span className="industry-number">{industry.number}</span><h3>{industry.shortName}</h3><p>{industry.summary}</p><ArrowUpRight size={18} /></Link>)}</div>
           <Link to="/industries/" className="text-link industries-all-link">Explore every industry <ArrowUpRight size={17} /></Link>
         </div>
       </section>
@@ -122,6 +124,7 @@ export function ServicePage({ service }: { service: Service }) {
         <div className="breadcrumbs"><Link to="/">Home</Link><ChevronRight size={13} /><Link to="/services/">Services</Link><ChevronRight size={13} /><span>{service.shortName}</span></div>
         <div className="service-hero-grid">
           <div>
+            <span className="brand-icon-badge service-hero-icon"><BrandIcon name={service.slug} /></span>
             <SectionLabel>Service {service.number} / {services.length}</SectionLabel>
             <h1>{service.headline}</h1>
           </div>
@@ -153,10 +156,30 @@ export function ServicePage({ service }: { service: Service }) {
         </div>
       </section>
 
+      <section className="section service-gallery-section" aria-labelledby={`${service.slug}-gallery-title`}>
+        <div className="shell">
+          <div className="section-heading split-heading">
+            <SectionLabel>Inside the work</SectionLabel>
+            <h2 id={`${service.slug}-gallery-title`}>A closer look at the details.</h2>
+            <p>Representative imagery illustrates typical conditions and methods. Your property’s scope is defined after a project-specific review.</p>
+          </div>
+          <div className="service-gallery-grid">
+            {serviceMedia[service.slug].map((item, index) => (
+              <figure className="service-gallery-item" key={item.src}>
+                <div className="service-gallery-image">
+                  <img src={item.src} alt={item.alt} width={1200} height={800} loading="lazy" decoding="async" />
+                </div>
+                <figcaption><span>0{index + 1}</span><strong>{item.caption}</strong></figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section related-section">
         <div className="shell">
           <div className="section-heading split-heading"><SectionLabel>Related expertise</SectionLabel><h2>More ways<br />we can help.</h2></div>
-          <div className="related-grid">{related.map(item => <Link to={item.path} className="related-card" key={item.path}><img src={item.image} alt="" loading="lazy" decoding="async" /><span>{item.number}</span><h3>{item.name}</h3><ArrowUpRight /></Link>)}</div>
+          <div className="related-grid">{related.map(item => <Link to={item.path} className="related-card" key={item.path}><img src={item.image} alt="" loading="lazy" decoding="async" /><span className="brand-icon-badge related-card-icon"><BrandIcon name={item.slug} /></span><span>{item.number}</span><h3>{item.name}</h3><ArrowUpRight /></Link>)}</div>
         </div>
       </section>
       <QuoteBand title={`Planning a ${service.shortName.toLowerCase()} project?`} text="Share a few details about the property and the work you are considering. We will follow up to discuss scope and next steps." />

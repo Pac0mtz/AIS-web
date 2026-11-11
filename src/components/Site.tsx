@@ -9,9 +9,9 @@ export function Logo({ light = false }: { light?: boolean }) {
     <Link to="/" className={`logo ${light ? 'logo-light' : ''}`} aria-label="AIS Environmental home">
       <img
         className="logo-image"
-        src={light ? '/ais-logo.png' : '/ais-logo-wide.webp'}
-        width={light ? 1280 : 1800}
-        height={light ? 575 : 300}
+        src="/ais-logo.webp"
+        width={1800}
+        height={771}
         alt="AIS Environmental Services, Inc."
         decoding="async"
       />
