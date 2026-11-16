@@ -70,12 +70,71 @@ function composePropertyAddress(body) {
   return street || locality || 'Not provided'
 }
 
-function submitUrl(kind) {
-  const token = FORM_TOKENS[kind] || FORM_TOKENS.hero
-  return `https://fieldtaskpro.com/api/public/crm-lead/${token}`
+function formToken(kind) {
+  return FORM_TOKENS[kind] || FORM_TOKENS.hero
 }
 
-export async function forwardQuoteToFieldtaskpro(body, kind = 'hero') {
+function submitUrl(kind) {
+  return `https://fieldtaskpro.com/api/public/crm-lead/${formToken(kind)}`
+}
+
+function uploadUrl(kind) {
+  return `${submitUrl(kind)}/upload`
+}
+
+function leadUploadPath(raw) {
+  const value = String(raw || '').trim()
+  if (value.startsWith('/uploads/crm-leads/')) return value.slice(0, 500)
+  try {
+    const url = new URL(value)
+    if (url.pathname.startsWith('/uploads/crm-leads/')) return url.pathname.slice(0, 500)
+  } catch {
+    return ''
+  }
+  return ''
+}
+
+async function uploadQuotePhotos(formKind, photos, fetchImpl) {
+  const uploads = []
+  for (const photo of photos) {
+    const body = new FormData()
+    const bytes = new Uint8Array(photo.buffer)
+    body.append('file', new Blob([bytes], { type: photo.contentType || 'application/octet-stream' }), photo.filename || 'photo')
+    let response
+    try {
+      response = await fetchImpl(uploadUrl(formKind), {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body,
+      })
+    } catch (error) {
+      console.error('Fieldtaskpro photo upload error:', formKind, error?.message || error)
+      return null
+    }
+    if (!response.ok) {
+      const text = await response.text().catch(() => '')
+      console.error('Fieldtaskpro photo upload failed:', formKind, response.status, text.slice(0, 300))
+      return null
+    }
+    const data = await response.json().catch(() => null)
+    const url = leadUploadPath(data?.url)
+    if (!url) {
+      console.error('Fieldtaskpro photo upload returned no lead file url:', formKind, response.status)
+      return null
+    }
+    uploads.push({
+      fileName: String(data.fileName || photo.filename || 'photo').slice(0, 255),
+      url,
+      fileSize: Number.isFinite(Number(data.fileSize)) ? Number(data.fileSize) : bytes.byteLength,
+      fileType: String(data.fileType || photo.contentType || 'image/jpeg').slice(0, 120),
+    })
+  }
+  return uploads
+}
+
+export async function forwardQuoteToFieldtaskpro(body, kind = 'hero', options = {}) {
+  const fetchImpl = options.fetchImpl || fetch
+  const photos = Array.isArray(options.photos) ? options.photos : []
   const formKind = FORM_TOKENS[body.formKind] ? body.formKind : kind
   const service = mapService(body.service)
   const propertyType = mapPropertyType(body.propertyType || body.property_type)
@@ -93,9 +152,14 @@ export async function forwardQuoteToFieldtaskpro(body, kind = 'hero') {
   }
   if (timeline) payload.timeline = timeline
   if (notes) payload.notes = notes
+  if (photos.length) {
+    const uploads = await uploadQuotePhotos(formKind, photos, fetchImpl)
+    if (!uploads) return false
+    payload.uploads = uploads
+  }
 
   try {
-    const response = await fetch(submitUrl(formKind), {
+    const response = await fetchImpl(submitUrl(formKind), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify(payload),

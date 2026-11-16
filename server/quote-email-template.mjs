@@ -143,7 +143,22 @@ function quoteFields(formData) {
     timeline: filled(formData?.timeline, 'Not provided'),
     description: filled(formData?.description || formData?.message, 'No description'),
     submitted: filled(formData?.submittedAt, new Date().toISOString()),
+    photos: photoNames(formData),
   }
+}
+
+function photoNames(formData) {
+  const raw = Array.isArray(formData?.photos) ? formData.photos : []
+  return raw
+    .map(item => {
+      const name = typeof item === 'string' ? item : item?.filename || item?.fileName || ''
+      return String(name).replace(/[\r\n]+/g, ' ').trim()
+    })
+    .filter(Boolean)
+}
+
+function photoCountLabel(count) {
+  return `${count} ${count === 1 ? 'photo' : 'photos'}`
 }
 
 function detailCard(rows, { background, border, labelColor, accent }) {
@@ -186,6 +201,13 @@ function brandedHtml({ brand, fields }) {
     ],
     { background: '#ffffff', border: '#e2e8f0', labelColor: '#334155', accent: '' },
   )
+  const photoCard = detailCard(
+    [
+      { label: 'Count', value: photoCountLabel(fields.photos.length) },
+      { label: 'Files', value: fields.photos.length ? fields.photos.join('\n') : 'None' },
+    ],
+    { background: '#ffffff', border: '#e2e8f0', labelColor: '#334155', accent: '' },
+  )
   const intro = `<p style="margin:0 0 8px;font-size:15px;line-height:1.65;color:#475569;">Reply to this email to reach <strong style="color:#0f172a;">${escapeHtml(fields.name)}</strong> directly.</p>`
   const logo = brand.logoUrl
     ? `<table role="presentation" align="center" cellpadding="0" cellspacing="0" style="margin:0 auto 16px;"><tr><td style="background:#ffffff;border-radius:12px;padding:12px 16px;"><img src="${emailLinkHref(brand.logoUrl)}" alt="${safeCompany}" width="220" style="display:block;width:220px;max-width:100%;height:auto;border:0;" /></td></tr></table>`
@@ -213,6 +235,8 @@ function brandedHtml({ brand, fields }) {
       ${contactCard}
       <p style="margin:22px 0 0;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#64748b;">Project details</p>
       ${projectCard}
+      <p style="margin:22px 0 0;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#64748b;">Photos</p>
+      ${photoCard}
     </div>
     <div style="padding:18px 28px 22px;text-align:center;border-top:1px solid #e2e8f0;font-size:12px;line-height:1.55;color:#94a3b8;">
       ${footer}<br/>© ${year} ${safeCompany}
@@ -243,6 +267,10 @@ function plainText(brand, fields) {
     `Timeline: ${fields.timeline}`,
     `Description: ${fields.description}`,
     `Submitted: ${fields.submitted}`,
+    '',
+    'Photos',
+    `Count: ${photoCountLabel(fields.photos.length)}`,
+    `Files: ${fields.photos.length ? fields.photos.join('\n') : 'None'}`,
     '',
     `Submitted through ${FORM_NAME}.`,
     brand.companyName,

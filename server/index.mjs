@@ -4,6 +4,7 @@ import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { sendQuoteEmail, verifySmtp } from './email.mjs'
 import { forwardQuoteToFieldtaskpro } from './fieldtaskpro-lead.mjs'
+import { quotePhotoUpload } from './quote-photos.mjs'
 import { redirectPath, trailingSlashTarget, withThankYouRobots, wwwRedirectTarget } from './http-routing.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -37,22 +38,23 @@ app.get('/api/health', (_req, res) => {
   res.json({ ok: true })
 })
 
-app.post('/api/quote-requests', async (req, res) => {
+app.post('/api/quote-requests', quotePhotoUpload, async (req, res) => {
   try {
     const required = missingQuoteFields(req.body || {})
     if (required) return res.status(400).json({ success: false, error: required })
 
+    const photos = req.quotePhotos || []
     let emailSent = false
     try {
       emailSent = await sendQuoteEmail({
         ...req.body,
         submittedAt: req.body.submittedAt || new Date().toISOString(),
-      })
+      }, photos)
     } catch (error) {
       console.error('Email sending error:', error)
     }
 
-    const fieldtaskproSent = await forwardQuoteToFieldtaskpro(req.body, req.body.formKind || 'fullscreen')
+    const fieldtaskproSent = await forwardQuoteToFieldtaskpro(req.body, req.body.formKind || 'fullscreen', { photos })
     if (!fieldtaskproSent) {
       return res.status(502).json({
         success: false,

@@ -356,6 +356,20 @@ input:focus, textarea:focus, select:focus { border-color: var(--brand-primary); 
 input::placeholder, textarea::placeholder { color: var(--text-secondary); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .form-footnote { font-size: 13px; line-height: 1.55; margin: -4px 0 0; }
+.photo-field { display: flex; flex-direction: column; gap: 10px; }
+.photo-hint { color: var(--text-secondary); font-size: 13px; font-weight: 400; line-height: 1.5; }
+.photo-field input[type="file"] { padding: 8px 12px; line-height: 1.4; }
+.photo-field input[type="file"]::file-selector-button { margin-right: 12px; border: 1px solid var(--brand-primary); border-radius: 3px; background: var(--surface-page); color: var(--brand-primary); font: inherit; font-size: 13px; font-weight: 600; min-height: 36px; padding: 8px 12px; cursor: pointer; }
+.photo-field input[type="file"]::file-selector-button:hover { background: var(--brand-primary); color: var(--white); }
+.photo-thumbs { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.photo-thumb { width: 112px; display: flex; flex-direction: column; gap: 6px; }
+.photo-thumb img, .photo-thumb-fallback { width: 112px; height: 84px; object-fit: cover; border: 1px solid var(--line); border-radius: 3px; background: var(--surface-page); }
+.photo-thumb-fallback { display: flex; align-items: flex-end; padding: 8px; color: var(--text-secondary); font-size: 11px; line-height: 1.35; overflow: hidden; }
+.photo-thumb-fallback[hidden] { display: none; }
+.photo-thumb-name { color: var(--text-secondary); font-size: 12px; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.photo-remove { align-self: flex-start; min-height: 44px; padding: 0; border: 0; background: transparent; color: var(--brand-accent); font-size: 13px; font-weight: 600; cursor: pointer; }
+.photo-remove:hover { color: var(--brand-accent-dark); }
+.photo-error { margin: 0; color: var(--brand-accent-dark); font-size: 14px; font-weight: 500; line-height: 1.45; }
 .form-notice { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: var(--surface-tint); color: var(--text-primary); font-size: 14px; line-height: 1.5; margin: 0; }
 .form-notice svg { color: var(--brand-primary); flex: 0 0 auto; }
 .contact-hero, .quote-hero { padding-top: 68px; padding-bottom: 56px; }

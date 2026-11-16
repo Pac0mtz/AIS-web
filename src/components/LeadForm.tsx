@@ -11,6 +11,7 @@ import {
   type LeadFormPayload,
 } from '../lib/lead-form'
 import { FormNotice } from './Site'
+import { QuotePhotoField, type QuotePhoto } from './QuotePhotoField'
 
 const empty: LeadFormPayload = {
   name: '',
@@ -41,6 +42,8 @@ export function LeadForm({
   const navigate = useNavigate()
   const resolvedKind = formKind ?? aisQuoteFormKindFromPath(pathname)
   const [data, setData] = useState<LeadFormPayload>({ ...empty, service: initialService })
+  const [photos, setPhotos] = useState<QuotePhoto[]>([])
+  const [photoError, setPhotoError] = useState('')
   const [notice, setNotice] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
@@ -57,31 +60,32 @@ export function LeadForm({
     }
     setSubmitting(true)
     try {
+      const body = new FormData()
+      body.append('name', data.name.trim())
+      body.append('email', data.email.trim())
+      body.append('phone', data.phone.trim())
+      body.append('service', data.service)
+      body.append('timeline', data.timeline)
+      body.append('description', data.description.trim())
+      body.append('propertyAddress', data.propertyAddress.trim())
+      body.append('city', data.city.trim())
+      body.append('state', data.state.trim())
+      body.append('zipCode', data.zipCode.trim())
+      body.append('propertyType', data.propertyType)
+      body.append('formKind', resolvedKind)
+      body.append('submittedAt', new Date().toISOString())
+      for (const photo of photos) body.append('photos', photo.file, photo.file.name)
       const response = await fetch('/api/quote-requests', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          ...data,
-          name: data.name.trim(),
-          email: data.email.trim(),
-          phone: data.phone.trim(),
-          service: data.service,
-          timeline: data.timeline || null,
-          description: data.description.trim() || null,
-          propertyAddress: data.propertyAddress.trim() || null,
-          city: data.city.trim() || null,
-          state: data.state.trim() || null,
-          zipCode: data.zipCode.trim() || null,
-          propertyType: data.propertyType || null,
-          formKind: resolvedKind,
-          submittedAt: new Date().toISOString(),
-        }),
+        headers: { Accept: 'application/json' },
+        body,
       })
       const result = await response.json().catch(() => ({}))
       if (!response.ok || !result.success) {
         setNotice(result.error || result.message || 'Could not send your request. Please try again or call us.')
         return
       }
+      for (const photo of photos) URL.revokeObjectURL(photo.previewUrl)
       navigate('/thank-you')
     } catch {
       setNotice('Could not send your request. Please try again or call us.')
@@ -155,6 +159,15 @@ export function LeadForm({
           onChange={e => update('description', e.target.value)}
         />
       </label>
+
+      <QuotePhotoField
+        photos={photos}
+        error={photoError}
+        onChange={(next, error) => {
+          setPhotos(next)
+          setPhotoError(error)
+        }}
+      />
 
       <button className="button button-primary" type="submit" disabled={submitting}>
         {submitting ? 'Sending…' : submitLabel} <ArrowUpRight size={19} />

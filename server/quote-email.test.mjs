@@ -56,6 +56,30 @@ test('missing fields use the same placeholders as the previous notification', ()
   assert.match(html, /#d90002/)
 })
 
+test('photos section lists the count and filenames without raw html', () => {
+  const { html, text } = renderQuoteNotification({
+    ...SAMPLE_QUOTE_LEAD,
+    photos: [{ filename: 'kitchen.jpg' }, { filename: 'ceiling <img>.png' }],
+  })
+  assert.match(html, />Photos</)
+  assert.match(html, /2 photos/)
+  assert.match(html, /kitchen\.jpg/)
+  assert.match(html, /ceiling &lt;img&gt;\.png/)
+  assert.equal(html.includes('ceiling <img>'), false)
+  assert.match(text, /Photos/)
+  assert.match(text, /Count: 2 photos/)
+  assert.match(text, /kitchen\.jpg/)
+  assert.match(text, /ceiling <img>\.png/)
+})
+
+test('a quote with no photos still lists a zero count', () => {
+  const { html, text } = renderQuoteNotification(SAMPLE_QUOTE_LEAD)
+  assert.match(html, /0 photos/)
+  assert.match(html, /None/)
+  assert.match(text, /Count: 0 photos/)
+  assert.match(text, /Files: None/)
+})
+
 test('from display name defaults to AIS Environmental Inc. and corrects the misspelling', () => {
   assert.equal(resolveQuoteFromName(undefined), AIS_COMPANY_NAME)
   assert.equal(resolveQuoteFromName(''), AIS_COMPANY_NAME)

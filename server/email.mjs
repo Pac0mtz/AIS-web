@@ -37,16 +37,27 @@ export async function verifySmtp() {
   }
 }
 
-export async function sendQuoteEmail(formData) {
+export async function sendQuoteEmail(formData, photos = []) {
   if (!smtpConfig.auth.pass) throw new Error('SMTP_PASS is not configured')
-  const message = renderQuoteNotification(formData)
-  await transporter().sendMail({
+  const message = renderQuoteNotification({
+    ...formData,
+    photos: photos.map(photo => ({ filename: photo.filename })),
+  })
+  const mail = {
     from: { name: fromName, address: fromEmail },
     to: notifyTo,
     replyTo: formData.email,
     subject: message.subject,
     text: message.text,
     html: message.html,
-  })
+  }
+  if (photos.length) {
+    mail.attachments = photos.map(photo => ({
+      filename: photo.filename,
+      content: photo.buffer,
+      contentType: photo.contentType,
+    }))
+  }
+  await transporter().sendMail(mail)
   return true
 }
