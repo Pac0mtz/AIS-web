@@ -45,6 +45,12 @@
   --font-sans: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
   --font-display: 'Rubik', 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Single content spine used by every page section. */
+  --shell-max: 1240px;
+  --shell-gutter: 24px;
+  --shell-inline: max(var(--shell-gutter), calc((100% - var(--shell-max)) / 2));
+
   font-family: var(--font-sans);
   color: var(--text-primary);
   background: var(--surface-page);

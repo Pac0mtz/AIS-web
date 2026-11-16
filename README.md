@@ -1,14 +1,13 @@
-# AIS-web
+# AIS Environmental website
 
-AIS Environmental website redesign with 80 routes, branded service/industry/project-type icons, and expanded service galleries.
+Production site for [aisenvironmentalinc.com](https://aisenvironmentalinc.com), based on [Pac0mtz/AIS-web](https://github.com/Pac0mtz/AIS-web).
 
 ## Stack
 
-- React and TypeScript
+- React + TypeScript
 - Vite
 - Tailwind CSS
 - React Router
-- Rubik and Poppins fonts
 
 ## Local development
 
@@ -17,20 +16,6 @@ npm ci
 npm run dev
 ```
 
-## Verification and production build
+## Production
 
-```sh
-npm run lint
-npm run build
-npm run preview
-```
-
-## Website content
-
-- 17 individual service pages, each with supporting photography
-- 8 industries served
-- 44 state and city service-area pages
-- Project types, reviews, FAQs, articles, contact, and quote routes
-- Responsive navigation, reduced-motion support, and a no-JavaScript contact fallback
-
-Contact and quote forms prepare email drafts; the website does not store form submissions. See `CREDITS.md` for media sources and production-review notes.
+Coolify builds the multi-stage `Dockerfile` (Vite build → nginx on port 5000).

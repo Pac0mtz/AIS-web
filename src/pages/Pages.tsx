@@ -1,19 +1,20 @@
-import { useMemo, useState } from 'react'
-import type { FormEvent } from 'react'
+import { useMemo } from 'react'
 import { Link, useLocation } from 'react-router'
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, Mail, MapPin, Phone } from 'lucide-react'
 import { contact, posts, processSteps, services, type Post, type Service } from '../data'
 import { FormNotice, ImageComparison, Page, QuoteBand, SectionLabel, ServiceCarousel, ShareLinks } from '../components/Site'
 import { ServiceCard } from '../components/ServiceCard'
+import { LeadForm } from '../components/LeadForm'
 import { industries } from '../siteContent'
 import { useEmailDraft } from '../hooks/useEmailDraft'
 import { BrandIcon } from '../components/BrandIcon'
 import { serviceMedia } from '../serviceMedia'
+import { LEAD_SERVICES } from '../lib/lead-form'
 
 export function HomePage() {
   return (
     <Page title="Asbestos Removal & Property Services | AIS Environmental" description="AIS Environmental provides asbestos, lead paint, mold, water damage and exterior property services across Illinois, Indiana and Wisconsin." className="home-page">
-      <section className="home-hero shell-wide">
+      <section className="home-hero">
         <img className="home-hero-background" src="/images/asbestos-hero.webp" alt="Technicians in protective suits inside a contained asbestos work area" fetchPriority="high" />
         <div className="shell home-hero-copy">
           <SectionLabel light>Environmental & property services</SectionLabel>
@@ -131,9 +132,9 @@ export function ServicePage({ service }: { service: Service }) {
           <div className="service-hero-aside"><p>{service.intro}</p><Link to={`/get-a-quote/?service=${encodeURIComponent(service.quoteOption)}`} className="button button-primary">Request a free estimate <ArrowUpRight size={19} /></Link></div>
         </div>
       </section>
-      <div className="service-hero-image shell-wide">
+      <div className="service-hero-image shell">
         <img src={service.image} alt={service.imageAlt} />
-        <div className="service-image-caption shell"><span>{service.eyebrow}</span><span>AIS Environmental / {service.number}</span></div>
+        <div className="service-image-caption"><span>{service.eyebrow}</span><span>AIS Environmental / {service.number}</span></div>
       </div>
 
       <section className="section shell service-content-grid" id="services">
@@ -203,7 +204,7 @@ export function AboutPage() {
         <h1>The work is technical.<br /><span>The reason is human.</span></h1>
         <div className="about-hero-bottom"><p>We help people make informed decisions about the spaces where they live, work and invest.</p><span className="micro-label">Chicago, Illinois / Local service</span></div>
       </section>
-      <div className="about-image shell-wide"><img src="/images/asbestos-hero.webp" alt="Environmental technicians preparing a contained work area" /><div className="about-image-word" aria-hidden="true">CARE</div></div>
+      <div className="about-image shell"><img src="/images/asbestos-hero.webp" alt="Environmental technicians preparing a contained work area" /><div className="about-image-word" aria-hidden="true">CARE</div></div>
       <section className="section shell about-story">
         <div><SectionLabel>Who we are</SectionLabel><h2>Local knowledge.<br />Practical solutions.</h2></div>
         <div className="about-story-copy"><p className="large-copy">AIS Environmental Inc. serves commercial, residential and multi-family properties across Chicago and surrounding areas.</p><p>Our services include asbestos testing, surveys, removal and abatement; lead-paint inspection and removal; mold inspection and remediation; water-damage restoration; and professional roofing, siding, gutter, window and door services. We are fully insured and provide IDPH-licensed services.</p><p>That range reflects a simple idea: property owners deserve a clear plan, careful work and a team that respects the building as much as the people inside it.</p></div>
@@ -260,7 +261,7 @@ export function ArticlePage({ post }: { post: Post }) {
     <Page title={`${post.title} | AIS Environmental`} description={post.excerpt} className="article-page">
       <article>
         <header className="article-header shell"><div className="breadcrumbs"><Link to="/blog/">Field notes</Link><ChevronRight size={13} /><Link to={post.categoryPath}>{post.category}</Link></div><SectionLabel>{post.category} / Property knowledge</SectionLabel><h1>{post.title}</h1><div className="article-byline"><span>By <Link to="/author/mtzprints/">mtzprints</Link></span><span>{post.date}</span><span>6 min read</span></div></header>
-        <div className="article-hero-image shell-wide"><img src={post.image} alt="" loading="lazy" decoding="async" /></div>
+        <div className="article-hero-image shell"><img src={post.image} alt="" loading="lazy" decoding="async" /></div>
         <div className="shell article-layout">
           <aside className="article-aside"><ShareLinks title={post.title} /><Link to={post.servicePath} className="article-service-link"><span className="micro-label">Related service</span><strong>{post.serviceName}</strong><ArrowUpRight /></Link></aside>
           <div className="article-body"><p className="article-lede">{post.excerpt}</p>{post.sections.map((section, index) => <section key={section.heading}><span className="article-section-number">0{index + 1}</span><h2>{section.heading}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{section.points && <ul>{section.points.map(point => <li key={point}>{point}</li>)}</ul>}</section>)}<div className="article-callout"><span className="micro-label">Need property-specific guidance?</span><h2>Let’s look at your space.</h2><p>An article can explain the basics. An inspection or project conversation can clarify what applies to your property.</p><Link to={post.servicePath} className="button button-primary">Explore {post.serviceName.toLowerCase()} <ArrowUpRight size={18} /></Link></div></div>
@@ -273,7 +274,6 @@ export function ArticlePage({ post }: { post: Post }) {
 }
 
 export function ContactPage() {
-  const form = useEmailDraft('Website contact')
   return (
     <Page title="Contact AIS Environmental Inc. | Chicago" description="Contact AIS Environmental for asbestos, lead paint, mold and window services in Chicago and surrounding areas. Call (708) 240-9468." className="contact-page">
       <section className="contact-hero shell"><SectionLabel>Contact / Start a conversation</SectionLabel><h1>Tell us what’s<br />going on.</h1><p>A few details about the property and your concern are enough to start.</p></section>
@@ -283,14 +283,7 @@ export function ContactPage() {
           <div className="contact-detail"><Mail aria-hidden="true" /><span className="micro-label">Email</span><a href={`mailto:${contact.publicEmail}`}>{contact.publicEmail}</a><p>Send photos, documents or property context.</p></div>
           <div className="contact-detail"><MapPin aria-hidden="true" /><span className="micro-label">Visit</span><a href={contact.mapsUrl} target="_blank" rel="noreferrer">2524 Scott St.<br />Franklin Park, IL 60131</a><p>Serving Chicago and surrounding areas.</p></div>
         </div>
-        <form className="contact-form" action={`mailto:${contact.email}`} method="get" onSubmit={form.submit}>
-          <div className="form-heading"><span className="micro-label">Project inquiry</span><h2>How can we help?</h2></div>
-          <div className="form-row"><label>First name<input name="firstName" required data-email-label="First name" autoComplete="given-name" /></label><label>Last name<input name="lastName" required data-email-label="Last name" autoComplete="family-name" /></label></div>
-          <label>Email address<input name="email" type="email" required data-email-label="Email" autoComplete="email" /></label>
-          <label>Subject<input name="subject" required data-email-label="Subject" /></label>
-          <label>Message<textarea name="message" required data-email-label="Message" rows={6} placeholder="Property type, location, and what you are seeing…" /></label>
-          <button className="button button-primary" type="submit">Prepare email <ArrowUpRight size={19} /></button><p className="form-footnote">This form opens a draft in your email application. No form data is stored on this website.</p><FormNotice>{form.notice}</FormNotice>
-        </form>
+        <LeadForm formKind="contact" submitLabel="Send message" />
       </section>
       <section className="contact-map" aria-label="AIS Environmental service area">
         <div className="service-area-visual" aria-hidden="true">
@@ -316,21 +309,34 @@ export function ContactPage() {
   )
 }
 
+function mapQuoteServiceParam(raw: string | null) {
+  if (!raw) return ''
+  const lower = raw.toLowerCase()
+  const match = LEAD_SERVICES.find(service => service.toLowerCase() === lower)
+  if (match) return match
+  if (lower.includes('asbestos') && lower.includes('survey')) return 'Asbestos Survey'
+  if (lower.includes('asbestos') && (lower.includes('remov') || lower.includes('abat') || lower === 'asbestos')) return 'Asbestos Removal'
+  if (lower.includes('asbestos')) return 'Asbestos Inspection'
+  if (lower.includes('mold') && lower.includes('remed')) return 'Mold Remediation'
+  if (lower.includes('mold')) return 'Mold Testing'
+  if (lower.includes('lead') && lower.includes('remov')) return 'Lead Paint Removal'
+  if (lower.includes('lead')) return 'Lead Paint Inspection'
+  if (lower.includes('window') || lower.includes('door')) return 'Windows / Doors'
+  if (lower.includes('roof')) return 'Roofing'
+  if (lower.includes('siding') || lower.includes('gutter')) return 'Siding / Gutters'
+  if (lower.includes('water') || lower.includes('flood')) return 'Water Damage Restoration'
+  return ''
+}
+
 export function QuotePage() {
   const location = useLocation()
   const requested = new URLSearchParams(location.search).get('service')
-  const initial = services.find(service => service.quoteOption.toLowerCase() === requested?.toLowerCase())?.quoteOption || ''
-  const [selected, setSelected] = useState(initial)
-  const form = useEmailDraft(`Free estimate${selected ? `: ${selected}` : ''}`)
-  function submit(event: FormEvent<HTMLFormElement>) { form.submit(event) }
+  const initialService = mapQuoteServiceParam(requested)
   return (
     <Page title="Get a Free Project Quote | AIS Environmental Inc." description="Request a free estimate for asbestos, lead paint, mold, water damage or exterior property services across Illinois, Indiana and Wisconsin." className="quote-page">
-      <section className="quote-hero shell"><SectionLabel>Free estimate / No obligation</SectionLabel><h1>Let’s scope<br />your project.</h1><p>Share the basics below. Your email app will open a prepared draft for you to review and send.</p></section>
+      <section className="quote-hero shell"><SectionLabel>Free estimate / No obligation</SectionLabel><h1>Let’s scope<br />your project.</h1><p>Share the same project details we collect on A&amp;B Environmental. We’ll email AIS and save the lead in Fieldtaskpro.</p></section>
       <section className="shell quote-form-layout">
-        <form className="quote-form" action={`mailto:${contact.email}`} method="get" onSubmit={submit}>
-          <fieldset className="service-choice"><legend>01 / What do you need help with?</legend><div className="service-choice-grid">{services.map(service => <label className={selected === service.quoteOption ? 'selected' : ''} key={service.slug}><input type="radio" name="serviceChoice" value={service.quoteOption} checked={selected === service.quoteOption} onChange={() => setSelected(service.quoteOption)} /><span>{service.number}</span><strong>{service.name}</strong><Check size={18} /></label>)}</div></fieldset>
-          <div className="quote-details"><span className="micro-label">02 / Your details</span><div className="form-row"><label>First name<input name="firstName" required data-email-label="First name" autoComplete="given-name" /></label><label>Last name<input name="lastName" required data-email-label="Last name" autoComplete="family-name" /></label></div><div className="form-row"><label>Phone<input name="phone" type="tel" required data-email-label="Phone" autoComplete="tel" /></label><label>Email<input name="email" type="email" required data-email-label="Email" autoComplete="email" /></label></div><label>Property address<input name="address" required data-email-label="Property address" autoComplete="street-address" /></label><input type="hidden" name="service" value={selected} data-email-label="Service type" /><label>Project details<textarea name="details" required data-email-label="Project details" rows={6} placeholder="Tell us about the property, the affected area, and any work you are planning…" /></label><button type="submit" className="button button-primary">Prepare quote request <ArrowUpRight size={19} /></button><p className="form-footnote">Review the draft in your email app and press Send there. No form data is stored on this website.</p><FormNotice>{form.notice}</FormNotice></div>
-        </form>
+        <LeadForm formKind="fullscreen" initialService={initialService} className="contact-form quote-form" submitLabel="Request a free estimate" />
         <aside className="quote-aside"><span className="micro-label">What happens next</span>{processSteps.slice(0, 3).map(step => <div key={step.number}><span>{step.number}</span><h3>{step.title}</h3><p>{step.text}</p></div>)}<div className="quote-aside-contact"><p>Prefer to describe it by phone?</p><a href={contact.phoneHref}>{contact.phoneDisplay}<ArrowUpRight size={18} /></a></div></aside>
       </section>
     </Page>
