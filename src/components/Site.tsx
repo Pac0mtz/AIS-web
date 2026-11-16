@@ -167,7 +167,7 @@ export function SiteFooter() {
   )
 }
 
-export function Page({ title, description, children, className = '' }: { title: string; description: string; children: ReactNode; className?: string }) {
+export function Page({ title, description, children, className = '', robots }: { title: string; description: string; children: ReactNode; className?: string; robots?: string }) {
   const location = useLocation()
   useEffect(() => {
     document.title = title
@@ -197,8 +197,17 @@ export function Page({ title, description, children, className = '' }: { title: 
       document.head.appendChild(canonical)
     }
     canonical.href = `https://aisenvironmentalinc.com${location.pathname}`
+    const robotsMeta = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]')
+    if (robots) {
+      const meta = robotsMeta ?? document.createElement('meta')
+      meta.setAttribute('name', 'robots')
+      meta.setAttribute('content', robots)
+      if (!meta.parentNode) document.head.appendChild(meta)
+    } else {
+      robotsMeta?.remove()
+    }
     window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [title, description, location.pathname])
+  }, [title, description, location.pathname, robots])
   return <main id="main-content" className={className}>{children}</main>
 }
 

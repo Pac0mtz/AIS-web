@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { useLocation } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import { ArrowUpRight } from 'lucide-react'
 import {
   LEAD_PROPERTY_TYPES,
@@ -38,6 +38,7 @@ export function LeadForm({
   className?: string
 }) {
   const { pathname } = useLocation()
+  const navigate = useNavigate()
   const resolvedKind = formKind ?? aisQuoteFormKindFromPath(pathname)
   const [data, setData] = useState<LeadFormPayload>({ ...empty, service: initialService })
   const [notice, setNotice] = useState('')
@@ -81,8 +82,7 @@ export function LeadForm({
         setNotice(result.error || result.message || 'Could not send your request. Please try again or call us.')
         return
       }
-      setData({ ...empty, service: initialService })
-      setNotice('Thank you. We received your request and will follow up soon.')
+      navigate('/thank-you')
     } catch {
       setNotice('Could not send your request. Please try again or call us.')
     } finally {
