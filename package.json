@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "start": "node server/index.mjs",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:quote-email": "node --test server/quote-email.test.mjs",
+    "render:quote-email": "node server/render-quote-email.mjs"
   },
   "dependencies": {
     "@fontsource/poppins": "^5.3.0",
