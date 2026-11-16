@@ -417,10 +417,10 @@ input::placeholder, textarea::placeholder { color: var(--text-secondary); }
 .quote-aside-contact { margin: 28px -28px -28px; padding: 24px 28px; background: var(--brand-primary); color: var(--white); }
 .quote-aside-contact p { color: var(--white); margin-bottom: 12px; }
 .quote-aside-contact a { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 17px; font-weight: 600; }
-.not-found { min-height: 70vh; padding-top: 88px; padding-bottom: 88px; }
-.not-found > .micro-label { color: var(--brand-primary); }
-.not-found h1 { font-size: clamp(52px, 8vw, 90px); line-height: 1.05; letter-spacing: -.045em; margin: 32px 0 28px; }
-.not-found > p { max-width: 520px; font-size: 18px; }
+.not-found, .thank-you { min-height: 70vh; padding-top: 88px; padding-bottom: 88px; }
+.not-found > .micro-label, .thank-you > .micro-label { color: var(--brand-primary); }
+.not-found h1, .thank-you h1 { font-size: clamp(52px, 8vw, 90px); line-height: 1.05; letter-spacing: -.045em; margin: 32px 0 28px; }
+.not-found > p, .thank-you > p { max-width: 520px; font-size: 18px; }
 
 /* Expanded service, industry, project, and service-area pages */
 .service-view-all { width: fit-content; margin: 36px auto 0; }
@@ -877,5 +877,5 @@ input::placeholder, textarea::placeholder { color: var(--text-secondary); }
   .quote-aside { grid-template-columns: 1fr; padding: 22px; }
   .quote-aside > .micro-label, .quote-aside-contact { grid-column: auto; }
   .quote-aside-contact { margin: 0 -22px -22px; }
-  .not-found h1 { font-size: 56px; }
+  .not-found h1, .thank-you h1 { font-size: 56px; }
 }
