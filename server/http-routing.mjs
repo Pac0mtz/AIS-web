@@ -44,6 +44,16 @@ export function trailingSlashTarget(pathname, knownRoutes) {
   return canonical
 }
 
+/** Retired WordPress URLs. Both slash forms 301 in one hop, before trailing-slash rules. */
+const LEGACY_REDIRECTS = new Map([
+  ['/book-online', '/get-a-quote/'],
+  ['/book-online/', '/get-a-quote/'],
+])
+
+export function redirectTarget(pathname, knownRoutes) {
+  return LEGACY_REDIRECTS.get(pathname) || trailingSlashTarget(pathname, knownRoutes)
+}
+
 export function redirectPath(targetPath, originalUrl) {
   const queryAt = originalUrl.indexOf('?')
   const search = queryAt === -1 ? '' : originalUrl.slice(queryAt)

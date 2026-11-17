@@ -76,8 +76,15 @@ export function collectSiteRoutes() {
   return sorted
 }
 
+function isExcludedSitemapPath(routePath) {
+  return routePath === '/thank-you'
+    || routePath === '/book-online'
+    || routePath === '/book-online/'
+    || isLegacyWordpressPath(routePath)
+}
+
 export function sitemapPaths(routes = collectSiteRoutes()) {
-  return routes.filter(routePath => routePath !== '/thank-you' && !isLegacyWordpressPath(routePath))
+  return routes.filter(routePath => !isExcludedSitemapPath(routePath))
 }
 
 export function renderSitemap(paths) {
@@ -85,7 +92,7 @@ export function renderSitemap(paths) {
     if (routePath !== '/' && !routePath.endsWith('/')) {
       throw new Error(`Sitemap path must match trailing-slash canonicals: ${routePath}`)
     }
-    if (routePath === '/thank-you' || isLegacyWordpressPath(routePath)) {
+    if (isExcludedSitemapPath(routePath)) {
       throw new Error(`Sitemap includes an excluded path: ${routePath}`)
     }
   }
