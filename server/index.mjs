@@ -5,7 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import { sendQuoteEmail, verifySmtp } from './email.mjs'
 import { forwardQuoteToFieldtaskpro } from './fieldtaskpro-lead.mjs'
 import { quotePhotoUpload } from './quote-photos.mjs'
-import { redirectPath, trailingSlashTarget, withThankYouRobots, wwwRedirectTarget } from './http-routing.mjs'
+import { redirectPath, redirectTarget, withThankYouRobots, wwwRedirectTarget } from './http-routing.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const distDir = path.resolve(process.env.AIS_DIST_DIR || path.resolve(__dirname, '../dist'))
@@ -72,7 +72,7 @@ app.post('/api/quote-requests', quotePhotoUpload, async (req, res) => {
 
 app.use((req, res, next) => {
   if (req.method !== 'GET' && req.method !== 'HEAD') return next()
-  const target = trailingSlashTarget(req.path, knownRoutes)
+  const target = redirectTarget(req.path, knownRoutes)
   if (!target) return next()
   res.redirect(301, redirectPath(target, req.originalUrl))
 })

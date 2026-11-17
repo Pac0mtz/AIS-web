@@ -99,6 +99,30 @@ test('/thank-you/ 301s to /thank-you and keeps the query string', async () => {
   assert.equal(`${location.pathname}${location.search}`, '/thank-you?utm=ads')
 })
 
+test('/book-online and /book-online/ 301 to /get-a-quote/ and keep the query string', async () => {
+  const cases = [
+    ['/book-online', '/get-a-quote/'],
+    ['/book-online/', '/get-a-quote/'],
+    ['/book-online?utm_source=gbp&service=Lead%20Paint', '/get-a-quote/?utm_source=gbp&service=Lead%20Paint'],
+    ['/book-online/?utm_source=gbp&service=Lead%20Paint', '/get-a-quote/?utm_source=gbp&service=Lead%20Paint'],
+  ]
+  for (const [urlPath, expected] of cases) {
+    const res = await request(urlPath)
+    assert.equal(res.status, 301, urlPath)
+    const location = resolvedLocation(res.location)
+    assert.equal(location.hostname, 'aisenvironmentalinc.com')
+    assert.equal(`${location.pathname}${location.search}`, expected, urlPath)
+  }
+})
+
+test('near-miss book-online paths stay 404', async () => {
+  for (const urlPath of ['/book-online-now', '/book-online/extra', '/book-online/extra/']) {
+    const res = await request(urlPath)
+    assert.equal(res.status, 404, urlPath)
+    assert.equal(res.location, '')
+  }
+})
+
 test('canonical routes and static files stay 200', async () => {
   for (const urlPath of ['/', '/about/', '/contact/', '/asbestos-services/', '/service-areas/chicago-il/', '/author/mtzprints/', '/2023/12/27/', '/thank-you', '/robots.txt', '/sitemap.xml', '/favicon.png', '/api/health']) {
     const res = await request(urlPath)
