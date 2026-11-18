@@ -49,7 +49,9 @@ p { color: var(--text-secondary); line-height: 1.7; }
 .header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
 .logo { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; color: var(--brand-primary); transition: opacity 180ms ease; }
 .logo:hover { opacity: .88; }
-[data-theme='dark'] .site-header .logo { padding: 3px 8px; border-radius: 7px; background: #fff; }
+.logo-filter { position: absolute; }
+[data-theme='dark'] .logo-image { filter: url('#ais-dark-logo'); }
+[data-theme='dark'] .logo-light { background: transparent; }
 .logo-image { display: block; width: 148px; height: auto; }
 .logo-light { padding: 10px 14px; background: var(--white); border-radius: 3px; }
 .logo-light .logo-image { width: 158px; }
@@ -242,15 +244,11 @@ p { color: var(--text-secondary); line-height: 1.7; }
 .comparison input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
 .comparison:focus-within { outline: 3px solid var(--brand-accent); outline-offset: 4px; }
 .service-gallery-section { background: var(--surface-tint); border-top: 1px solid var(--line); }
-.service-gallery-grid { display: grid; grid-template-columns: 1.25fr .75fr; align-items: start; gap: 32px; }
+.service-gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 32px; }
 .service-gallery-item { min-width: 0; margin: 0; }
-.service-gallery-item:nth-child(2) { margin-top: 64px; }
-.service-gallery-image { height: 460px; overflow: hidden; border-radius: 4px; background: var(--surface-muted); }
-.service-gallery-item:nth-child(2) .service-gallery-image { height: 350px; }
+.service-gallery-image { aspect-ratio: 3 / 2; overflow: hidden; border-radius: 14px; background: var(--surface-muted); }
 .service-gallery-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.service-gallery-item figcaption { display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding-top: 16px; border-top: 2px solid var(--brand-primary); margin-top: 16px; }
-.service-gallery-item figcaption span { color: var(--brand-accent-dark); font-size: 12px; line-height: 1.6; font-weight: 600; }
-.service-gallery-item figcaption strong { color: var(--text-primary); font-family: var(--font-display); font-size: 17px; line-height: 1.45; font-weight: 500; }
+.service-gallery-item figcaption { padding-top: 14px; border-top: 2px solid var(--brand-primary); margin-top: 14px; color: var(--text-primary); font-family: var(--font-display); font-size: 17px; line-height: 1.45; font-weight: 500; }
 .related-section { background: var(--surface-muted); }
 .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .related-card { position: relative; padding: 0 0 24px; background: var(--surface-page); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
@@ -703,10 +701,7 @@ input::placeholder, textarea::placeholder { color: var(--text-secondary); }
   .service-toc { position: static; }
   .service-toc nav { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
   .toc-contact { margin-top: 24px; }
-  .service-gallery-grid { grid-template-columns: 1.1fr .9fr; gap: 24px; }
-  .service-gallery-item:nth-child(2) { margin-top: 40px; }
-  .service-gallery-image { height: 380px; }
-  .service-gallery-item:nth-child(2) .service-gallery-image { height: 310px; }
+  .service-gallery-grid { gap: 24px; }
   .related-card img { height: 180px; }
   .about-hero-bottom p, .blog-hero-bottom > p, .contact-hero > p, .quote-hero > p { margin-left: 20%; }
   .about-story { gap: 44px; }
@@ -838,10 +833,8 @@ input::placeholder, textarea::placeholder { color: var(--text-secondary); }
   .service-detail h2 { font-size: 31px; }
   .service-detail ul { grid-template-columns: 1fr; margin-top: 22px; }
   .comparison { height: 330px; }
-  .service-gallery-grid { grid-template-columns: 1fr; gap: 40px; }
-  .service-gallery-item:nth-child(2) { margin-top: 0; }
-  .service-gallery-image, .service-gallery-item:nth-child(2) .service-gallery-image { height: 250px; }
-  .service-gallery-item figcaption strong { font-size: 16px; }
+  .service-gallery-grid { grid-template-columns: 1fr; gap: 28px; }
+  .service-gallery-item figcaption { font-size: 16px; }
   .related-grid { grid-template-columns: 1fr; gap: 24px; }
   .related-card img { height: 220px; }
   .about-hero { padding-top: 52px; padding-bottom: 42px; }

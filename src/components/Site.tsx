@@ -6,6 +6,38 @@ import { useTheme } from 'next-themes'
 import { contact, services } from '../data'
 import { BrandIcon } from './BrandIcon'
 
+// Channel masks isolate the original wordmark, roofline, and red panels without redrawing them.
+const darkLogoLayers = [
+  { name: 'wordmark', color: '#f4f7ff', alpha: '-0.924182 2.449390 -2.624346 0 1.099138' },
+  { name: 'roofline', color: '#83acff', alpha: '-0.159176 -2.228464 2.387640 0 0' },
+  { name: 'redDetails', color: '#ff0011', alpha: '0.973783 -1.367041 0.393258 0 0' },
+]
+
+function DarkLogoFilter() {
+  return (
+    <svg width="0" height="0" className="logo-filter" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="ais-dark-logo" x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB">
+          {darkLogoLayers.map(({ name, color, alpha }) => (
+            <LogoColorLayer key={name} name={name} color={color} alpha={alpha} />
+          ))}
+          <feMerge>{darkLogoLayers.map(({ name }) => <feMergeNode key={name} in={name} />)}</feMerge>
+        </filter>
+      </defs>
+    </svg>
+  )
+}
+
+function LogoColorLayer({ name, color, alpha }: (typeof darkLogoLayers)[number]) {
+  return (
+    <>
+      <feColorMatrix in="SourceGraphic" values={`0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  ${alpha}`} result={`${name}Mask`} />
+      <feFlood floodColor={color} result={`${name}Color`} />
+      <feComposite in={`${name}Color`} in2={`${name}Mask`} operator="in" result={name} />
+    </>
+  )
+}
+
 export function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link to="/" className={`logo ${light ? 'logo-light' : ''}`} aria-label="AIS Environmental home">
@@ -79,6 +111,7 @@ export function SiteHeader() {
 
   return (
     <>
+      <DarkLogoFilter />
       <a className="skip-link" href="#main-content">Skip to content</a>
       <div className="utility-bar">
         <div className="shell utility-inner">
