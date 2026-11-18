@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight, Check, ChevronRight, Mail, MapPin, Phone } fr
 import { contact, posts, processSteps, services, type Post, type Service } from '../data'
 import { FormNotice, ImageComparison, Page, QuoteBand, SectionLabel, ServiceCarousel, ShareLinks } from '../components/Site'
 import { ServiceCard } from '../components/ServiceCard'
+import { HomeHero } from '../components/HomeHero'
 import { ServiceEstimateLink, ServicePageNavigation, ServiceProjectCTA, ServiceSectionMarker } from '../components/ServicePageNavigation'
 import { LeadForm } from '../components/LeadForm'
 import { industries } from '../siteContent'
@@ -14,24 +15,8 @@ import { LEAD_SERVICES } from '../lib/lead-form'
 
 export function HomePage() {
   return (
-    <Page title="Asbestos Removal & Property Services | AIS Environmental" description="AIS Environmental provides asbestos, lead paint, mold, water damage and exterior property services across Illinois, Indiana and Wisconsin." className="home-page">
-      <section className="home-hero">
-        <img className="home-hero-background" src="/images/asbestos-hero.webp" alt="Technicians in protective suits inside a contained asbestos work area" fetchPriority="high" />
-        <div className="shell home-hero-copy">
-          <SectionLabel light>Environmental & property services</SectionLabel>
-          <h1>Environmental and property services <span>across the Midwest.</span></h1>
-          <p className="hero-intro">Practical help for asbestos, lead paint, mold, water damage and exterior projects—delivered with careful work practices and clear communication.</p>
-          <div className="hero-actions">
-            <Link to="/get-a-quote/" className="button button-primary">Request a free estimate <ArrowUpRight size={20} /></Link>
-            <a href="#services" className="button button-ghost">Explore our services <ArrowRight size={18} /></a>
-          </div>
-          <div className="hero-trust" aria-label="Service assurances">
-            <span><Check size={17} aria-hidden="true" />IDPH-licensed services</span>
-            <span><Check size={17} aria-hidden="true" />Fully insured</span>
-            <span><Check size={17} aria-hidden="true" />Free project estimates</span>
-          </div>
-        </div>
-      </section>
+    <Page title="Asbestos Testing & Property Services | AIS Environmental" description="AIS Environmental provides asbestos, lead paint, mold, water damage and exterior property services across Illinois, Indiana and Wisconsin." className="home-page">
+      <HomeHero />
 
       <section className="proof-strip" aria-label="Properties we serve">
         <div className="shell proof-grid">
