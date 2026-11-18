@@ -823,7 +823,7 @@ input::placeholder, textarea::placeholder { color: var(--text-secondary); }
   .utility-inner > span:first-child { max-width: 155px; }
   .logo-image { width: 132px; }
   .logo-light .logo-image { width: 146px; }
-  .home-hero-images::after { background: linear-gradient(180deg, rgba(8, 22, 48, .06), rgba(8, 22, 48, .16) 12%, rgba(8, 22, 48, .83) 31%, rgba(8, 22, 48, .96) 60%, #0b1930); }
+  .home-hero-images::after { background: linear-gradient(180deg, rgba(8, 22, 48, .04), rgba(8, 22, 48, .1) 12%, rgba(8, 22, 48, .64) 31%, rgba(8, 22, 48, .76) 60%, rgba(8, 22, 48, .86)); }
   .home-hero-images > img { object-position: 64% center; }
   .home-hero-images > img[data-service='water-damage'] { object-position: 42% center; }
   .home-hero-layout { min-height: 0; gap: 16px; padding-block: clamp(148px, 43vw, 220px) 22px; }

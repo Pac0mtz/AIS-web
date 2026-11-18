@@ -60,7 +60,7 @@ const heroSlides = slideCopy.flatMap(copy => {
   const service = services.find(service => service.slug === copy.slug)
   return service ? [{ ...copy, service }] : []
 })
-const rotationDelay = 7000
+const rotationDelay = 3000
 
 export function HomeHero({ title, slogan }: { title: string; slogan: string }) {
   const hero = useRef<HTMLElement>(null)
