@@ -17,6 +17,7 @@ export type Service = {
   number: string
   eyebrow: string
   headline: string
+  slogan: string
   intro: string
   description: string
   image: string
@@ -31,7 +32,8 @@ export type Service = {
 export const services: Service[] = [
   {
     path: '/asbestos-services/', slug: 'asbestos', name: 'Asbestos removal', shortName: 'Asbestos', number: '01',
-    eyebrow: 'Testing · Abatement · Documentation', headline: 'Asbestos removal in Chicago.',
+    eyebrow: 'Testing · Abatement · Documentation', headline: 'Asbestos Removal in Chicago',
+    slogan: 'Asbestos removal in Chicago.',
     intro: 'A methodical approach to identifying, containing and removing asbestos-containing materials from residential, commercial and industrial properties.',
     description: 'Asbestos testing, removal and abatement for Chicago homes, businesses and industrial properties, with careful containment and clear documentation.',
     image: '/images/asbestos-hero.webp', imageAlt: 'Protective-suited technicians working inside a contained asbestos abatement area', quoteOption: 'Asbestos', category: 'Asbestos', featured: true,
@@ -46,7 +48,8 @@ export const services: Service[] = [
   },
   {
     path: '/lead-paint-removal/', slug: 'lead', name: 'Lead paint removal', shortName: 'Lead', number: '02',
-    eyebrow: 'Testing · Removal · Encapsulation', headline: 'Lead paint, handled with care.',
+    eyebrow: 'Testing · Removal · Encapsulation', headline: 'Lead Paint Removal in Chicago',
+    slogan: 'Lead paint, handled with care.',
     intro: 'Inspection, removal and encapsulation strategies for older painted surfaces—with containment and cleaning built into the work plan.',
     description: 'Lead paint testing, removal and encapsulation for Chicago-area homes and properties, with careful containment, cleaning and safety procedures.',
     image: '/images/lead-hero.webp', imageAlt: 'Respirator-equipped technician removing deteriorated paint from an older window frame', quoteOption: 'Lead', category: 'Lead & Mold', featured: true,
@@ -60,7 +63,8 @@ export const services: Service[] = [
   },
   {
     path: '/mold-remediation/', slug: 'mold', name: 'Mold remediation', shortName: 'Mold', number: '03',
-    eyebrow: 'Inspection · Remediation · Moisture control', headline: 'Mold removal starts with moisture.',
+    eyebrow: 'Inspection · Remediation · Moisture control', headline: 'Mold Remediation in Chicago',
+    slogan: 'Mold removal starts with moisture.',
     intro: 'A source-first remediation process: inspect the space, contain the affected area, remove contamination and correct the conditions that allowed growth.',
     description: 'Mold inspection and remediation in Chicago, including containment, HEPA filtration, moisture correction and follow-up indoor-air-quality testing.',
     image: '/images/mold-hero.webp', imageAlt: 'Technician using a moisture meter to assess a basement wall', quoteOption: 'Mold', category: 'Lead & Mold', featured: true,
@@ -74,7 +78,8 @@ export const services: Service[] = [
   },
   {
     path: '/windows-installation/', slug: 'windows', name: 'Window installation', shortName: 'Windows', number: '04',
-    eyebrow: 'Replacement · Efficiency · Finish', headline: 'Better windows. A better room.',
+    eyebrow: 'Replacement · Efficiency · Finish', headline: 'Window Installation in Chicago',
+    slogan: 'Better windows. A better room.',
     intro: 'Thoughtful window replacement for comfort, efficiency and curb appeal—from the first measurement through the final cleanup.',
     description: 'Window replacement and installation for Chicago-area homes, with vinyl, wood, aluminum and fiberglass options and a clean, careful installation process.',
     image: '/images/windows-hero.webp', imageAlt: 'Two installers fitting a dark-framed window into a brick residence', quoteOption: 'Windows', category: 'Exterior', featured: true,

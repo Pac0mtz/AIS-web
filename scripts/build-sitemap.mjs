@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
+import { writeSeoCatalog } from './seo-catalog.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const ORIGIN = 'https://aisenvironmentalinc.com'
@@ -18,6 +19,7 @@ const REQUIRED_ROUTES = [
   '/get-a-quote/',
   '/blog/',
   '/thank-you',
+  '/environmental-testing/',
   '/asbestos-services/',
   '/door-replacement/',
   '/service-areas/illinois/',
@@ -26,7 +28,7 @@ const REQUIRED_ROUTES = [
   '/author/mtzprints/',
   '/category/health/',
   '/category/home-improvement/',
-  '/2023/12/27/',
+  '/2023/12/27/the-dangers-of-asbestos-and-how-ais-environmental-inc-can-help/',
 ]
 
 function read(rel) {
@@ -51,7 +53,7 @@ function serviceAreaPaths(source) {
 export function isLegacyWordpressPath(pathname) {
   return pathname.startsWith('/author/')
     || pathname.startsWith('/category/')
-    || /^\/\d{4}\/\d{2}\/\d{2}(\/|$)/.test(pathname)
+    || /^\/\d{4}\/\d{2}\/\d{2}\/$/.test(pathname)
 }
 
 export function collectSiteRoutes() {
@@ -109,6 +111,7 @@ export function writeSiteFiles() {
     path.join(root, 'server/known-routes.json'),
     `${JSON.stringify({ routes }, null, 2)}\n`,
   )
+  writeSeoCatalog()
   return { routes, paths, sitemap }
 }
 

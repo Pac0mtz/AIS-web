@@ -1,12 +1,7 @@
-import { contact } from '../data'
+import { callClickEvents, createQuoteConversionScheduler, spaPageViewEvents } from './quote-conversion.mjs'
+import { GA4_MEASUREMENT_ID, GOOGLE_ADS_ID, REQUEST_QUOTE_CONVERSION_LABEL } from './tracking-ids.mjs'
 
-const GOOGLE_ADS_ID = 'AW-625851217'
-
-/**
- * Google Ads conversion action 6655261081 (Request quote).
- * While this is empty, the thank-you page must not fire a conversion event.
- */
-export const REQUEST_QUOTE_CONVERSION_LABEL = 'lRxqCJnzvOUYENH2tqoC'
+export { GA4_MEASUREMENT_ID, GOOGLE_ADS_ID, REQUEST_QUOTE_CONVERSION_LABEL }
 
 declare global {
   interface Window {
@@ -15,33 +10,42 @@ declare global {
   }
 }
 
-let requestQuoteConversionTicket = 0
+const QUOTE_CONVERSION_KEY = 'ais-request-quote-conversion'
 let phoneTrackingInstalled = false
 
-function isAisPhoneLink(href: string) {
-  return href === contact.phoneHref || href.startsWith(`${contact.phoneHref}?`)
+function storageGet() {
+  try { return sessionStorage.getItem(QUOTE_CONVERSION_KEY) || '' } catch { return '' }
 }
 
-/**
- * Fire the Request quote conversion once for this thank-you mount.
- * StrictMode runs the effect, cleans it up, then runs it again; only the latest ticket sends.
- * Re-renders do not schedule another event. No value or currency is attached.
- */
-export function scheduleRequestQuoteConversion() {
-  const label = REQUEST_QUOTE_CONVERSION_LABEL.trim()
-  if (!label) return () => {}
+function storageSet(value: string) {
+  try { sessionStorage.setItem(QUOTE_CONVERSION_KEY, value) } catch { /* private mode */ }
+}
 
-  const ticket = ++requestQuoteConversionTicket
-  const timer = window.setTimeout(() => {
-    if (ticket !== requestQuoteConversionTicket) return
+const scheduleQuoteConversion = createQuoteConversionScheduler({
+  getItem: storageGet,
+  setItem: storageSet,
+  send: () => {
+    const label = REQUEST_QUOTE_CONVERSION_LABEL.trim()
+    if (!label) return
     window.gtag?.('event', 'conversion', {
       send_to: `${GOOGLE_ADS_ID}/${label}`,
     })
-  }, 0)
+  },
+  setTimeout: (fn: () => void, ms: number) => window.setTimeout(fn, ms),
+  clearTimeout: (id: number) => window.clearTimeout(id),
+})
 
-  return () => {
-    window.clearTimeout(timer)
-  }
+export function markQuoteConversionPending() {
+  storageSet('pending')
+}
+
+/**
+ * Fire the Request quote conversion once for a successful submit.
+ * Re-renders and refreshes do not send another event. No value or currency is attached.
+ */
+export function scheduleRequestQuoteConversion() {
+  if (!REQUEST_QUOTE_CONVERSION_LABEL.trim()) return () => {}
+  return scheduleQuoteConversion()
 }
 
 export function installPhoneClickTracking() {
@@ -52,7 +56,15 @@ export function installPhoneClickTracking() {
     if (!(target instanceof Element)) return
     const link = target.closest('a')
     const href = link?.getAttribute('href') || ''
-    if (!isAisPhoneLink(href)) return
-    window.gtag?.('event', 'phone_click')
+    if (!href.toLowerCase().startsWith('tel:')) return
+    for (const item of callClickEvents(href, { adsId: GOOGLE_ADS_ID, ga4Id: GA4_MEASUREMENT_ID })) {
+      window.gtag?.('event', item.name, item.params)
+    }
   })
+}
+
+export function trackSpaPageView(pathname: string) {
+  for (const item of spaPageViewEvents(pathname, { adsId: GOOGLE_ADS_ID, ga4Id: GA4_MEASUREMENT_ID })) {
+    window.gtag?.('event', item.name, item.params)
+  }
 }

@@ -10,6 +10,7 @@ import {
   type AisQuoteFormKind,
   type LeadFormPayload,
 } from '../lib/lead-form'
+import { markQuoteConversionPending } from '../lib/analytics'
 import { FormNotice } from './Site'
 import { QuotePhotoField, type QuotePhoto } from './QuotePhotoField'
 
@@ -86,6 +87,7 @@ export function LeadForm({
         return
       }
       for (const photo of photos) URL.revokeObjectURL(photo.previewUrl)
+      markQuoteConversionPending()
       navigate('/thank-you')
     } catch {
       setNotice('Could not send your request. Please try again or call us.')
