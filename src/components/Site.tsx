@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { CSSProperties, ReactNode } from 'react'
 import { Link, NavLink, useLocation } from 'react-router'
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ChevronDown, Copy, Mail, Menu, Phone, X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ChevronDown, Copy, Mail, Menu, Moon, Phone, Sun, X } from 'lucide-react'
+import { useTheme } from 'next-themes'
 import { contact, services } from '../data'
+import { BrandIcon } from './BrandIcon'
 
 export function Logo({ light = false }: { light?: boolean }) {
   return (
@@ -16,6 +18,24 @@ export function Logo({ light = false }: { light?: boolean }) {
         decoding="async"
       />
     </Link>
+  )
+}
+
+function ThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme()
+  const isDark = resolvedTheme === 'dark'
+  const label = isDark ? 'Switch to light mode' : 'Switch to dark mode'
+
+  useEffect(() => {
+    if (resolvedTheme) {
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#101c31' : '#0a2456')
+    }
+  }, [isDark, resolvedTheme])
+
+  return (
+    <button type="button" className="theme-toggle" onClick={() => setTheme(isDark ? 'light' : 'dark')} aria-label={label} title={label}>
+      {isDark ? <Sun size={19} aria-hidden="true" /> : <Moon size={19} aria-hidden="true" />}
+    </button>
   )
 }
 
@@ -80,12 +100,13 @@ export function SiteHeader() {
                 <div className="services-menu-intro">
                   <span className="micro-label">Our services</span>
                   <p>Start with the right service for your property.</p>
-                  <Link to="/services/" className="text-link">View all 17 services <ArrowUpRight size={16} /></Link>
+                  <Link to="/services/" className="text-link">View all services <ArrowUpRight size={16} /></Link>
                 </div>
                 <div className="services-menu-links">
                   {services.map(service => (
                     <NavLink to={service.path} key={service.path}>
-                      <span>{service.number}</span>{service.name}<ArrowUpRight size={19} aria-hidden="true" />
+                      <span className="brand-icon-badge service-nav-icon"><BrandIcon name={service.slug} /></span>
+                      {service.name}<ArrowUpRight size={19} aria-hidden="true" />
                     </NavLink>
                   ))}
                 </div>
@@ -97,18 +118,26 @@ export function SiteHeader() {
             <NavLink to="/about/">About</NavLink>
             <NavLink to="/contact/">Contact</NavLink>
           </nav>
-          <Link className="header-quote" to="/get-a-quote/">Get a quote <ArrowUpRight size={18} aria-hidden="true" /></Link>
-          <button ref={menuButtonRef} className="mobile-menu-button" type="button" aria-expanded={mobileOpen} aria-controls="mobile-menu" aria-label={mobileOpen ? 'Close menu' : 'Open menu'} onClick={() => setMobileOpen(!mobileOpen)}>
-            {mobileOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
-          </button>
+          <div className="header-actions">
+            <ThemeToggle />
+            <Link className="header-quote" to="/get-a-quote/">Get a quote <ArrowUpRight size={18} aria-hidden="true" /></Link>
+            <button ref={menuButtonRef} className="mobile-menu-button" type="button" aria-expanded={mobileOpen} aria-controls="mobile-menu" aria-label={mobileOpen ? 'Close menu' : 'Open menu'} onClick={() => setMobileOpen(!mobileOpen)}>
+              {mobileOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+            </button>
+          </div>
         </div>
         <div id="mobile-menu" className={`mobile-menu ${mobileOpen ? 'is-open' : ''}`} aria-hidden={!mobileOpen}>
           <nav className="shell mobile-nav" aria-label="Mobile navigation">
             <NavLink to="/" end tabIndex={mobileOpen ? 0 : -1}><span>01</span>Home</NavLink>
             <div className="mobile-nav-group"><span>02</span><strong>Services</strong></div>
             <div className="mobile-service-links">
-              <NavLink to="/services/" tabIndex={mobileOpen ? 0 : -1}><strong>All 17 services</strong><ArrowUpRight size={18} /></NavLink>
-              {services.map(service => <NavLink key={service.path} to={service.path} tabIndex={mobileOpen ? 0 : -1}>{service.name}<ArrowUpRight size={18} /></NavLink>)}
+              <NavLink to="/services/" tabIndex={mobileOpen ? 0 : -1}><strong>All services</strong><ArrowUpRight size={18} aria-hidden="true" /></NavLink>
+              {services.map(service => (
+                <NavLink key={service.path} to={service.path} tabIndex={mobileOpen ? 0 : -1}>
+                  <span className="brand-icon-badge service-nav-icon"><BrandIcon name={service.slug} /></span>
+                  <span className="mobile-service-name">{service.name}</span><ArrowUpRight size={16} aria-hidden="true" />
+                </NavLink>
+              ))}
             </div>
             <NavLink to="/industries/" tabIndex={mobileOpen ? 0 : -1}><span>03</span>Industries</NavLink>
             <NavLink to="/service-areas/" tabIndex={mobileOpen ? 0 : -1}><span>04</span>Service Areas</NavLink>

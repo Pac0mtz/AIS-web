@@ -6,7 +6,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Sampling · Laboratory analysis · Next steps', headline: 'Confirm the material before work begins.',
     intro: 'Careful sample collection and laboratory analysis help property owners understand whether suspect building materials contain asbestos.',
     description: 'Asbestos testing and sampling for homes, commercial buildings and industrial properties across Illinois, Indiana and Wisconsin.',
-    image: '/images/asbestos-testing.webp', imageAlt: 'Inspector assessing suspect material near a mechanical system', quoteOption: 'Asbestos Testing & Sampling',
+    image: '/images/asbestos-sampling-team.webp', imageAlt: 'Two protected technicians collecting a sample from pipe insulation inside a controlled work area', quoteOption: 'Asbestos Testing & Sampling',
     scope: 'Appearance alone cannot confirm asbestos. A testing plan identifies the suspect materials, collects samples with disturbance kept to a minimum and uses the results to guide renovation, removal or management decisions.',
     sections: [
       { id: 'when-to-test', title: 'When testing is useful', intro: 'Testing is especially valuable before materials are cut, sanded, removed or otherwise disturbed. It can also clarify the condition of materials that are already damaged.', points: ['Before renovation or demolition', 'When suspect material is deteriorating', 'During property due diligence', 'Before flooring, roofing or mechanical work'] },
@@ -34,7 +34,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Occupied buildings · Phased work · Coordination', headline: 'Abatement planned around your operation.',
     intro: 'Commercial asbestos removal with attention to occupants, project schedules, adjacent spaces and coordination with property teams.',
     description: 'Commercial asbestos removal and abatement for offices, retail, industrial, institutional and multi-family properties across the Midwest service area.',
-    image: '/images/commercial-asbestos.webp', imageAlt: 'Protective-suited technician handling asbestos-containing material', quoteOption: 'Commercial Asbestos Removal',
+    image: '/images/commercial-asbestos-pipe-crew.webp', imageAlt: 'Two respirator-equipped abatement workers handling pipe insulation inside a transparent glove bag', quoteOption: 'Commercial Asbestos Removal',
     scope: 'Commercial abatement often involves more than the removal area itself. The plan must account for occupants, building systems, other contractors and a closeout process that supports the next phase of work.',
     sections: [
       { id: 'commercial-planning', title: 'Plan around the building', intro: 'We review the affected materials and the way the property operates so the work zone, access and sequence are clear before removal begins.', points: ['Occupied and unoccupied work areas', 'After-hours or phased scheduling where planned', 'Coordination with property and facility teams', 'Access, waste routes and adjacent-space protection'] },
@@ -48,7 +48,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Floor tile · Mastic · Surface preparation', headline: 'Remove old flooring without losing control.',
     intro: 'Targeted removal of asbestos-containing floor tile and associated adhesives, with containment and cleaning suited to the space.',
     description: 'Asbestos floor tile and mastic removal for homes, businesses and renovation projects across Illinois, Indiana and Wisconsin.',
-    image: '/images/asbestos-tile.webp', imageAlt: 'Old floor tile being lifted during a flooring removal project', quoteOption: 'Asbestos Tile Removal',
+    image: '/images/asbestos-tile-removal-team.webp', imageAlt: 'Technicians in respirators lifting old flooring tile within a contained work area', quoteOption: 'Asbestos Tile Removal',
     scope: 'Older floor systems can include asbestos in the tile, adhesive or both. Testing and a material-specific work plan help prevent a routine flooring upgrade from creating uncontrolled dust or debris.',
     sections: [
       { id: 'tile-assessment', title: 'Identify the flooring layers', intro: 'A floor may contain several generations of tile, sheet flooring, leveling compound and adhesive. The assessment separates those layers before removal is planned.', points: ['Existing tile and underlying layers', 'Black mastic and other adhesives', 'Condition and bond to the substrate', 'Planned replacement flooring'] },
@@ -62,7 +62,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Selective demolition · Abatement · Site coordination', headline: 'Coordinate abatement before demolition.',
     intro: 'Selective demolition and asbestos-removal planning for materials and building areas that must be addressed before broader demolition work.',
     description: 'Asbestos demolition and selective removal services for renovation and demolition projects in Illinois, Indiana and Wisconsin.',
-    image: '/images/asbestos-demolition.webp', imageAlt: 'Worker performing controlled interior selective demolition', quoteOption: 'Asbestos Demolition Services',
+    image: '/images/selective-demolition-team.webp', imageAlt: 'Two protective-suited workers carefully removing a wall section inside a contained room', quoteOption: 'Asbestos Demolition Services',
     scope: 'Demolition can disturb many materials at once. An asbestos-focused demolition plan identifies what must be surveyed, separated, contained or removed before mechanical demolition or interior strip-out proceeds.',
     sections: [
       { id: 'pre-demolition', title: 'Start before demolition day', intro: 'Early coordination helps identify suspect materials and define the separation between abatement, selective demolition and the remaining construction scope.', points: ['Pre-demolition material review', 'Coordination with owners and contractors', 'Defined abatement and demolition boundaries', 'Utility, access and work-zone planning'] },
@@ -90,7 +90,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Moisture mapping · Sampling · Source review', headline: 'Find the growth—and the moisture.',
     intro: 'Mold inspections that connect visible growth, hidden moisture and appropriate testing to a clear remediation decision.',
     description: 'Mold testing and inspections for homes, basements, commercial properties and multi-family buildings across the AIS service area.',
-    image: '/images/mold-testing.webp', imageAlt: 'Moisture assessment instruments used during a mold inspection', quoteOption: 'Mold Testing & Inspections',
+    image: '/images/mold-inspection-moisture-reading.webp', imageAlt: 'Inspector taking a moisture reading on a lower wall beside air-sampling equipment', quoteOption: 'Mold Testing & Inspections',
     scope: 'Testing without a building inspection can miss the reason mold developed. We consider moisture pathways, material condition and visible growth together, then use sampling when it will add useful information.',
     sections: [
       { id: 'mold-inspection', title: 'Inspect the whole affected area', intro: 'The visible spot is the starting point, not necessarily the full extent. Adjacent materials, cavities and moisture sources are considered during the review.', points: ['Visible growth and musty-odor concerns', 'Basements, bathrooms and utility areas', 'Attics, exterior walls and window areas', 'Adjacent materials and hidden-cavity indicators'] },
@@ -104,7 +104,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Water removal · Drying · Material recovery', headline: 'Dry the structure. Address the damage.',
     intro: 'A structured response to water intrusion, from initial assessment and water removal through drying, cleaning and repair planning.',
     description: 'Water damage restoration for residential, commercial and multi-family properties in Illinois, Indiana and Wisconsin.',
-    image: '/images/water-damage.webp', imageAlt: 'Interior stripped to framing during water-damage restoration', quoteOption: 'Water Damage Restoration',
+    image: '/images/water-restoration-drying-team.webp', imageAlt: 'Restoration technicians checking wall moisture and setting up drying equipment', quoteOption: 'Water Damage Restoration',
     scope: 'Water can move behind finishes and into structural materials long after the visible puddle is gone. Restoration starts by mapping the affected area, removing water and creating a drying plan based on actual material conditions.',
     sections: [
       { id: 'water-assessment', title: 'Trace the water', intro: 'The source and pathway of the water determine which rooms, cavities and materials need attention. Clean supply water and contaminated water require different considerations.', points: ['Source and water-category review', 'Moisture mapping of affected materials', 'Adjacent-room and lower-level checks', 'Safety and electrical-hazard awareness'] },
@@ -118,7 +118,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Basement water · Drying · Repair coordination', headline: 'A clear path from flooded to dry.',
     intro: 'Basement water removal, structural drying, affected-material cleanup and practical repair planning for homes and buildings.',
     description: 'Flooded basement cleanup, drying and repair services for properties across Illinois, Indiana and Wisconsin.',
-    image: '/images/flooded-basement.webp', imageAlt: 'Standing water covering the floor of a flooded basement', quoteOption: 'Flooded Basement Repair',
+    image: '/images/basement-water-extraction-team.webp', imageAlt: 'Two water mitigation technicians extracting water from a basement floor', quoteOption: 'Flooded Basement Repair',
     scope: 'Basements collect water from plumbing failures, foundation pathways, floor drains and surface runoff. A useful repair plan addresses both the damaged finishes and the conditions that allowed water to remain.',
     sections: [
       { id: 'basement-source', title: 'Identify how water entered', intro: 'The visible low point does not always show the source. We consider plumbing, walls, floors, drains and exterior drainage clues when planning the work.', points: ['Plumbing and appliance leaks', 'Foundation-wall and floor intrusion', 'Drain or sump-related water issues', 'Water pathways behind finished walls'] },
@@ -146,7 +146,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Exterior cladding · Repairs · Weather protection', headline: 'A cleaner, better-protected exterior.',
     intro: 'Siding repair and installation for appearance, weather protection and a more consistent building envelope.',
     description: 'Siding installation and repair for residential and commercial exteriors across the AIS Midwest service area.',
-    image: '/images/siding.webp', imageAlt: 'Contractor installing horizontal siding on a house', quoteOption: 'Siding Installation & Repair',
+    image: '/images/siding-installation-team.webp', imageAlt: 'Installers checking the alignment of horizontal siding below a window', quoteOption: 'Siding Installation & Repair',
     scope: 'Damaged siding can expose transitions and underlying materials to weather. The right scope considers the cladding, trim, moisture barrier and the reason the existing material failed.',
     sections: [
       { id: 'siding-review', title: 'Inspect more than the surface', intro: 'Cracks, warping and loose panels are reviewed with the surrounding trim and wall transitions so hidden moisture concerns are not simply covered.', points: ['Loose, cracked or warped siding', 'Soft or moisture-damaged areas', 'Trim, corners and wall penetrations', 'Window, door and roof transitions'] },
@@ -160,7 +160,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Drainage · Downspouts · Roof-edge protection', headline: 'Move water away from the building.',
     intro: 'Gutter and downspout work that supports reliable roof drainage and helps reduce uncontrolled water around exterior walls and foundations.',
     description: 'Gutter installation, repair and downspout improvements for properties across Illinois, Indiana and Wisconsin.',
-    image: '/images/gutters.webp', imageAlt: 'Contractor securing a downspout against an exterior wall', quoteOption: 'Gutter Installation & Repair',
+    image: '/images/gutter-installation-team.webp', imageAlt: 'Two installers supporting and fastening a gutter along the roof edge of a house', quoteOption: 'Gutter Installation & Repair',
     scope: 'Overflowing or disconnected gutters can send water back onto the roof edge, siding and foundation. We look at the full drainage path, including slope, outlets and downspout discharge.',
     sections: [
       { id: 'gutter-review', title: 'Find the drainage problem', intro: 'The visible drip may be caused by a clog, poor slope, an undersized outlet or a disconnected section. The review follows the water path.', points: ['Sagging and separated gutter runs', 'Clogs and overflowing sections', 'Loose fasteners and damaged fascia', 'Downspout connections and discharge points'] },

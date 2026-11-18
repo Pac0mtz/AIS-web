@@ -10,6 +10,10 @@ All third-party photography is used only as representative imagery in this priva
 
 The original 17 service hero images and six project-type images also remain subject to that production review.
 
+## Generated service imagery
+
+The service hero images for asbestos sampling, commercial asbestos removal, asbestos tile removal, selective demolition, mold testing, water damage, flooded basements, siding, and gutters are AI-generated jobsite illustrations. The service pages label hero imagery as representative.
+
 ## Supporting service galleries
 
 The local optimized WebP files in `public/images/gallery/` were derived from the following candidates. Where the original source page is known, it is linked. For earlier research candidates, the original local filename is retained so its source and license can be reconfirmed before publication.
