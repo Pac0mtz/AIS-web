@@ -164,12 +164,12 @@ export function ServicePage({ service }: { service: Service }) {
             <p>Representative imagery illustrates typical conditions and methods. Your property’s scope is defined after a project-specific review.</p>
           </div>
           <div className="service-gallery-grid">
-            {serviceMedia[service.slug].map((item, index) => (
+            {serviceMedia[service.slug].map(item => (
               <figure className="service-gallery-item" key={item.src}>
                 <div className="service-gallery-image">
                   <img src={item.src} alt={item.alt} width={1200} height={800} loading="lazy" decoding="async" />
                 </div>
-                <figcaption><span>0{index + 1}</span><strong>{item.caption}</strong></figcaption>
+                <figcaption>{item.caption}</figcaption>
               </figure>
             ))}
           </div>

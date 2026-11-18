@@ -16,7 +16,9 @@ The service hero images for asbestos sampling, commercial asbestos removal, asbe
 
 ## Supporting service galleries
 
-The local optimized WebP files in `public/images/gallery/` were derived from the following candidates. Where the original source page is known, it is linked. For earlier research candidates, the original local filename is retained so its source and license can be reconfirmed before publication.
+Files ending in `-scene.webp` in the service galleries are AI-generated illustrations of work details, separate from the service hero images.
+
+The third-party WebP files in `public/images/gallery/` were derived from the following candidates. Where the original source page is known, it is linked. For earlier research candidates, the original local filename is retained so its source and license can be reconfirmed before publication.
 
 ### Sources confirmed during the latest asset research
 

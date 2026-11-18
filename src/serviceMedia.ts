@@ -12,71 +12,71 @@ const image = (name: string, alt: string, caption: string): ServiceMediaItem => 
 
 export const serviceMedia: Record<string, [ServiceMediaItem, ServiceMediaItem]> = {
   asbestos: [
-    image('asbestos-contained-cleaning', 'Protective-suited technician cleaning a contained abatement area', 'Contained removal and detailed cleaning'),
+    image('abatement-floor-cleaning-scene', 'Respirator-equipped technicians vacuuming the floor edge and handling a waste bag inside containment', 'Detailed cleanup inside containment'),
     image('asbestos-work-zone-controls', 'Technician in respiratory protection working within a sealed area', 'Task-specific controls inside the work zone'),
   ],
   lead: [
-    image('lead-protective-removal', 'Respirator-equipped technician removing deteriorated material from a wall', 'Protective equipment for disturbance and removal'),
+    image('lead-painted-trim-removal-scene', 'Two protected technicians removing deteriorated paint from exterior window trim with a scraper and vacuum', 'Controlled removal of deteriorated painted trim'),
     image('lead-contained-work-area', 'Protective-suited worker preparing a sealed remediation work area', 'Protective setup before remediation begins'),
   ],
   mold: [
-    image('mold-protective-cleaning', 'Technician in protective equipment applying treatment inside a work area', 'Protective equipment and controlled cleaning'),
+    image('mold-framing-cleaning-scene', 'Protected technicians vacuuming exposed wall framing with HEPA equipment', 'Detailed cleaning of exposed framing'),
     image('mold-growth-corner', 'Dark mold growth along an interior wall and ceiling corner', 'Visible growth is traced back to moisture'),
   ],
   windows: [
-    image('window-opening-preparation', 'New window unit positioned within a prepared exterior opening', 'Opening preparation and unit placement'),
+    image('window-frame-alignment-scene', 'Two installers leveling a white replacement window from inside the room', 'Leveling a new window in the opening'),
     image('window-finished-detail', 'Finished dark-framed window with divided glass panes', 'Frame, glazing and finished-trim details'),
   ],
   'asbestos-testing': [
     image('asbestos-localized-sampling', 'Technician preparing a localized material sampling area', 'Representative samples with limited disturbance'),
-    image('asbestos-pipe-sampling', 'Protective-suited technician sampling insulation around a mechanical pipe', 'Material-specific sampling and documentation'),
+    image('asbestos-sample-documentation-scene', 'Two protected technicians documenting a closed material sample container', 'Recording the sample and its location'),
   ],
   'asbestos-surveys': [
     image('asbestos-material-survey', 'Inspector reviewing a suspect building material during a property survey', 'Accessible materials reviewed by location'),
-    image('asbestos-mechanical-survey', 'Inspector documenting conditions in a mechanical service area', 'Condition and disturbance priorities recorded'),
+    image('asbestos-ceiling-survey-scene', 'Building inspector reviewing a suspended ceiling with a flashlight and tablet', 'Visual review of accessible materials'),
   ],
   'commercial-asbestos': [
     image('commercial-contained-crew', 'Protective-suited abatement crew working inside a contained commercial space', 'Coordinated crews and sealed work zones'),
-    image('commercial-pipe-insulation', 'Technician enclosing pipe insulation within protective wrapping', 'Controlled handling of mechanical insulation'),
+    image('commercial-containment-air-control-scene', 'Two protected technicians checking flexible ducting at a contained work area', 'Air controls inside commercial containment'),
   ],
   'asbestos-tile': [
     image('tile-contained-floor-removal', 'Contained flooring removal area with sealed waste bags and floor equipment', 'Floor removal with the room isolated'),
-    image('tile-mastic-detail', 'Gloved hand working adhesive residue on an old floor surface', 'Adhesive and mastic addressed as separate layers'),
+    image('floor-tile-and-mastic-scene', 'Protected technician reviewing the boundary between intact floor tile and exposed dark adhesive', 'Tile and adhesive reviewed as separate layers'),
   ],
   'asbestos-demolition': [
-    image('demolition-selective-floor', 'Operator using floor-removal equipment during selective interior demolition', 'Selective removal within a defined scope'),
+    image('selective-removal-cleanup-scene', 'Protected crew vacuuming the edge of an opened wall inside a contained work area', 'Cleanup after selective removal'),
     image('demolition-interior-stripout', 'Workers clearing debris during a controlled interior strip-out', 'Debris control and separation during strip-out'),
   ],
   'lead-inspection': [
     image('lead-xrf-trim', 'Inspector holding an XRF analyzer against interior painted trim', 'Component-by-component XRF assessment'),
-    image('lead-dust-wipe', 'Technician collecting a dust-wipe sample from a window sill', 'Dust sampling where the scope calls for it'),
+    image('deteriorated-painted-trim-scene', 'Gloved hand and flashlight next to peeling paint on an older window sill', 'Deteriorated paint at a window sill'),
   ],
   'mold-testing': [
     image('mold-surface-swab', 'Gloved technician collecting a surface swab from suspect growth', 'Surface sampling for a defined question'),
-    image('mold-thermal-assessment', 'Thermal camera displaying temperature patterns across an interior room', 'Thermal imaging helps guide the moisture review'),
+    image('indoor-air-sampling-setup-scene', 'Technicians checking a tripod-mounted air sampling pump and recording the room location', 'Indoor air sampling equipment setup'),
   ],
   'water-damage': [
     image('water-floor-intrusion', 'Water spreading across a finished wood floor', 'Assessment starts with the water pathway'),
-    image('water-structural-drying', 'Air movers and drying hoses arranged throughout a stripped interior', 'Air movement and targeted structural drying'),
+    image('water-restoration-drying-check-scene', 'Restoration technicians checking a portable dehumidifier and a drying log in a hallway', 'Dehumidifier setup and drying checks'),
   ],
   'flooded-basement': [
-    image('basement-extraction-drying', 'Technician extracting standing water from a basement beside drying equipment', 'Extraction followed by equipment setup'),
+    image('basement-air-mover-setup-scene', 'Technician adjusting an air mover next to a basement masonry wall after water extraction', 'Air movement after water extraction'),
     image('basement-floor-extraction', 'Technician operating water-extraction equipment in a large basement', 'Water removal across the affected floor'),
   ],
   roofing: [
     image('roof-replacement-crew', 'Roofing crew working on a sloped roof in early-morning light', 'Roof-surface removal and replacement planning'),
-    image('roof-flashing-repair', 'Roofer repairing shingles beside an exterior wall transition', 'Localized repairs and flashing details'),
+    image('roof-to-wall-flashing-scene', 'Roofers with safety harnesses working on metal flashing where a shingled roof meets a dormer', 'Flashing at a roof-to-wall transition'),
   ],
   siding: [
-    image('siding-window-transition', 'Horizontal siding and trim surrounding an exterior window', 'Cladding, trim and window transitions'),
+    image('siding-window-trim-scene', 'Two installers fitting white trim where horizontal siding meets a window', 'Fitting trim at the siding and window joint'),
     image('siding-finished-exterior', 'Completed house exterior with siding and coordinated trim', 'A consistent finished building envelope'),
   ],
   gutters: [
     image('gutter-roof-edge-review', 'Ladder positioned at the roof edge of a home during gutter work', 'Roof-edge access and existing-run review'),
-    { src: '/images/gutters.webp', alt: 'Installer working at a downspout connection beside horizontal siding', caption: 'Downspout connections and exterior drainage' },
+    image('gutter-downspout-strap-scene', 'Installer fastening a white downspout strap against an exterior brick wall', 'Securing the downspout to the wall'),
   ],
   doors: [
-    image('door-alignment-sealing', 'Installer sealing around a newly positioned exterior door unit', 'Opening preparation, alignment and sealing'),
+    image('entry-door-jamb-alignment-scene', 'Two installers checking the alignment of an exterior door jamb with a level', 'Checking door alignment at the jamb'),
     image('door-finished-entry', 'Finished dark entry door with white trim and a threshold', 'Finished trim, hardware and weather sealing'),
   ],
 } satisfies Record<string, [ServiceMediaItem, ServiceMediaItem]>
