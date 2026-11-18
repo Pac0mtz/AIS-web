@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight, Check, ChevronRight, Mail, MapPin, Phone } fr
 import { contact, posts, processSteps, services, type Post, type Service } from '../data'
 import { FormNotice, ImageComparison, Page, QuoteBand, SectionLabel, ServiceCarousel, ShareLinks } from '../components/Site'
 import { ServiceCard } from '../components/ServiceCard'
+import { ServiceEstimateLink, ServicePageNavigation, ServiceProjectCTA, ServiceSectionMarker } from '../components/ServicePageNavigation'
 import { LeadForm } from '../components/LeadForm'
 import { industries } from '../siteContent'
 import { useEmailDraft } from '../hooks/useEmailDraft'
@@ -119,6 +120,7 @@ function PostCard({ post, number }: { post: Post; number: string }) {
 
 export function ServicePage({ service }: { service: Service }) {
   const related = [...services.filter(item => item.path !== service.path && item.category === service.category), ...services.filter(item => item.path !== service.path && item.category !== service.category)].slice(0, 3)
+  const quoteHref = `/get-a-quote/?service=${encodeURIComponent(service.quoteOption)}`
   return (
     <Page title={`${service.name} | AIS Environmental Inc.`} description={service.description} className="service-page">
       <section className="service-hero shell">
@@ -128,7 +130,7 @@ export function ServicePage({ service }: { service: Service }) {
             <span className="brand-icon-badge service-hero-icon"><BrandIcon name={service.slug} /></span>
             <h1>{service.headline}</h1>
           </div>
-          <div className="service-hero-aside"><p>{service.intro}</p><Link to={`/get-a-quote/?service=${encodeURIComponent(service.quoteOption)}`} className="button button-primary">Request a free estimate <ArrowUpRight size={19} /></Link></div>
+          <div className="service-hero-aside"><p>{service.intro}</p><ServiceEstimateLink href={quoteHref} /></div>
         </div>
       </section>
       <figure className="service-hero-image shell">
@@ -137,18 +139,12 @@ export function ServicePage({ service }: { service: Service }) {
       </figure>
 
       <section className="section shell service-content-grid" id="services">
-        <aside className="service-toc">
-          <span className="micro-label">On this page</span>
-          <nav aria-label="On this page">
-            {service.sections.map((section, index) => <a href={`#${section.id}`} key={section.id}><span>0{index + 1}</span>{section.title}</a>)}
-          </nav>
-          <div className="toc-contact"><span>Prefer to talk?</span><a href={contact.phoneHref}>{contact.phoneDisplay}<ArrowUpRight size={15} /></a></div>
-        </aside>
+        <ServicePageNavigation sections={service.sections} />
         <div className="service-content">
           <div className="service-overview"><SectionLabel>The essentials</SectionLabel><p>{service.scope}</p></div>
           {service.sections.map((section, index) => (
             <section className="service-detail" id={section.id} key={section.id}>
-              <span className="detail-number">0{index + 1}</span>
+              <ServiceSectionMarker id={section.id} index={index} />
               <div><h2>{section.title}</h2><p>{section.intro}</p><ul>{section.points.map(point => <li key={point}><Check size={17} aria-hidden="true" />{point}</li>)}</ul></div>
             </section>
           ))}
@@ -182,7 +178,7 @@ export function ServicePage({ service }: { service: Service }) {
           <div className="related-grid">{related.map(item => <Link to={item.path} className="related-card" key={item.path}><img src={item.image} alt="" loading="lazy" decoding="async" /><span className="brand-icon-badge related-card-icon"><BrandIcon name={item.slug} /></span><span>{item.number}</span><h3>{item.name}</h3><ArrowUpRight /></Link>)}</div>
         </div>
       </section>
-      <QuoteBand title={`Planning a ${service.shortName.toLowerCase()} project?`} text="Share a few details about the property and the work you are considering. We will follow up to discuss scope and next steps." />
+      <ServiceProjectCTA href={quoteHref} serviceName={service.shortName} />
     </Page>
   )
 }
