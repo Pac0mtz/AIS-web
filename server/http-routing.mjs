@@ -17,10 +17,30 @@ export function requestProto(req) {
   return proto || 'https'
 }
 
-/** 301 www to the apex, preserving path and query. Uses X-Forwarded-Host/Proto behind the proxy. */
+function requestHostRaw(req) {
+  const host = firstHeader(req.headers['x-forwarded-host']) || firstHeader(req.headers.host)
+  return host.replace(/:\d+$/, '').replace(/\.$/, '')
+}
+
+/**
+ * 301 every host/protocol variant the app can see to https://aisenvironmentalinc.com.
+ * Missing X-Forwarded-Proto stays put so local requests without a proxy are not redirected.
+ * The Hostinger/CDN edge may still answer raw http with its own temporary redirect first.
+ */
+export function canonicalOriginRedirect(req) {
+  const rawHost = requestHostRaw(req)
+  const host = rawHost.toLowerCase()
+  if (host !== WWW_HOST && host !== APEX_HOST) return null
+  const proto = firstHeader(req.headers['x-forwarded-proto']).replace(/:$/, '').toLowerCase()
+  const needsHttps = proto === 'http'
+  const needsExactHost = rawHost !== APEX_HOST
+  if (!needsHttps && !needsExactHost) return null
+  return `https://${APEX_HOST}${req.originalUrl || '/'}`
+}
+
+/** @deprecated use canonicalOriginRedirect */
 export function wwwRedirectTarget(req) {
-  if (requestHost(req) !== WWW_HOST) return null
-  return `${requestProto(req)}://${APEX_HOST}${req.originalUrl || '/'}`
+  return canonicalOriginRedirect(req)
 }
 
 /**
@@ -48,6 +68,8 @@ export function trailingSlashTarget(pathname, knownRoutes) {
 const LEGACY_REDIRECTS = new Map([
   ['/book-online', '/get-a-quote/'],
   ['/book-online/', '/get-a-quote/'],
+  ['/2023/12/27', '/'],
+  ['/2023/12/27/', '/'],
 ])
 
 export function redirectTarget(pathname, knownRoutes) {

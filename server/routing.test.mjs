@@ -27,6 +27,7 @@ function request(urlPath, headers = {}) {
         resolve({
           status: res.statusCode,
           location: res.headers.location || '',
+          robots: String(res.headers['x-robots-tag'] || ''),
           body: Buffer.concat(chunks).toString('utf8'),
           contentType: String(res.headers['content-type'] || ''),
         })
@@ -73,9 +74,31 @@ test('x-forwarded-host and x-forwarded-proto win over the internal Host header',
   })
   assert.equal(res.status, 301)
   const location = resolvedLocation(res.location)
-  assert.equal(location.protocol, 'http:')
+  assert.equal(location.protocol, 'https:')
   assert.equal(location.hostname, 'aisenvironmentalinc.com')
   assert.equal(`${location.pathname}${location.search}`, '/contact/?utm=ads')
+})
+
+test('http on the apex 301s to the https apex', async () => {
+  const res = await request('/services/?utm=ads', {
+    host: 'aisenvironmentalinc.com',
+    'x-forwarded-proto': 'http',
+  })
+  assert.equal(res.status, 301)
+  const location = resolvedLocation(res.location)
+  assert.equal(location.protocol, 'https:')
+  assert.equal(location.hostname, 'aisenvironmentalinc.com')
+  assert.equal(`${location.pathname}${location.search}`, '/services/?utm=ads')
+})
+
+test('a mixed-case apex host 301s to the lowercase https host', async () => {
+  const res = await request('/mold-testing-inspections/', {
+    host: 'AISEnvironmentalInc.com',
+    'x-forwarded-proto': 'https',
+  })
+  assert.equal(res.status, 301)
+  const location = resolvedLocation(res.location)
+  assert.equal(`${location.protocol}//${location.host}${location.pathname}`, 'https://aisenvironmentalinc.com/mold-testing-inspections/')
 })
 
 test('apex host does not redirect www', async () => {
@@ -123,8 +146,16 @@ test('near-miss book-online paths stay 404', async () => {
   }
 })
 
+test('the bare legacy blog date 301s home and article URLs stay put', async () => {
+  const date = await request('/2023/12/27/')
+  assert.equal(date.status, 301)
+  assert.equal(resolvedLocation(date.location).pathname, '/')
+  const article = await request('/2023/12/27/the-dangers-of-asbestos-and-how-ais-environmental-inc-can-help/')
+  assert.equal(article.status, 200)
+})
+
 test('canonical routes and static files stay 200', async () => {
-  for (const urlPath of ['/', '/about/', '/contact/', '/asbestos-services/', '/service-areas/chicago-il/', '/author/mtzprints/', '/2023/12/27/', '/thank-you', '/robots.txt', '/sitemap.xml', '/favicon.png', '/api/health']) {
+  for (const urlPath of ['/', '/about/', '/contact/', '/asbestos-services/', '/asbestos-testing-sampling/', '/environmental-testing/', '/service-areas/chicago-il/', '/author/mtzprints/', '/thank-you', '/robots.txt', '/sitemap.xml', '/favicon.png', '/api/health']) {
     const res = await request(urlPath)
     assert.equal(res.status, 200, urlPath)
   }
@@ -139,12 +170,53 @@ test('unknown paths return 404 with the SPA shell', async () => {
   }
 })
 
-test('only /thank-you is served with a robots noindex tag', async () => {
+test('only thank-you and unknown routes are noindex, in both the meta tag and X-Robots-Tag', async () => {
   const thankYou = await request('/thank-you')
   const about = await request('/about/')
+  const missing = await request('/not-a-real-page')
   assert.equal(thankYou.status, 200)
-  assert.match(thankYou.body, /<meta name="robots" content="noindex, nofollow"\s*\/?>/)
+  assert.match(thankYou.body, /<meta id="seo-robots" name="robots" content="noindex, nofollow"\s*\/?>/)
+  assert.equal(thankYou.robots, 'noindex, nofollow')
+  assert.equal(about.robots, '')
   assert.doesNotMatch(about.body, /noindex/)
+  assert.equal(missing.status, 404)
+  assert.equal(missing.robots, 'noindex, nofollow')
+  assert.match(missing.body, /noindex, nofollow/)
+})
+
+test('initial HTML has a unique title, description, canonical, one H1 and page JSON-LD', async () => {
+  const home = await request('/')
+  const testing = await request('/asbestos-testing-sampling/')
+  const mold = await request('/mold-testing-inspections/')
+  const chicago = await request('/service-areas/chicago-il/')
+  const environmental = await request('/environmental-testing/')
+  const pages = [home, testing, mold, chicago, environmental]
+  const titles = pages.map(page => page.body.match(/<title id="seo-title">([^<]+)<\/title>/)?.[1])
+  assert.equal(new Set(titles).size, titles.length)
+  for (const page of pages) {
+    assert.equal(page.status, 200)
+    assert.equal((page.body.match(/<h1\b/g) || []).length, 1)
+    assert.equal((page.body.match(/gtag\/js\?id=AW-625851217/g) || []).length, 1)
+    assert.match(page.body, /G-WW7YHXKG9X/)
+    assert.match(page.body, /HomeAndConstructionBusiness/)
+    assert.match(page.body, /2524 Scott St\./)
+    assert.match(page.body, /\+1-708-240-9468/)
+    assert.doesNotMatch(page.body, /AggregateRating|reviewCount/)
+    assert.doesNotMatch(page.body, /Phase I|environmental site assessment/i)
+  }
+  assert.match(home.body, /<link id="seo-canonical" rel="canonical" href="https:\/\/aisenvironmentalinc\.com\/"\s*\/?>/)
+  assert.match(testing.body, /href="https:\/\/aisenvironmentalinc\.com\/asbestos-testing-sampling\/"/)
+  assert.match(testing.body, /<h1 id="seo-h1"[^>]*>Asbestos Testing in Chicago<\/h1>/)
+  assert.match(testing.body, /<title id="seo-title">Asbestos Testing in Chicago \| AIS Environmental<\/title>/)
+  assert.match(mold.body, /<h1 id="seo-h1"[^>]*>Mold Testing in Chicago<\/h1>/)
+  assert.match(chicago.body, /<h1 id="seo-h1"[^>]*>Environmental Testing in Chicago, IL<\/h1>/)
+  assert.match(environmental.body, /"@type":"Service"/)
+  assert.match(environmental.body, /Environmental testing/)
+  assert.match(home.body, /rel="preload" as="image"/)
+  const thankYou = await request('/thank-you')
+  assert.match(thankYou.body, /send_page_view: false/)
+  assert.match(thankYou.body, /gtag\/js\?id=AW-625851217/)
+  assert.match(thankYou.body, /href="https:\/\/aisenvironmentalinc\.com\/thank-you"/)
 })
 
 test('robots.txt allows crawling and publishes the sitemap', async () => {

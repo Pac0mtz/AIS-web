@@ -12,11 +12,13 @@ import { useEmailDraft } from '../hooks/useEmailDraft'
 import { BrandIcon } from '../components/BrandIcon'
 import { serviceMedia } from '../serviceMedia'
 import { LEAD_SERVICES } from '../lib/lead-form'
+import { getPageMeta, imageAttributes } from '../../server/page-meta.mjs'
 
 export function HomePage() {
+  const meta = getPageMeta('/')
   return (
-    <Page title="Asbestos Testing & Property Services | AIS Environmental" description="AIS Environmental provides asbestos, lead paint, mold, water damage and exterior property services across Illinois, Indiana and Wisconsin." className="home-page">
-      <HomeHero />
+    <Page title={meta.title} description={meta.description} className="home-page">
+      <HomeHero title={meta.h1} slogan={meta.slogan} />
 
       <section className="proof-strip" aria-label="Properties we serve">
         <div className="shell proof-grid">
@@ -37,6 +39,7 @@ export function HomePage() {
           {services.filter(service => service.featured).map(service => <ServiceCard service={service} key={service.path} />)}
         </div>
         <Link to="/services/" className="button button-outline service-view-all">Explore all 17 services <ArrowUpRight size={18} /></Link>
+        <p><Link to="/environmental-testing/" className="text-link">Environmental testing in Chicago <ArrowUpRight size={18} /></Link></p>
       </section>
 
       <section className="section industries-teaser" id="industries">
@@ -49,7 +52,7 @@ export function HomePage() {
 
       <section className="section about-teaser">
         <div className="shell about-teaser-grid">
-          <div className="about-teaser-image"><img src="/images/mold-hero.webp" alt="AIS technician checking moisture levels on a basement wall" loading="lazy" decoding="async" /><span className="vertical-caption">ASSESS / CONTAIN / CORRECT</span></div>
+          <div className="about-teaser-image"><img src="/images/mold-hero.webp" alt="AIS technician checking moisture levels on a basement wall" {...imageAttributes('/images/mold-hero.webp')} loading="lazy" decoding="async" /><span className="vertical-caption">ASSESS / CONTAIN / CORRECT</span></div>
           <div className="about-teaser-copy">
             <SectionLabel>Why choose AIS</SectionLabel>
             <h2>A local team that puts people first.</h2>
@@ -104,22 +107,26 @@ function PostCard({ post, number }: { post: Post; number: string }) {
 }
 
 export function ServicePage({ service }: { service: Service }) {
+  const meta = getPageMeta(service.path)
   const related = [...services.filter(item => item.path !== service.path && item.category === service.category), ...services.filter(item => item.path !== service.path && item.category !== service.category)].slice(0, 3)
   const quoteHref = `/get-a-quote/?service=${encodeURIComponent(service.quoteOption)}`
+  const testingHub = ['asbestos-testing', 'asbestos-surveys', 'mold-testing', 'lead-inspection'].includes(service.slug)
   return (
-    <Page title={`${service.name} | AIS Environmental Inc.`} description={service.description} className="service-page">
+    <Page title={meta.title} description={meta.description} className="service-page">
       <section className="service-hero shell">
         <div className="breadcrumbs"><Link to="/">Home</Link><ChevronRight size={13} /><Link to="/services/">Services</Link><ChevronRight size={13} /><span>{service.shortName}</span></div>
         <div className="service-hero-grid">
           <div>
             <span className="brand-icon-badge service-hero-icon"><BrandIcon name={service.slug} /></span>
-            <h1>{service.headline}</h1>
+            <h1>{meta.h1}</h1>
+            <p className="service-slogan">{service.slogan}</p>
+            {testingHub && <p><Link to="/environmental-testing/" className="text-link">Part of environmental testing in Chicago <ArrowUpRight size={16} /></Link></p>}
           </div>
           <div className="service-hero-aside"><p>{service.intro}</p><ServiceEstimateLink href={quoteHref} /></div>
         </div>
       </section>
       <figure className="service-hero-image shell">
-        <img src={service.image} alt={service.imageAlt} fetchPriority="high" decoding="async" />
+        <img src={service.image} alt={service.imageAlt} {...imageAttributes(service.image)} fetchPriority="high" decoding="async" />
         <figcaption className="service-image-caption"><span>{service.eyebrow}</span><span>Representative image</span></figcaption>
       </figure>
 
@@ -169,6 +176,7 @@ export function ServicePage({ service }: { service: Service }) {
 }
 
 export function AboutPage() {
+  const meta = getPageMeta('/about/')
   const values = [
     ['01', 'Safety', 'We prioritize safe work practices for occupants, workers and the property around them.'],
     ['02', 'Client service', 'We listen carefully, explain the scope and stay responsive from the first conversation onward.'],
@@ -178,13 +186,14 @@ export function AboutPage() {
     ['06', 'Teamwork', 'Complex property work depends on coordination—with clients, occupants and project partners.'],
   ]
   return (
-    <Page title="About AIS Environmental Inc. | Chicago" description="Learn about AIS Environmental’s mission, values and property services for commercial, residential and multi-family buildings across the Chicago area." className="about-page">
+    <Page title={meta.title} description={meta.description} className="about-page">
       <section className="about-hero shell">
         <SectionLabel>About AIS Environmental</SectionLabel>
-        <h1>The work is technical.<br /><span>The reason is human.</span></h1>
+        <h1>{meta.h1}</h1>
+        <p className="page-slogan">The work is technical. <span>The reason is human.</span></p>
         <div className="about-hero-bottom"><p>We help people make informed decisions about the spaces where they live, work and invest.</p><span className="micro-label">Chicago, Illinois / Local service</span></div>
       </section>
-      <div className="about-image shell"><img src="/images/asbestos-hero.webp" alt="Environmental technicians preparing a contained work area" /><div className="about-image-word" aria-hidden="true">CARE</div></div>
+      <div className="about-image shell"><img src="/images/asbestos-hero.webp" alt="Environmental technicians preparing a contained work area" {...imageAttributes('/images/asbestos-hero.webp')} loading="lazy" decoding="async" /><div className="about-image-word" aria-hidden="true">CARE</div></div>
       <section className="section shell about-story">
         <div><SectionLabel>Who we are</SectionLabel><h2>Local knowledge.<br />Practical solutions.</h2></div>
         <div className="about-story-copy"><p className="large-copy">AIS Environmental Inc. serves commercial, residential and multi-family properties across Chicago and surrounding areas.</p><p>Our services include asbestos testing, surveys, removal and abatement; lead-paint inspection and removal; mold inspection and remediation; water-damage restoration; and professional roofing, siding, gutter, window and door services. We are fully insured and provide IDPH-licensed services.</p><p>That range reflects a simple idea: property owners deserve a clear plan, careful work and a team that respects the building as much as the people inside it.</p></div>
@@ -203,10 +212,11 @@ export function AboutPage() {
 }
 
 export function BlogPage() {
+  const meta = getPageMeta('/blog/')
   const [featured, ...rest] = posts
   return (
-    <Page title="Property Health & Home Improvement Blog | AIS Environmental" description="Practical articles about asbestos, lead paint, mold and window replacement from AIS Environmental Inc. in Chicago." className="blog-page">
-      <section className="blog-hero shell"><SectionLabel>Field notes / AIS journal</SectionLabel><h1>Understand<br />your property.</h1><div className="blog-hero-bottom"><p>Useful context for healthier buildings, better renovation decisions and more comfortable rooms.</p><div className="blog-filters"><Link to="/category/health/">Health</Link><Link to="/category/home-improvement/">Home improvement</Link></div></div></section>
+    <Page title={meta.title} description={meta.description} className="blog-page">
+      <section className="blog-hero shell"><SectionLabel>Field notes / AIS journal</SectionLabel><h1>{meta.h1}</h1><p className="page-slogan">{meta.slogan}</p><div className="blog-hero-bottom"><p>Useful context for healthier buildings, better renovation decisions and more comfortable rooms.</p><div className="blog-filters"><Link to="/category/health/">Health</Link><Link to="/category/home-improvement/">Home improvement</Link></div></div></section>
       <section className="shell featured-post">
         <Link to={featured.path} className="featured-post-image"><img src={featured.image} alt="Technicians inside a contained asbestos work area" loading="lazy" decoding="async" /><span>Featured / 01</span></Link>
         <div className="featured-post-copy"><div className="post-card-meta"><Link to={featured.categoryPath}>{featured.category}</Link><span>{featured.date}</span></div><h2><Link to={featured.path}>{featured.title}</Link></h2><p>{featured.excerpt}</p><Link to={featured.path} className="button button-outline">Read the article <ArrowUpRight size={18} /></Link></div>
@@ -223,11 +233,11 @@ function PostListItem({ post, number }: { post: Post; number: string }) {
 
 export function ArchivePage({ type, value }: { type: 'category' | 'author'; value: string }) {
   const filtered = useMemo(() => type === 'author' ? posts : posts.filter(post => post.category.toLowerCase().replace(' ', '-') === value), [type, value])
-  const title = type === 'author' ? 'Notes from the AIS team.' : value === 'health' ? 'Health, made clearer.' : 'Better home decisions.'
   const categoryName = value === 'health' ? 'Health' : 'Home Improvement'
+  const meta = getPageMeta(type === 'author' ? '/author/mtzprints/' : `/category/${value}/`)
   return (
-    <Page title={`${type === 'author' ? 'Author: mtzprints' : categoryName} | AIS Environmental Blog`} description={`Browse AIS Environmental ${type === 'author' ? 'articles by mtzprints' : categoryName.toLowerCase() + ' articles'}.`} className="archive-page">
-      <section className="archive-hero shell"><div className="breadcrumbs"><Link to="/blog/">Field notes</Link><ChevronRight size={13} /><span>{type === 'author' ? 'mtzprints' : categoryName}</span></div><SectionLabel>{type === 'author' ? 'Author archive / mtzprints' : `Category / ${categoryName}`}</SectionLabel><h1>{title}</h1><p>{filtered.length} practical {filtered.length === 1 ? 'article' : 'articles'} from the AIS Environmental team.</p></section>
+    <Page title={meta.title} description={meta.description} className="archive-page">
+      <section className="archive-hero shell"><div className="breadcrumbs"><Link to="/blog/">Field notes</Link><ChevronRight size={13} /><span>{type === 'author' ? 'mtzprints' : categoryName}</span></div><SectionLabel>{type === 'author' ? 'Author archive / mtzprints' : `Category / ${categoryName}`}</SectionLabel><h1>{meta.h1}</h1><p className="page-slogan">{meta.slogan}</p><p>{filtered.length} practical {filtered.length === 1 ? 'article' : 'articles'} from the AIS Environmental team.</p></section>
       <section className="section shell"><div className="post-list">{filtered.map((post, index) => <PostListItem post={post} number={`0${index + 1}`} key={post.path} />)}</div></section>
       <QuoteBand />
     </Page>
@@ -235,12 +245,13 @@ export function ArchivePage({ type, value }: { type: 'category' | 'author'; valu
 }
 
 export function ArticlePage({ post }: { post: Post }) {
+  const meta = getPageMeta(post.path)
   const commentForm = useEmailDraft(`Article comment: ${post.shortTitle}`)
   const related = posts.filter(item => item.path !== post.path).slice(0, 2)
   return (
-    <Page title={`${post.title} | AIS Environmental`} description={post.excerpt} className="article-page">
+    <Page title={meta.title} description={meta.description} className="article-page">
       <article>
-        <header className="article-header shell"><div className="breadcrumbs"><Link to="/blog/">Field notes</Link><ChevronRight size={13} /><Link to={post.categoryPath}>{post.category}</Link></div><SectionLabel>{post.category} / Property knowledge</SectionLabel><h1>{post.title}</h1><div className="article-byline"><span>By <Link to="/author/mtzprints/">mtzprints</Link></span><span>{post.date}</span><span>6 min read</span></div></header>
+        <header className="article-header shell"><div className="breadcrumbs"><Link to="/blog/">Field notes</Link><ChevronRight size={13} /><Link to={post.categoryPath}>{post.category}</Link></div><SectionLabel>{post.category} / Property knowledge</SectionLabel><h1>{meta.h1}</h1><div className="article-byline"><span>By <Link to="/author/mtzprints/">mtzprints</Link></span><span>{post.date}</span><span>6 min read</span></div></header>
         <div className="article-hero-image shell"><img src={post.image} alt="" loading="lazy" decoding="async" /></div>
         <div className="shell article-layout">
           <aside className="article-aside"><ShareLinks title={post.title} /><Link to={post.servicePath} className="article-service-link"><span className="micro-label">Related service</span><strong>{post.serviceName}</strong><ArrowUpRight /></Link></aside>
@@ -254,9 +265,10 @@ export function ArticlePage({ post }: { post: Post }) {
 }
 
 export function ContactPage() {
+  const meta = getPageMeta('/contact/')
   return (
-    <Page title="Contact AIS Environmental Inc. | Chicago" description="Contact AIS Environmental for asbestos, lead paint, mold and window services in Chicago and surrounding areas. Call (708) 240-9468." className="contact-page">
-      <section className="contact-hero shell"><SectionLabel>Contact / Start a conversation</SectionLabel><h1>Tell us what’s<br />going on.</h1><p>A few details about the property and your concern are enough to start.</p></section>
+    <Page title={meta.title} description={meta.description} className="contact-page">
+      <section className="contact-hero shell"><SectionLabel>Contact / Start a conversation</SectionLabel><h1>{meta.h1}</h1><p className="page-slogan">{meta.slogan}</p><p>A few details about the property and your concern are enough to start.</p></section>
       <section className="shell contact-grid">
         <div className="contact-details">
           <div className="contact-detail"><Phone aria-hidden="true" /><span className="micro-label">Call</span><a href={contact.phoneHref}>{contact.phoneDisplay}</a><p>For project questions and scheduling.</p></div>
@@ -309,12 +321,13 @@ function mapQuoteServiceParam(raw: string | null) {
 }
 
 export function QuotePage() {
+  const meta = getPageMeta('/get-a-quote/')
   const location = useLocation()
   const requested = new URLSearchParams(location.search).get('service')
   const initialService = mapQuoteServiceParam(requested)
   return (
-    <Page title="Get a Free Project Quote | AIS Environmental Inc." description="Request a free estimate for asbestos, lead paint, mold, water damage or exterior property services across Illinois, Indiana and Wisconsin." className="quote-page">
-      <section className="quote-hero shell"><SectionLabel>Free estimate / No obligation</SectionLabel><h1>Let’s scope<br />your project.</h1><p>Share the same project details we collect on A&amp;B Environmental. We’ll email AIS and save the lead in Fieldtaskpro.</p></section>
+    <Page title={meta.title} description={meta.description} className="quote-page">
+      <section className="quote-hero shell"><SectionLabel>Free estimate / No obligation</SectionLabel><h1>{meta.h1}</h1><p className="page-slogan">{meta.slogan}</p><p>Share the same project details we collect on A&amp;B Environmental. We’ll email AIS and save the lead in Fieldtaskpro.</p></section>
       <section className="shell quote-form-layout">
         <LeadForm formKind="fullscreen" initialService={initialService} className="contact-form quote-form" submitLabel="Request a free estimate" />
         <aside className="quote-aside"><span className="micro-label">What happens next</span>{processSteps.slice(0, 3).map(step => <div key={step.number}><span>{step.number}</span><h3>{step.title}</h3><p>{step.text}</p></div>)}<div className="quote-aside-contact"><p>Prefer to describe it by phone?</p><a href={contact.phoneHref}>{contact.phoneDisplay}<ArrowUpRight size={18} /></a></div></aside>
@@ -324,5 +337,6 @@ export function QuotePage() {
 }
 
 export function NotFoundPage() {
-  return <Page title="Page not found | AIS Environmental" description="The requested page could not be found."><section className="not-found shell"><span className="micro-label">Error / 404</span><h1>Wrong turn.<br />Right team.</h1><p>The page you requested does not exist. Head home or explore our services.</p><div className="hero-actions"><Link to="/" className="button button-primary">Back home <ArrowUpRight size={18} /></Link><Link to="/contact/" className="text-link">Contact AIS <ArrowRight size={18} /></Link></div></section></Page>
+  const meta = getPageMeta('/not-found')
+  return <Page title={meta.title} description={meta.description} robots={meta.robots} canonical={null}><section className="not-found shell"><span className="micro-label">Error / 404</span><h1>{meta.h1}</h1><p className="page-slogan">{meta.slogan}</p><p>The page you requested does not exist. Head home or explore our services.</p><div className="hero-actions"><Link to="/" className="button button-primary">Back home <ArrowUpRight size={18} /></Link><Link to="/contact/" className="text-link">Contact AIS <ArrowRight size={18} /></Link></div></section></Page>
 }

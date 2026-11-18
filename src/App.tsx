@@ -1,12 +1,28 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Route, Routes, useLocation } from 'react-router'
 import { SiteFooter, SiteHeader } from './components/Site'
 import { posts, services } from './data'
 import { serviceAreas } from './siteContent'
 import { AboutPage, ArchivePage, ArticlePage, BlogPage, ContactPage, HomePage, NotFoundPage, QuotePage, ServicePage } from './pages/Pages'
 import { ThankYouPage } from './pages/ThankYouPage'
+import { EnvironmentalTestingPage } from './pages/EnvironmentalTestingPage'
+import { trackSpaPageView } from './lib/analytics'
 import { AreaPage, FaqPage, IndustriesPage, ProjectsPage, ReviewsPage, ServiceAreasPage, ServicesPage } from './pages/ExpandedPages'
 import './App.css'
+
+function AnalyticsRouteListener() {
+  const { pathname } = useLocation()
+  const seen = useRef<string | null>(null)
+  useEffect(() => {
+    if (seen.current === null || seen.current === pathname) {
+      seen.current = pathname
+      return
+    }
+    seen.current = pathname
+    trackSpaPageView(pathname)
+  }, [pathname])
+  return null
+}
 
 function RouteEffects() {
   const { pathname, hash } = useLocation()
@@ -95,11 +111,11 @@ export default function App() {
   return (
     <>
       <RouteEffects />
+      <AnalyticsRouteListener />
       <MotionEffects />
       <SiteHeader />
       <Routes key={location.pathname}>
         <Route path="/" element={<HomePage />} />
-        <Route path="/2023/12/27/" element={<HomePage />} />
         <Route path="/about/" element={<AboutPage />} />
         <Route path="/services/" element={<ServicesPage />} />
         <Route path="/industries/" element={<IndustriesPage />} />
@@ -109,6 +125,7 @@ export default function App() {
         <Route path="/service-areas/" element={<ServiceAreasPage />} />
         {serviceAreas.map(area => <Route key={area.path} path={area.path} element={<AreaPage area={area} />} />)}
         {services.map(service => <Route key={service.path} path={service.path} element={<ServicePage service={service} />} />)}
+        <Route path="/environmental-testing/" element={<EnvironmentalTestingPage />} />
         <Route path="/contact/" element={<ContactPage />} />
         <Route path="/get-a-quote/" element={<QuotePage />} />
         <Route path="/thank-you" element={<ThankYouPage />} />

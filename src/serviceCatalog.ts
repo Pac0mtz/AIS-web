@@ -3,9 +3,10 @@ import type { Service } from './data'
 export const additionalServices: Service[] = [
   {
     path: '/asbestos-testing-sampling/', slug: 'asbestos-testing', name: 'Asbestos testing & sampling', shortName: 'Asbestos testing', number: '05', category: 'Asbestos',
-    eyebrow: 'Sampling · Laboratory analysis · Next steps', headline: 'Confirm the material before work begins.',
+    eyebrow: 'Sampling · Laboratory analysis · Next steps', headline: 'Asbestos Testing in Chicago',
+    slogan: 'Confirm the material before work begins.',
     intro: 'Careful sample collection and laboratory analysis help property owners understand whether suspect building materials contain asbestos.',
-    description: 'Asbestos testing and sampling for homes, commercial buildings and industrial properties across Illinois, Indiana and Wisconsin.',
+    description: 'Asbestos testing in Chicago for homes, commercial buildings and industrial properties, with laboratory analysis before renovation or demolition.',
     image: '/images/asbestos-sampling-team.webp', imageAlt: 'Two protected technicians collecting a sample from pipe insulation inside a controlled work area', quoteOption: 'Asbestos Testing & Sampling',
     scope: 'Appearance alone cannot confirm asbestos. A testing plan identifies the suspect materials, collects samples with disturbance kept to a minimum and uses the results to guide renovation, removal or management decisions.',
     sections: [
@@ -17,9 +18,10 @@ export const additionalServices: Service[] = [
   },
   {
     path: '/asbestos-surveys-inspections/', slug: 'asbestos-surveys', name: 'Asbestos surveys & inspections', shortName: 'Asbestos surveys', number: '06', category: 'Asbestos',
-    eyebrow: 'Property review · Material inventory · Planning', headline: 'Understand what is in the building.',
+    eyebrow: 'Property review · Material inventory · Planning', headline: 'Asbestos Surveys in Chicago',
+    slogan: 'Understand what is in the building.',
     intro: 'A structured asbestos survey documents suspect materials, their condition and the areas that may affect maintenance, renovation or demolition.',
-    description: 'Asbestos surveys and inspections for residential, commercial, industrial and multi-family properties in Illinois, Indiana and Wisconsin.',
+    description: 'Asbestos surveys and inspections in Chicago before renovation or demolition, including a material inventory for commercial and multi-family properties.',
     image: '/images/asbestos-surveys.webp', imageAlt: 'Protective-suited inspector reviewing building materials', quoteOption: 'Asbestos Surveys & Inspections',
     scope: 'An asbestos inspection looks beyond a single sample. It creates a property-specific picture of accessible suspect materials, their location and condition, and the work needed to manage them responsibly.',
     sections: [
@@ -31,7 +33,8 @@ export const additionalServices: Service[] = [
   },
   {
     path: '/commercial-asbestos-removal/', slug: 'commercial-asbestos', name: 'Commercial asbestos removal', shortName: 'Commercial asbestos', number: '07', category: 'Asbestos',
-    eyebrow: 'Occupied buildings · Phased work · Coordination', headline: 'Abatement planned around your operation.',
+    eyebrow: 'Occupied buildings · Phased work · Coordination', headline: 'Commercial Asbestos Removal in Chicago',
+    slogan: 'Abatement planned around your operation.',
     intro: 'Commercial asbestos removal with attention to occupants, project schedules, adjacent spaces and coordination with property teams.',
     description: 'Commercial asbestos removal and abatement for offices, retail, industrial, institutional and multi-family properties across the Midwest service area.',
     image: '/images/commercial-asbestos-pipe-crew.webp', imageAlt: 'Two respirator-equipped abatement workers handling pipe insulation inside a transparent glove bag', quoteOption: 'Commercial Asbestos Removal',
@@ -45,7 +48,8 @@ export const additionalServices: Service[] = [
   },
   {
     path: '/asbestos-tile-removal/', slug: 'asbestos-tile', name: 'Asbestos tile removal', shortName: 'Asbestos tile', number: '08', category: 'Asbestos',
-    eyebrow: 'Floor tile · Mastic · Surface preparation', headline: 'Remove old flooring without losing control.',
+    eyebrow: 'Floor tile · Mastic · Surface preparation', headline: 'Asbestos Tile Removal in Chicago',
+    slogan: 'Remove old flooring without losing control.',
     intro: 'Targeted removal of asbestos-containing floor tile and associated adhesives, with containment and cleaning suited to the space.',
     description: 'Asbestos floor tile and mastic removal for homes, businesses and renovation projects across Illinois, Indiana and Wisconsin.',
     image: '/images/asbestos-tile-removal-team.webp', imageAlt: 'Technicians in respirators lifting old flooring tile within a contained work area', quoteOption: 'Asbestos Tile Removal',
@@ -59,7 +63,8 @@ export const additionalServices: Service[] = [
   },
   {
     path: '/asbestos-demolition-services/', slug: 'asbestos-demolition', name: 'Asbestos demolition services', shortName: 'Asbestos demolition', number: '09', category: 'Asbestos',
-    eyebrow: 'Selective demolition · Abatement · Site coordination', headline: 'Coordinate abatement before demolition.',
+    eyebrow: 'Selective demolition · Abatement · Site coordination', headline: 'Asbestos Demolition Services in Chicago',
+    slogan: 'Coordinate abatement before demolition.',
     intro: 'Selective demolition and asbestos-removal planning for materials and building areas that must be addressed before broader demolition work.',
     description: 'Asbestos demolition and selective removal services for renovation and demolition projects in Illinois, Indiana and Wisconsin.',
     image: '/images/selective-demolition-team.webp', imageAlt: 'Two protective-suited workers carefully removing a wall section inside a contained room', quoteOption: 'Asbestos Demolition Services',
@@ -73,7 +78,8 @@ export const additionalServices: Service[] = [
   },
   {
     path: '/lead-paint-inspection/', slug: 'lead-inspection', name: 'Lead paint inspection', shortName: 'Lead inspection', number: '10', category: 'Lead & Mold',
-    eyebrow: 'Surface testing · Dust assessment · Clear next steps', headline: 'Know where lead is present.',
+    eyebrow: 'Surface testing · Dust assessment · Clear next steps', headline: 'Lead Paint Inspection in Chicago',
+    slogan: 'Know where lead is present.',
     intro: 'Property-specific lead paint inspection and testing for older homes, multi-family buildings and commercial spaces before repair or renovation.',
     description: 'Lead paint inspections, surface testing and renovation planning for properties across Illinois, Indiana and Wisconsin.',
     image: '/images/lead-inspection.webp', imageAlt: 'Technician using an XRF analyzer for lead paint testing', quoteOption: 'Lead Paint Inspection',
@@ -87,9 +93,10 @@ export const additionalServices: Service[] = [
   },
   {
     path: '/mold-testing-inspections/', slug: 'mold-testing', name: 'Mold testing & inspections', shortName: 'Mold testing', number: '11', category: 'Lead & Mold',
-    eyebrow: 'Moisture mapping · Sampling · Source review', headline: 'Find the growth—and the moisture.',
+    eyebrow: 'Moisture mapping · Sampling · Source review', headline: 'Mold Testing in Chicago',
+    slogan: 'Find the growth—and the moisture.',
     intro: 'Mold inspections that connect visible growth, hidden moisture and appropriate testing to a clear remediation decision.',
-    description: 'Mold testing and inspections for homes, basements, commercial properties and multi-family buildings across the AIS service area.',
+    description: 'Mold testing in Chicago for homes, basements and commercial buildings, including moisture readings and sampling when it answers a specific question.',
     image: '/images/mold-inspection-moisture-reading.webp', imageAlt: 'Inspector taking a moisture reading on a lower wall beside air-sampling equipment', quoteOption: 'Mold Testing & Inspections',
     scope: 'Testing without a building inspection can miss the reason mold developed. We consider moisture pathways, material condition and visible growth together, then use sampling when it will add useful information.',
     sections: [
@@ -101,7 +108,8 @@ export const additionalServices: Service[] = [
   },
   {
     path: '/water-damage-restoration/', slug: 'water-damage', name: 'Water damage restoration', shortName: 'Water damage', number: '12', category: 'Water Damage',
-    eyebrow: 'Water removal · Drying · Material recovery', headline: 'Dry the structure. Address the damage.',
+    eyebrow: 'Water removal · Drying · Material recovery', headline: 'Water Damage Restoration in Chicago',
+    slogan: 'Dry the structure. Address the damage.',
     intro: 'A structured response to water intrusion, from initial assessment and water removal through drying, cleaning and repair planning.',
     description: 'Water damage restoration for residential, commercial and multi-family properties in Illinois, Indiana and Wisconsin.',
     image: '/images/water-restoration-drying-team.webp', imageAlt: 'Restoration technicians checking wall moisture and setting up drying equipment', quoteOption: 'Water Damage Restoration',
@@ -115,7 +123,8 @@ export const additionalServices: Service[] = [
   },
   {
     path: '/flooded-basement-repair/', slug: 'flooded-basement', name: 'Flooded basement repair', shortName: 'Flooded basements', number: '13', category: 'Water Damage',
-    eyebrow: 'Basement water · Drying · Repair coordination', headline: 'A clear path from flooded to dry.',
+    eyebrow: 'Basement water · Drying · Repair coordination', headline: 'Flooded Basement Repair in Chicago',
+    slogan: 'A clear path from flooded to dry.',
     intro: 'Basement water removal, structural drying, affected-material cleanup and practical repair planning for homes and buildings.',
     description: 'Flooded basement cleanup, drying and repair services for properties across Illinois, Indiana and Wisconsin.',
     image: '/images/basement-water-extraction-team.webp', imageAlt: 'Two water mitigation technicians extracting water from a basement floor', quoteOption: 'Flooded Basement Repair',
@@ -129,7 +138,8 @@ export const additionalServices: Service[] = [
   },
   {
     path: '/roofing-services/', slug: 'roofing', name: 'Roofing services', shortName: 'Roofing', number: '14', category: 'Exterior',
-    eyebrow: 'Roof review · Repair · Replacement', headline: 'Protect the property from the top down.',
+    eyebrow: 'Roof review · Repair · Replacement', headline: 'Roofing Services in Chicago',
+    slogan: 'Protect the property from the top down.',
     intro: 'Roof repair and replacement planning with attention to water entry, surface condition, flashing and the full roof edge.',
     description: 'Roofing repair and replacement services for homes and properties across Illinois, Indiana and Wisconsin.',
     image: '/images/roofing.webp', imageAlt: 'Two roofers measuring an asphalt-shingle roof', quoteOption: 'Roofing Services',
@@ -143,7 +153,8 @@ export const additionalServices: Service[] = [
   },
   {
     path: '/siding/', slug: 'siding', name: 'Siding installation & repair', shortName: 'Siding', number: '15', category: 'Exterior',
-    eyebrow: 'Exterior cladding · Repairs · Weather protection', headline: 'A cleaner, better-protected exterior.',
+    eyebrow: 'Exterior cladding · Repairs · Weather protection', headline: 'Siding Installation in Chicago',
+    slogan: 'A cleaner, better-protected exterior.',
     intro: 'Siding repair and installation for appearance, weather protection and a more consistent building envelope.',
     description: 'Siding installation and repair for residential and commercial exteriors across the AIS Midwest service area.',
     image: '/images/siding-installation-team.webp', imageAlt: 'Installers checking the alignment of horizontal siding below a window', quoteOption: 'Siding Installation & Repair',
@@ -157,7 +168,8 @@ export const additionalServices: Service[] = [
   },
   {
     path: '/gutters/', slug: 'gutters', name: 'Gutter installation & repair', shortName: 'Gutters', number: '16', category: 'Exterior',
-    eyebrow: 'Drainage · Downspouts · Roof-edge protection', headline: 'Move water away from the building.',
+    eyebrow: 'Drainage · Downspouts · Roof-edge protection', headline: 'Gutter Installation in Chicago',
+    slogan: 'Move water away from the building.',
     intro: 'Gutter and downspout work that supports reliable roof drainage and helps reduce uncontrolled water around exterior walls and foundations.',
     description: 'Gutter installation, repair and downspout improvements for properties across Illinois, Indiana and Wisconsin.',
     image: '/images/gutter-installation-team.webp', imageAlt: 'Two installers supporting and fastening a gutter along the roof edge of a house', quoteOption: 'Gutter Installation & Repair',
@@ -171,7 +183,8 @@ export const additionalServices: Service[] = [
   },
   {
     path: '/door-replacement/', slug: 'doors', name: 'Door replacement', shortName: 'Doors', number: '17', category: 'Exterior',
-    eyebrow: 'Entry doors · Fit · Weather sealing', headline: 'A better fit at every entrance.',
+    eyebrow: 'Entry doors · Fit · Weather sealing', headline: 'Door Replacement in Chicago',
+    slogan: 'A better fit at every entrance.',
     intro: 'Door replacement with careful measurement, removal, installation and attention to operation, trim and weather sealing.',
     description: 'Exterior and interior door replacement services for homes and properties across Illinois, Indiana and Wisconsin.',
     image: '/images/door-replacement.webp', imageAlt: 'Installer fitting hardware on a replacement door', quoteOption: 'Door Replacement',

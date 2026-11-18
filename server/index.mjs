@@ -5,7 +5,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import { sendQuoteEmail, verifySmtp } from './email.mjs'
 import { forwardQuoteToFieldtaskpro } from './fieldtaskpro-lead.mjs'
 import { quotePhotoUpload } from './quote-photos.mjs'
-import { redirectPath, redirectTarget, withThankYouRobots, wwwRedirectTarget } from './http-routing.mjs'
+import { canonicalOriginRedirect, redirectPath, redirectTarget } from './http-routing.mjs'
+import { renderDocument, robotsHeader } from './render-document.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const distDir = path.resolve(process.env.AIS_DIST_DIR || path.resolve(__dirname, '../dist'))
@@ -19,7 +20,7 @@ app.disable('x-powered-by')
 app.set('trust proxy', true)
 
 app.use((req, res, next) => {
-  const target = wwwRedirectTarget(req)
+  const target = canonicalOriginRedirect(req)
   if (!target) return next()
   res.redirect(301, target)
 })
@@ -86,7 +87,9 @@ app.get('*', (req, res) => {
       res.status(500).type('text/plain').send('Site build is missing')
       return
     }
-    res.status(status).type('html').send(withThankYouRobots(html, req.path))
+    const robots = robotsHeader(req.path)
+    if (robots) res.set('X-Robots-Tag', robots)
+    res.status(status).type('html').send(renderDocument(html, req.path))
   })
 })
 

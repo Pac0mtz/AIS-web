@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from 'react-router'
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ChevronDown, Copy, Mail, Menu, Moon, Phone, Sun, X } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { contact, services } from '../data'
+import { imageAttributes } from '../../server/page-meta.mjs'
 import { BrandIcon } from './BrandIcon'
 
 export function Logo({ light = false }: { light?: boolean }) {
@@ -14,9 +15,8 @@ export function Logo({ light = false }: { light?: boolean }) {
     <Link to="/" className={`logo ${light ? 'logo-light' : ''}`} aria-label="AIS Environmental home">
       <img
         className="logo-image"
-        src={isDark ? '/ais-logo-dark.png' : '/ais-logo.webp'}
-        width={isDark ? 900 : 1800}
-        height={isDark ? 386 : 771}
+        src={isDark ? '/ais-logo-dark.webp' : '/ais-logo.webp'}
+        {...imageAttributes(isDark ? '/ais-logo-dark.webp' : '/ais-logo.webp')}
         alt="AIS Environmental Services, Inc."
         decoding="async"
       />
@@ -104,6 +104,7 @@ export function SiteHeader() {
                   <span className="micro-label">Our services</span>
                   <p>Start with the right service for your property.</p>
                   <Link to="/services/" className="text-link">View all services <ArrowUpRight size={16} /></Link>
+                  <Link to="/environmental-testing/" className="text-link">Environmental testing <ArrowUpRight size={16} /></Link>
                 </div>
                 <div className="services-menu-links">
                   {services.map(service => (
@@ -168,6 +169,7 @@ export function SiteFooter() {
         </div>
         <div className="footer-column">
           <span className="micro-label">Services</span>
+          <Link to="/environmental-testing/">Environmental testing</Link>
           {services.slice(0, 6).map(service => <Link key={service.path} to={service.path}>{service.name}</Link>)}
           <Link to="/services/"><strong>All 17 services</strong></Link>
         </div>
@@ -199,7 +201,7 @@ export function SiteFooter() {
   )
 }
 
-export function Page({ title, description, children, className = '', robots }: { title: string; description: string; children: ReactNode; className?: string; robots?: string }) {
+export function Page({ title, description, children, className = '', robots, canonical }: { title: string; description: string; children: ReactNode; className?: string; robots?: string; canonical?: string | null }) {
   const location = useLocation()
   useEffect(() => {
     document.title = title
@@ -222,13 +224,17 @@ export function Page({ title, description, children, className = '', robots }: {
     document.head.querySelector('meta[property="og:description"]')?.setAttribute('content', description)
     setMeta('meta[property="og:type"]', 'property', 'og:type')
     document.head.querySelector('meta[property="og:type"]')?.setAttribute('content', location.pathname.includes('/2023/12/27/') && location.pathname !== '/2023/12/27/' ? 'article' : 'website')
-    let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
-    if (!canonical) {
-      canonical = document.createElement('link')
-      canonical.rel = 'canonical'
-      document.head.appendChild(canonical)
+    let canonicalLink = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+    if (canonical === null) {
+      canonicalLink?.remove()
+    } else {
+      if (!canonicalLink) {
+        canonicalLink = document.createElement('link')
+        canonicalLink.rel = 'canonical'
+        document.head.appendChild(canonicalLink)
+      }
+      canonicalLink.href = canonical || `https://aisenvironmentalinc.com${location.pathname}`
     }
-    canonical.href = `https://aisenvironmentalinc.com${location.pathname}`
     const robotsMeta = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]')
     if (robots) {
       const meta = robotsMeta ?? document.createElement('meta')
@@ -239,7 +245,7 @@ export function Page({ title, description, children, className = '', robots }: {
       robotsMeta?.remove()
     }
     window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [title, description, location.pathname, robots])
+  }, [title, description, location.pathname, robots, canonical])
   return <main id="main-content" className={className}>{children}</main>
 }
 

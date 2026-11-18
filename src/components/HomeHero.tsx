@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Pause, Play } from 'lucide-react'
 import { Link } from 'react-router'
 import { services } from '../data'
+import { imageAttributes } from '../../server/page-meta.mjs'
 import type { LEAD_SERVICES } from '../lib/lead-form'
 import { BrandIcon } from './BrandIcon'
 
@@ -61,7 +62,7 @@ const heroSlides = slideCopy.flatMap(copy => {
 })
 const rotationDelay = 7000
 
-export function HomeHero() {
+export function HomeHero({ title, slogan }: { title: string; slogan: string }) {
   const hero = useRef<HTMLElement>(null)
   const [active, setActive] = useState(0)
   const [playing, setPlaying] = useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
@@ -126,6 +127,7 @@ export function HomeHero() {
             src={service.image}
             alt={service.imageAlt}
             aria-hidden={index !== active}
+            {...imageAttributes(service.image)}
             fetchPriority={index === 0 ? 'high' : 'low'}
             loading={index === 0 ? 'eager' : 'lazy'}
             decoding="async"
@@ -133,13 +135,15 @@ export function HomeHero() {
         ))}
       </div>
       <div className="shell home-hero-layout">
-        <div className="home-hero-copy" aria-live={playing ? 'off' : 'polite'} aria-atomic="true">
-          <div className="home-hero-content" key={slide.slug}>
+        <div className="home-hero-copy">
+          <h1>{title}</h1>
+          <p className="page-slogan">{slogan}</p>
+          <div className="home-hero-content" key={slide.slug} aria-live={playing ? 'off' : 'polite'} aria-atomic="true">
             <div className="home-hero-label">
               <span className="brand-icon-badge hero-service-icon"><BrandIcon name={slide.slug} /></span>
               <span className="micro-label">{slide.label}</span>
             </div>
-            <h1>{slide.title}</h1>
+            <p className="home-slide-title">{slide.title}</p>
             <p className="hero-intro">{slide.description}</p>
             <div className="hero-actions">
               <Link to={`/get-a-quote/?service=${encodeURIComponent(slide.quoteService)}`} className="button button-primary">{slide.action} <ArrowUpRight size={20} aria-hidden="true" /></Link>
