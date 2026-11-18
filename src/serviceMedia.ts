@@ -73,7 +73,7 @@ export const serviceMedia: Record<string, [ServiceMediaItem, ServiceMediaItem]> 
   ],
   gutters: [
     image('gutter-roof-edge-review', 'Ladder positioned at the roof edge of a home during gutter work', 'Roof-edge access and existing-run review'),
-    image('gutter-attachment-work', 'Contractor on a ladder working at an exterior roof edge', 'Careful work at roof edges and transitions'),
+    { src: '/images/gutters.webp', alt: 'Installer working at a downspout connection beside horizontal siding', caption: 'Downspout connections and exterior drainage' },
   ],
   doors: [
     image('door-alignment-sealing', 'Installer sealing around a newly positioned exterior door unit', 'Opening preparation, alignment and sealing'),

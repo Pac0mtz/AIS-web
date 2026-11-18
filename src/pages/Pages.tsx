@@ -126,16 +126,15 @@ export function ServicePage({ service }: { service: Service }) {
         <div className="service-hero-grid">
           <div>
             <span className="brand-icon-badge service-hero-icon"><BrandIcon name={service.slug} /></span>
-            <SectionLabel>Service {service.number} / {services.length}</SectionLabel>
             <h1>{service.headline}</h1>
           </div>
           <div className="service-hero-aside"><p>{service.intro}</p><Link to={`/get-a-quote/?service=${encodeURIComponent(service.quoteOption)}`} className="button button-primary">Request a free estimate <ArrowUpRight size={19} /></Link></div>
         </div>
       </section>
-      <div className="service-hero-image shell">
-        <img src={service.image} alt={service.imageAlt} />
-        <div className="service-image-caption"><span>{service.eyebrow}</span><span>AIS Environmental / {service.number}</span></div>
-      </div>
+      <figure className="service-hero-image shell">
+        <img src={service.image} alt={service.imageAlt} fetchPriority="high" decoding="async" />
+        <figcaption className="service-image-caption"><span>{service.eyebrow}</span><span>Representative image</span></figcaption>
+      </figure>
 
       <section className="section shell service-content-grid" id="services">
         <aside className="service-toc">

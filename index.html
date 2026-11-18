@@ -4,6 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a2456" />
+    <script>
+      (() => {
+        let preference
+        try { preference = localStorage.getItem('ais-theme') } catch {}
+        const theme = preference === 'dark' || preference === 'light'
+          ? preference
+          : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        document.documentElement.dataset.theme = theme
+        document.documentElement.style.colorScheme = theme
+        if (theme === 'dark') document.querySelector('meta[name="theme-color"]').content = '#101c31'
+      })()
+    </script>
     <meta name="description" content="AIS Environmental provides asbestos, lead paint, mold, water damage and exterior property services across Illinois, Indiana and Wisconsin." />
     <meta property="og:title" content="AIS Environmental Inc. | IL, IN & WI" />
     <meta property="og:description" content="Careful environmental and property services across Illinois, Indiana and Wisconsin." />
