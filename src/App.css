@@ -45,12 +45,10 @@ p { color: var(--text-secondary); line-height: 1.7; }
 .utility-inner a { min-height: 36px; display: flex; align-items: center; gap: 8px; color: var(--white); font-weight: 500; }
 .utility-inner a:hover { text-decoration: underline; }
 .utility-center { color: var(--white); }
-.site-header { height: 86px; position: sticky; top: 0; z-index: 100; background: var(--surface-page); border-bottom: 1px solid var(--line); box-shadow: 0 3px 16px rgba(10, 36, 86, .05); }
+.site-header { height: 86px; position: sticky; top: 0; z-index: 100; background: var(--surface-header); border-bottom: 1px solid var(--line); box-shadow: 0 3px 16px rgba(10, 36, 86, .05); }
 .header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
 .logo { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; color: var(--brand-primary); transition: opacity 180ms ease; }
 .logo:hover { opacity: .88; }
-.logo-filter { position: absolute; }
-[data-theme='dark'] .logo-image { filter: url('#ais-dark-logo'); }
 [data-theme='dark'] .logo-light { background: transparent; }
 .logo-image { display: block; width: 148px; height: auto; }
 .logo-light { padding: 10px 14px; background: var(--white); border-radius: 3px; }
