@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 
-export function useEmailDraft(subjectPrefix: string) {
+export function useEmailDraft(subject: string) {
   const [notice, setNotice] = useState('')
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -11,7 +11,6 @@ export function useEmailDraft(subjectPrefix: string) {
       .map(field => [field.dataset.emailLabel || '', (field as HTMLInputElement).value.trim()] as const)
       .filter(([, value]) => value)
       .map(([label, value]) => `${label}: ${value}`)
-    const subject = `${subjectPrefix} | AIS Environmental Inc.`
     setNotice('Your email app will open a draft. Review it and press Send there.')
     window.location.href = `${form.action}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`
   }

@@ -88,7 +88,7 @@ export function FaqPage() {
 
 export function ReviewsPage() {
   const meta = getPageMeta('/reviews/')
-  const form = useEmailDraft('AIS customer feedback')
+  const form = useEmailDraft('Feedback for AIS Environmental Inc.')
   return (
     <Page title={meta.title} description={meta.description} className="reviews-page">
       <IndexHero eyebrow="Customer feedback" title={meta.h1} intro="Clear communication and careful work matter throughout a project. Share feedback directly with our team using the form below; submissions are not published automatically." current="Reviews" />

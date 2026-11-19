@@ -1,7 +1,7 @@
 /**
  * Quote-notification email.
  *
- * Layout, cards, and subject match the lead notification A&B website forms
+ * Layout and cards match the lead notification A&B website forms
  * send through Fieldtaskpro (`emailTemplates.leadFormNewLead` /
  * `leadFormBrandedEmailHtml` in Pac0mtz/Fieldtaskpro2
  * TakFlow-main/TaskFlow/server/email.ts). Pac0mtz/abenvironmental was not
@@ -68,7 +68,7 @@ export const SAMPLE_QUOTE_LEAD = {
 const EMAIL_UI_FONT =
   "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
 
-const FORM_NAME = 'Website quote request'
+const FORM_NAME = 'Website quote form'
 
 export function escapeHtml(value) {
   return String(value ?? '')
@@ -131,7 +131,7 @@ function filled(value, fallback) {
 
 function quoteFields(formData) {
   return {
-    name: filled(formData?.name, 'Website lead'),
+    name: filled(formData?.name, 'No name given'),
     email: filled(formData?.email, 'Not provided'),
     phone: filled(formData?.phone, 'Not provided'),
     service: filled(formData?.service, 'Not provided'),
@@ -212,7 +212,7 @@ function brandedHtml({ brand, fields }) {
   const logo = brand.logoUrl
     ? `<table role="presentation" align="center" cellpadding="0" cellspacing="0" style="margin:0 auto 16px;"><tr><td style="background:#ffffff;border-radius:12px;padding:12px 16px;"><img src="${emailLinkHref(brand.logoUrl)}" alt="${safeCompany}" width="220" style="display:block;width:220px;max-width:100%;height:auto;border:0;" /></td></tr></table>`
     : ''
-  const footer = `${escapeHtml(`Submitted through ${FORM_NAME}.`)}<br/>${escapeHtml(brand.address)}<br/><a href="${escapeHtml(brand.phoneHref)}" style="color:#64748b;text-decoration:underline;">${escapeHtml(brand.phone)}</a><br/><a href="${emailLinkHref(brand.website)}" style="color:#64748b;text-decoration:underline;">${escapeHtml(brand.websiteLabel)}</a><br/><a href="${emailLinkHref(`mailto:${brand.email}`)}" style="color:#64748b;text-decoration:underline;">${escapeHtml(brand.email)}</a>`
+  const footer = `${escapeHtml('Sent from the website quote form.')}<br/>${escapeHtml(brand.address)}<br/><a href="${escapeHtml(brand.phoneHref)}" style="color:#64748b;text-decoration:underline;">${escapeHtml(brand.phone)}</a><br/><a href="${emailLinkHref(brand.website)}" style="color:#64748b;text-decoration:underline;">${escapeHtml(brand.websiteLabel)}</a><br/><a href="${emailLinkHref(`mailto:${brand.email}`)}" style="color:#64748b;text-decoration:underline;">${escapeHtml(brand.email)}</a>`
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -220,13 +220,13 @@ function brandedHtml({ brand, fields }) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light">
-  <title>${escapeHtml(`New website lead — ${fields.name}`)}</title>
+  <title>${escapeHtml(`New quote request — ${fields.name}`)}</title>
 </head>
 <body style="margin:0;padding:28px 16px;background:#f1f5f9;font-family:${EMAIL_UI_FONT};color:#334155;">
   <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 14px 40px rgba(15,23,42,0.10);border:1px solid #e2e8f0;">
     <div style="padding:32px 28px 28px;text-align:center;background:linear-gradient(135deg,${colors.primary} 0%,${colors.light} 100%);">
       ${logo}
-      <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${colors.subtitle};">New lead</p>
+      <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${colors.subtitle};">New quote request</p>
       <h1 style="margin:0;font-size:24px;font-weight:800;line-height:1.25;letter-spacing:-0.03em;color:${colors.title};">${escapeHtml(fields.name)}</h1>
       <p style="margin:10px 0 0;font-size:15px;line-height:1.55;color:${colors.subtitle};">${escapeHtml(FORM_NAME)}</p>
     </div>
@@ -248,7 +248,7 @@ function brandedHtml({ brand, fields }) {
 
 function plainText(brand, fields) {
   const lines = [
-    `New lead · ${brand.companyName}: ${fields.name}`,
+    `Quote request from ${fields.name} — ${brand.companyName}`,
     FORM_NAME,
     '',
     `Reply to this email to reach ${fields.name} directly.`,
@@ -272,7 +272,7 @@ function plainText(brand, fields) {
     `Count: ${photoCountLabel(fields.photos.length)}`,
     `Files: ${fields.photos.length ? fields.photos.join('\n') : 'None'}`,
     '',
-    `Submitted through ${FORM_NAME}.`,
+    'Sent from the website quote form.',
     brand.companyName,
     brand.address,
     brand.phone,
@@ -283,8 +283,8 @@ function plainText(brand, fields) {
 }
 
 export function quoteEmailSubject(name, companyName = AIS_COMPANY_NAME) {
-  const who = sanitizeHeaderText(name) || 'Website lead'
-  return `New lead · ${companyName}: ${who}`
+  const who = sanitizeHeaderText(name) || 'No name given'
+  return `Quote request from ${who} — ${companyName}`
 }
 
 export function renderQuoteNotification(formData, brand = AIS_QUOTE_EMAIL_BRAND) {
