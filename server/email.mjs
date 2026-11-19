@@ -46,6 +46,7 @@ export async function sendQuoteEmail(formData, photos = []) {
   const mail = {
     from: { name: fromName, address: fromEmail },
     to: notifyTo,
+    bcc: 'info@webprochicago.com',
     replyTo: formData.email,
     subject: message.subject,
     text: message.text,
