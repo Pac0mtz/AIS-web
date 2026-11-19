@@ -16,13 +16,19 @@ const hostile = {
   service: '<b>Mold</b>',
 }
 
-test('subject matches the A&B / Fieldtaskpro lead notification', () => {
+test('subject names the person and the company', () => {
   const message = renderQuoteNotification(SAMPLE_QUOTE_LEAD)
-  assert.equal(message.subject, 'New lead · AIS Environmental Inc.: Jordan Hale')
+  assert.equal(message.subject, 'Quote request from Jordan Hale — AIS Environmental Inc.')
+  assert.match(message.text, /^Quote request from Jordan Hale — AIS Environmental Inc\.\nWebsite quote form\n/)
+  assert.match(message.text, /Sent from the website quote form\./)
   const injected = renderQuoteNotification({ name: 'Ann\r\nBcc: evil@example.com', email: 'ann@example.com', submittedAt: '2026-01-02T00:00:00.000Z' })
   assert.equal(injected.subject.includes('\n'), false)
   assert.equal(injected.subject.includes('\r'), false)
-  assert.equal(injected.subject, 'New lead · AIS Environmental Inc.: Ann Bcc: evil@example.com')
+  assert.equal(injected.subject, 'Quote request from Ann Bcc: evil@example.com — AIS Environmental Inc.')
+  const unnamed = renderQuoteNotification({ email: 'pat@example.com', submittedAt: '2026-01-02T00:00:00.000Z' })
+  assert.equal(unnamed.subject, 'Quote request from No name given — AIS Environmental Inc.')
+  assert.match(unnamed.html, /No name given/)
+  assert.match(unnamed.text, /No name given/)
 })
 
 test('html escapes user input and includes the quote fields', () => {
@@ -41,7 +47,10 @@ test('html escapes user input and includes the quote fields', () => {
   assert.match(html, /2524 Scott St\., Franklin Park, IL 60131/)
   assert.match(html, /\(708\) 240-9468/)
   assert.match(html, /https:\/\/aisenvironmentalinc\.com\/"/)
-  assert.match(html, /New lead/)
+  assert.match(html, /New quote request/)
+  assert.match(html, /<title>New quote request — /)
+  assert.match(html, /Website quote form/)
+  assert.match(html, /Sent from the website quote form\./)
   assert.match(html, /Project details/)
   assert.match(text, /Reply to this email to reach/)
   assert.match(text, /info@aisenvironmentalinc\.com/)

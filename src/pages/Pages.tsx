@@ -246,7 +246,7 @@ export function ArchivePage({ type, value }: { type: 'category' | 'author'; valu
 
 export function ArticlePage({ post }: { post: Post }) {
   const meta = getPageMeta(post.path)
-  const commentForm = useEmailDraft(`Article comment: ${post.shortTitle}`)
+  const commentForm = useEmailDraft(`Comment on ${post.shortTitle} — AIS Environmental Inc.`)
   const related = posts.filter(item => item.path !== post.path).slice(0, 2)
   return (
     <Page title={meta.title} description={meta.description} className="article-page">
