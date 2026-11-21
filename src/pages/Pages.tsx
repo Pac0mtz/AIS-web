@@ -10,7 +10,7 @@ import { LeadForm } from '../components/LeadForm'
 import { industries } from '../siteContent'
 import { useEmailDraft } from '../hooks/useEmailDraft'
 import { BrandIcon } from '../components/BrandIcon'
-import { serviceMedia } from '../serviceMedia'
+import { serviceMedia, serviceSectionMedia } from '../serviceMedia'
 import { LEAD_SERVICES } from '../lib/lead-form'
 import { getPageMeta, imageAttributes } from '../../server/page-meta.mjs'
 
@@ -135,9 +135,23 @@ export function ServicePage({ service }: { service: Service }) {
         <div className="service-content">
           <div className="service-overview"><SectionLabel>The essentials</SectionLabel><p>{service.scope}</p></div>
           {service.sections.map((section, index) => (
-            <section className="service-detail" id={section.id} key={section.id}>
-              <ServiceSectionMarker id={section.id} index={index} />
-              <div><h2>{section.title}</h2><p>{section.intro}</p><ul>{section.points.map(point => <li key={point}><Check size={17} aria-hidden="true" />{point}</li>)}</ul></div>
+            <section className="service-detail service-detail--illustrated" id={section.id} key={section.id} aria-labelledby={`${section.id}-title`}>
+              <div className="service-detail-heading">
+                <ServiceSectionMarker id={section.id} index={index} />
+                <h2 id={`${section.id}-title`}>{section.title}</h2>
+              </div>
+              <p className="service-detail-intro">{section.intro}</p>
+              <div className="service-detail-media" data-count={serviceSectionMedia[service.slug][section.id].length}>
+                {serviceSectionMedia[service.slug][section.id].map(item => (
+                  <figure key={item.src}>
+                    <div className="service-detail-image">
+                      <img src={item.src} alt={item.alt} {...imageAttributes(item.src)} loading="lazy" decoding="async" />
+                    </div>
+                    <figcaption>{item.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+              <ul>{section.points.map(point => <li key={point}><Check size={17} aria-hidden="true" />{point}</li>)}</ul>
             </section>
           ))}
           {service.slug === 'windows' && <div className="service-comparison"><SectionLabel>A visible difference</SectionLabel><h2>From tired to tailored.</h2><ImageComparison /></div>}
