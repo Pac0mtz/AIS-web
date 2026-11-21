@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "node scripts/build-sitemap.mjs && tsc -b && vite build",
     "start": "node server/index.mjs",
-    "test": "node --test server/routing.test.mjs scripts/seo.test.mjs scripts/conversion.test.mjs server/quote-photos.test.mjs server/quote-email.test.mjs",
+    "test": "node --test server/routing.test.mjs scripts/seo.test.mjs scripts/conversion.test.mjs server/quote-photos.test.mjs server/quote-email.test.mjs scripts/media.test.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "test:quote-email": "node --test server/quote-email.test.mjs",

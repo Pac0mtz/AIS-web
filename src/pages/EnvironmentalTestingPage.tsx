@@ -1,6 +1,8 @@
 import { Link } from 'react-router'
 import { ArrowUpRight, Check } from 'lucide-react'
 import { contact } from '../data'
+import { CityLink } from '../components/CityLink'
+import { cityAreas } from '../siteContent'
 import { Page, QuoteBand, SectionLabel } from '../components/Site'
 import { getPageMeta, imageAttributes } from '../../server/page-meta.mjs'
 
@@ -22,18 +24,7 @@ const tests = [
   },
 ]
 
-const cities = [
-  ['Chicago', '/service-areas/chicago-il/'],
-  ['Naperville', '/service-areas/naperville-il/'],
-  ['Aurora', '/service-areas/aurora-il/'],
-  ['Joliet', '/service-areas/joliet-il/'],
-  ['Evanston', '/service-areas/evanston-il/'],
-  ['Schaumburg', '/service-areas/schaumburg-il/'],
-  ['Oak Park', '/service-areas/oak-park-il/'],
-  ['Cicero', '/service-areas/cicero-il/'],
-  ['Des Plaines', '/service-areas/des-plaines-il/'],
-  ['Skokie', '/service-areas/skokie-il/'],
-] as const
+const cities = cityAreas.filter(city => ['chicago-il', 'naperville-il', 'aurora-il', 'joliet-il', 'evanston-il', 'schaumburg-il', 'oak-park-il', 'cicero-il', 'des-plaines-il', 'skokie-il'].includes(city.slug))
 
 export function EnvironmentalTestingPage() {
   const meta = getPageMeta('/environmental-testing/')
@@ -99,16 +90,14 @@ export function EnvironmentalTestingPage() {
         </div>
         <p>Call <a href={contact.phoneHref}>{contact.phoneDisplay}</a> or send the property address, what you are seeing and what work is planned. The office is at {contact.address}. Estimates are free. IDPH-licensed services and insured work are already part of how AIS describes the team. A license number, a lab turnaround promise and a published price are not.</p>
       </section>
-      <section className="section shell">
+      <section className="section shell" id="city-directory">
         <div className="section-heading split-heading">
           <SectionLabel>Chicagoland</SectionLabel>
           <h2>City pages for communities AIS already serves.</h2>
           <p>Each city page describes the local property mix and links back to these testing services.</p>
         </div>
         <div className="city-link-grid">
-          {cities.map(([name, path]) => (
-            <Link to={path} key={path}><span><strong>{name}</strong><small>Illinois</small></span><ArrowUpRight size={17} /></Link>
-          ))}
+          {cities.map(city => <CityLink city={city} key={city.path} />)}
         </div>
         <p><Link to="/service-areas/" className="text-link">All Illinois, Indiana and Wisconsin service areas <ArrowUpRight size={16} /></Link></p>
       </section>

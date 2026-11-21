@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { Link, useLocation } from 'react-router'
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, Mail, MapPin, Phone } from 'lucide-react'
 import { contact, posts, processSteps, services, type Post, type Service } from '../data'
-import { FormNotice, ImageComparison, Page, QuoteBand, SectionLabel, ServiceCarousel, ShareLinks } from '../components/Site'
+import { FormNotice, Page, QuoteBand, SectionLabel, ServiceCarousel, ShareLinks } from '../components/Site'
 import { ServiceCard } from '../components/ServiceCard'
 import { HomeHero } from '../components/HomeHero'
 import { ServiceEstimateLink, ServicePageNavigation, ServiceProjectCTA, ServiceSectionMarker } from '../components/ServicePageNavigation'
@@ -10,7 +10,8 @@ import { LeadForm } from '../components/LeadForm'
 import { industries } from '../siteContent'
 import { useEmailDraft } from '../hooks/useEmailDraft'
 import { BrandIcon } from '../components/BrandIcon'
-import { serviceMedia, serviceSectionMedia } from '../serviceMedia'
+import { serviceSectionMedia } from '../serviceMedia'
+import { getRelatedServices } from '../serviceRelations'
 import { LEAD_SERVICES } from '../lib/lead-form'
 import { getPageMeta, imageAttributes } from '../../server/page-meta.mjs'
 
@@ -108,7 +109,7 @@ function PostCard({ post, number }: { post: Post; number: string }) {
 
 export function ServicePage({ service }: { service: Service }) {
   const meta = getPageMeta(service.path)
-  const related = [...services.filter(item => item.path !== service.path && item.category === service.category), ...services.filter(item => item.path !== service.path && item.category !== service.category)].slice(0, 3)
+  const related = getRelatedServices(service)
   const quoteHref = `/get-a-quote/?service=${encodeURIComponent(service.quoteOption)}`
   const testingHub = ['asbestos-testing', 'asbestos-surveys', 'mold-testing'].includes(service.slug)
   return (
@@ -133,7 +134,7 @@ export function ServicePage({ service }: { service: Service }) {
       <section className="section shell service-content-grid" id="services">
         <ServicePageNavigation sections={service.sections} />
         <div className="service-content">
-          <div className="service-overview"><SectionLabel>The essentials</SectionLabel><p>{service.scope}</p></div>
+          <div className="service-overview"><SectionLabel>Inside the work</SectionLabel><p>{service.scope}</p><span className="service-representative-note">Representative views of the materials and work. Your scope is defined for your property.</span></div>
           {service.sections.map((section, index) => (
             <section className="service-detail service-detail--illustrated" id={section.id} key={section.id} aria-labelledby={`${section.id}-title`}>
               <div className="service-detail-heading">
@@ -147,41 +148,20 @@ export function ServicePage({ service }: { service: Service }) {
                     <div className="service-detail-image">
                       <img src={item.src} alt={item.alt} {...imageAttributes(item.src)} loading="lazy" decoding="async" />
                     </div>
-                    <figcaption>{item.caption}</figcaption>
+                    <figcaption><span>{item.caption}</span>{item.sourceUrl && <small>Photo: <a href={item.sourceUrl} target="_blank" rel="noreferrer">{item.author}</a> · <a href={item.licenseUrl} target="_blank" rel="noreferrer">{item.license}</a></small>}</figcaption>
                   </figure>
                 ))}
               </div>
               <ul>{section.points.map(point => <li key={point}><Check size={17} aria-hidden="true" />{point}</li>)}</ul>
             </section>
           ))}
-          {service.slug === 'windows' && <div className="service-comparison"><SectionLabel>A visible difference</SectionLabel><h2>From tired to tailored.</h2><ImageComparison /></div>}
-        </div>
-      </section>
-
-      <section className="section service-gallery-section" aria-labelledby={`${service.slug}-gallery-title`}>
-        <div className="shell">
-          <div className="section-heading split-heading">
-            <SectionLabel>Inside the work</SectionLabel>
-            <h2 id={`${service.slug}-gallery-title`}>A closer look at the details.</h2>
-            <p>Representative imagery illustrates typical conditions and methods. Your property’s scope is defined after a project-specific review.</p>
-          </div>
-          <div className="service-gallery-grid">
-            {serviceMedia[service.slug].map(item => (
-              <figure className="service-gallery-item" key={item.src}>
-                <div className="service-gallery-image">
-                  <img src={item.src} alt={item.alt} width={1200} height={800} loading="lazy" decoding="async" />
-                </div>
-                <figcaption>{item.caption}</figcaption>
-              </figure>
-            ))}
-          </div>
         </div>
       </section>
 
       <section className="section related-section">
         <div className="shell">
           <div className="section-heading split-heading"><SectionLabel>Related expertise</SectionLabel><h2>More ways<br />we can help.</h2></div>
-          <div className="related-grid">{related.map(item => <Link to={item.path} className="related-card" key={item.path}><img src={item.image} alt="" loading="lazy" decoding="async" /><span className="brand-icon-badge related-card-icon"><BrandIcon name={item.slug} /></span><span>{item.number}</span><h3>{item.name}</h3><ArrowUpRight /></Link>)}</div>
+          <div className="related-grid">{related.map(item => <Link to={item.path} className="related-card related-card--compact" key={item.path}><span className="brand-icon-badge related-card-icon"><BrandIcon name={item.slug} /></span><h3>{item.name}</h3><p>{item.slogan}</p></Link>)}</div>
         </div>
       </section>
       <ServiceProjectCTA href={quoteHref} serviceName={service.shortName} />

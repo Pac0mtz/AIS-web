@@ -59,3 +59,11 @@ The third-party WebP files in `public/images/gallery/` were derived from the fol
 - `siding-finished-exterior.webp` — Unsplash candidate `siding-detail-2.img`; original photo page must be reconfirmed.
 - `gutter-roof-edge-review.webp` — `2_Pennsylvania_Seamless_Gutter_Contractor.png`.
 - `gutter-attachment-work.webp` — `8_Your_Complete_Guide_to_Hiring_an.png`.
+
+## Distinct service and city photography
+
+The service-page image manifest assigns each content photograph to one page and one section. Repeated standalone galleries and photographic related-service thumbnails have been consolidated into the section presentation.
+
+City and state photography is sourced from the corresponding Wikipedia place articles and Wikimedia Commons. File pages, creators and exact licenses are stored in `src/areaMedia.json`; the page credits each image and links to its source and license. These are local place photographs, not AIS project photos.
+
+Additional service-detail photographs are documented in `src/detailMedia.json` and credited beside their captions. All newly downloaded photographs were resized and converted to WebP; no substantive image content was changed. Reuse of each photograph remains under its recorded license, including the ShareAlike terms where applicable.
