@@ -47,10 +47,6 @@ export const serviceMedia: Record<string, [ServiceMediaItem, ServiceMediaItem]> 
     image('selective-removal-cleanup-scene', 'Protected crew vacuuming the edge of an opened wall inside a contained work area', 'Cleanup after selective removal'),
     image('demolition-interior-stripout', 'Workers clearing debris during a controlled interior strip-out', 'Debris control and separation during strip-out'),
   ],
-  'lead-inspection': [
-    image('lead-xrf-trim', 'Inspector holding an XRF analyzer against interior painted trim', 'Component-by-component XRF assessment'),
-    image('deteriorated-painted-trim-scene', 'Gloved hand and flashlight next to peeling paint on an older window sill', 'Deteriorated paint at a window sill'),
-  ],
   'mold-testing': [
     image('mold-surface-swab', 'Gloved technician collecting a surface swab from suspect growth', 'Surface sampling for a defined question'),
     image('indoor-air-sampling-setup-scene', 'Technicians checking a tripod-mounted air sampling pump and recording the room location', 'Indoor air sampling equipment setup'),
@@ -100,9 +96,7 @@ const photos = {
   selectiveCleanup: serviceMedia['asbestos-demolition'][0],
   demolition: serviceMedia['asbestos-demolition'][1],
   selectiveFloor: image('demolition-selective-floor', 'Crew removing flooring with extraction equipment in a commercial room', 'Selective removal within the defined work area'),
-  paintCondition: serviceMedia['lead-inspection'][1],
-  xrf: serviceMedia['lead-inspection'][0],
-  dustWipe: image('lead-dust-wipe', 'Technician collecting a dust-wipe sample from an interior window sill', 'Sampling dust on a painted component'),
+  paintCondition: image('deteriorated-painted-trim-scene', 'Gloved hand and flashlight next to peeling paint on an older window sill', 'Deteriorated paint at a window sill'),
   leadRemoval: serviceMedia.lead[0],
   leadProtection: serviceMedia.lead[1],
   leadSurface: image('lead-protective-removal', 'Respirator-equipped worker addressing a deteriorated painted wall surface', 'Surface condition guides the removal scope'),
@@ -146,10 +140,10 @@ export const serviceSectionMedia: Record<string, Record<string, SectionImages>> 
     documentation: [photos.documentation],
   },
   lead: {
-    testing: [photos.xrf, photos.dustWipe],
+    'scope-review': [photos.paintCondition],
     removal: [photos.leadRemoval, photos.leadProtection],
-    encapsulation: [photos.paintCondition],
-    safety: [photos.leadSurface],
+    abatement: [photos.leadSurface],
+    safety: [photos.leadProtection],
   },
   mold: {
     inspection: [photos.moldGrowth],
@@ -192,12 +186,6 @@ export const serviceSectionMedia: Record<string, Record<string, SectionImages>> 
     'selective-demolition': [photos.demolition, photos.selectiveFloor],
     'demolition-controls': [photos.airControls, photos.selectiveCleanup],
     'demolition-handoff': [photos.documentation],
-  },
-  'lead-inspection': {
-    'inspection-scope': [photos.leadSurface],
-    'testing-methods': [photos.xrf, photos.dustWipe],
-    'friction-surfaces': [photos.paintCondition],
-    'inspection-report': [photos.documentation],
   },
   'mold-testing': {
     'mold-inspection': [photos.moldGrowth],

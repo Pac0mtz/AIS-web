@@ -11,7 +11,7 @@ import { BrandIcon } from '../components/BrandIcon'
 
 const categoryDetails: Array<{ name: ServiceCategory; id: string; title: string; text: string }> = [
   { name: 'Asbestos', id: 'asbestos', title: 'Asbestos assessment & abatement', text: 'Testing, surveys, removal and demolition-related scopes for residential, commercial and industrial properties.' },
-  { name: 'Lead & Mold', id: 'lead-mold', title: 'Lead paint & mold services', text: 'Inspection and remediation services that connect the visible concern to the material, surface or moisture source.' },
+  { name: 'Lead & Mold', id: 'lead-mold', title: 'Lead paint & mold services', text: 'Lead paint removal and abatement, alongside mold inspection and remediation tailored to the affected space.' },
   { name: 'Water Damage', id: 'water-damage', title: 'Water damage & flooded basements', text: 'Water removal, structural drying, affected-material cleanup and practical repair coordination.' },
   { name: 'Exterior', id: 'exterior', title: 'Exterior property improvements', text: 'Roofing, siding, gutters, windows and doors with attention to fit, finish and weather protection.' },
 ]
@@ -29,7 +29,7 @@ export function ServicesPage() {
   const meta = getPageMeta('/services/')
   return (
     <Page title={meta.title} description={meta.description} className="services-index-page">
-      <IndexHero eyebrow="17 services / One property team" title={meta.h1} intro="Start with a specific concern or review the full service catalog. Every service has its own page with scope details, process information and a direct estimate pathway." current="Services" />
+      <IndexHero eyebrow={`${services.length} services / One property team`} title={meta.h1} intro="Start with a specific concern or review the full service catalog. Every service has its own page with scope details, process information and a direct estimate pathway." current="Services" />
       <p className="shell page-slogan">{meta.slogan} Need sampling first? See <Link to="/environmental-testing/">environmental testing in Chicago</Link>.</p>
       <nav className="category-jump shell" aria-label="Service categories">{categoryDetails.map((category, index) => <a href={`#${category.id}`} key={category.id}><span>0{index + 1}</span>{category.name}<ArrowRight size={16} /></a>)}</nav>
       {categoryDetails.map(category => {
@@ -143,8 +143,8 @@ export function AreaPage({ area }: { area: ServiceArea }) {
       <section className="section shell area-city-section"><div className="journal-heading"><div><SectionLabel>{isState ? `${area.name} city directory` : `More ${area.state} service areas`}</SectionLabel><h2>{isState ? `Explore ${area.name} communities.` : `Serving communities across ${area.state}.`}</h2></div>{!isState && <Link to={`/service-areas/${area.stateSlug}/`} className="text-link">All {area.name} areas <ArrowUpRight size={16} /></Link>}</div><div className="city-link-grid">{moreCities.map(city => <Link to={city.path} key={city.path}><MapPin size={17} /><span><strong>{city.name}</strong><small>{city.state}</small></span><ArrowUpRight size={17} /></Link>)}</div></section>
       <section className="section shell">
         <SectionLabel>Testing in {area.name}</SectionLabel>
-        <h2>Asbestos, mold and lead testing in {area.name}.</h2>
-        <p>AIS already serves {area.context}. Testing identifies asbestos-containing material, moisture and mold, or lead paint before removal, remediation or repairs.</p>
+        <h2>Asbestos and mold testing in {area.name}.</h2>
+        <p>AIS already serves {area.context}. Asbestos sampling and mold inspections help plan removal, remediation or repairs. We also provide lead paint removal and abatement.</p>
         <div className="area-service-link-grid">
           <Link to="/environmental-testing/"><span>01</span><strong>Environmental testing</strong><ArrowUpRight size={16} /></Link>
           <Link to="/asbestos-testing-sampling/"><span>02</span><strong>Asbestos testing</strong><ArrowUpRight size={16} /></Link>

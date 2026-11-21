@@ -82,6 +82,7 @@ function isExcludedSitemapPath(routePath) {
   return routePath === '/thank-you'
     || routePath === '/book-online'
     || routePath === '/book-online/'
+    || routePath === '/lead-paint-inspection/'
     || isLegacyWordpressPath(routePath)
 }
 

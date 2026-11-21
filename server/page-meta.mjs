@@ -60,7 +60,7 @@ const STATIC = {
   },
   '/environmental-testing/': {
     title: 'Environmental Testing in Chicago | AIS Environmental',
-    description: 'Environmental testing in Chicago for asbestos, mold and lead paint. AIS samples materials, inspects moisture and explains the next step before removal or repairs.',
+    description: 'Environmental testing in Chicago for asbestos and mold. AIS samples materials, inspects moisture and explains the next step before removal or repairs.',
     h1: 'Environmental Testing in Chicago',
     slogan: 'Know what is in the building before the work starts.',
     image: '/images/asbestos-testing.webp',
@@ -211,8 +211,8 @@ export function getPageMeta(pathname) {
     return page(pathname, {
       title: `Environmental Testing in ${place} | AIS Environmental`,
       description: area.kind === 'state'
-        ? `Environmental testing across ${area.name}, including asbestos testing, mold testing and lead paint inspection for ${area.context}.`
-        : `Environmental testing in ${area.name}, ${area.state}, including asbestos testing, mold testing and lead paint inspection for ${area.context}.`,
+        ? `Environmental testing across ${area.name}, including asbestos testing and mold testing for ${area.context}.`
+        : `Environmental testing in ${area.name}, ${area.state}, including asbestos testing and mold testing for ${area.context}.`,
       h1: `Environmental Testing in ${place}`,
       slogan: area.kind === 'state' ? `Property services across ${area.name}.` : `Property services in ${area.name}.`,
       kind: 'area',

@@ -20,11 +20,6 @@ const tests = [
     title: 'Mold testing',
     text: 'Mold testing starts with the room and the moisture, not a lab result alone. Inspections use moisture readings and, when they answer a specific question, surface or air samples. The test does not by itself remove growth or correct the leak.',
   },
-  {
-    path: '/lead-paint-inspection/',
-    title: 'Lead paint inspection',
-    text: 'Before older paint is sanded, scraped or cut, inspection can use XRF scanning, chemical test kits, dust-wipe sampling and soil sampling. The findings separate suspect paint from confirmed lead-based paint.',
-  },
 ]
 
 const cities = [
@@ -48,7 +43,7 @@ export function EnvironmentalTestingPage() {
         <div className="breadcrumbs"><Link to="/">Home</Link><span aria-hidden="true"> / </span><Link to="/services/">Services</Link><span aria-hidden="true"> / </span><span>Environmental testing</span></div>
         <div className="service-hero-grid">
           <div>
-            <span className="micro-label">Asbestos · Mold · Lead paint</span>
+            <span className="micro-label">Asbestos · Mold · Material sampling</span>
             <h1>{meta.h1}</h1>
             <p className="service-slogan">{meta.slogan}</p>
           </div>
@@ -64,8 +59,8 @@ export function EnvironmentalTestingPage() {
       <section className="section shell">
         <div className="section-heading split-heading">
           <SectionLabel>Choose the test</SectionLabel>
-          <h2>Four testing services already on this site.</h2>
-          <p>Each one answers a different question. The visit is planned around the material, the moisture or the paint.</p>
+          <h2>Asbestos and mold testing services.</h2>
+          <p>Each one answers a different question. The visit is planned around the suspect material or moisture concern.</p>
         </div>
         <div className="service-list-plain">
           {tests.map(test => (
@@ -83,7 +78,7 @@ export function EnvironmentalTestingPage() {
         <div className="section-heading split-heading">
           <SectionLabel>When to test</SectionLabel>
           <h2>Test before the material is cut, sanded or removed.</h2>
-          <p>These are the situations already described in the asbestos, mold and lead service pages.</p>
+          <p>Testing is planned around the materials, moisture concerns and work being considered.</p>
         </div>
         <ul className="area-needs">
           {[
@@ -92,10 +87,9 @@ export function EnvironmentalTestingPage() {
             'During property due diligence',
             'Before flooring, roofing or mechanical work',
             'When a room has visible growth, a musty odor or a known leak',
-            'Before sanding or repairing older painted surfaces',
           ].map(item => <li key={item}><Check size={18} aria-hidden="true" />{item}</li>)}
         </ul>
-        <p>You cannot confirm asbestos by looking at a material. Mold testing does not fix the moisture that allowed growth. Lead inspection is what identifies which painted surfaces need lead-aware work.</p>
+        <p>You cannot confirm asbestos by looking at a material. Mold testing does not fix the moisture that allowed growth.</p>
       </section>
       <section className="section shell">
         <div className="section-heading split-heading">
@@ -118,7 +112,7 @@ export function EnvironmentalTestingPage() {
         </div>
         <p><Link to="/service-areas/" className="text-link">All Illinois, Indiana and Wisconsin service areas <ArrowUpRight size={16} /></Link></p>
       </section>
-      <QuoteBand title="Need environmental testing before the project starts?" text="Tell us the property, the material or the moisture concern. We will point you to asbestos testing, a survey, mold testing or a lead paint inspection." />
+      <QuoteBand title="Need environmental testing before the project starts?" text="Tell us the property, the material or the moisture concern. We will point you to asbestos testing, a survey or mold testing." />
     </Page>
   )
 }

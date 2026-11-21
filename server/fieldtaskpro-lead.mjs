@@ -10,7 +10,6 @@ const FTP_SERVICES = [
   'Asbestos Inspection',
   'Asbestos Removal',
   'Asbestos Survey',
-  'Lead Paint Inspection',
   'Lead Paint Removal',
   'Mold Testing',
   'Mold Remediation',
@@ -34,7 +33,7 @@ function mapService(raw) {
   if (lower.includes('asbestos')) return 'Asbestos Inspection'
   if (lower.includes('mold') && lower.includes('remed')) return 'Mold Remediation'
   if (lower.includes('mold')) return 'Mold Testing'
-  if (lower.includes('lead')) return lower.includes('remov') ? 'Lead Paint Removal' : 'Lead Paint Inspection'
+  if (lower.includes('lead')) return 'Lead Paint Removal'
   if (lower.includes('window') || lower.includes('door')) return 'Windows / Doors'
   if (lower.includes('roof')) return 'Roofing'
   if (lower.includes('siding') || lower.includes('gutter')) return 'Siding / Gutters'

@@ -23,8 +23,6 @@ function IconArtwork({ name }: { name: string }) {
       return <><path className="icon-blue" d="M7 7h34v34H7zM24 7v34M7 24h34" /><path className="icon-red" d="m12 36 24-24M29 12h7v7" /></>
     case 'asbestos-demolition':
       return <><path className="icon-blue" d="M5 42h27M9 42V16h19v26M13 21h4M21 21h4M13 27h4M13 33h4M5 16l14-9 13 9" /><path className="icon-red" d="m27 34 13-13M33 12l8 8-5 5-8-8zM29 39l5 5" /></>
-    case 'lead-inspection':
-      return <><path className="icon-blue" d="M7 8h25v9H7zM32 12h6v8h-9v6" /><path className="icon-blue" d="M25 26h7v9h-7" /><circle className="icon-red" cx="25" cy="32" r="10" /><path className="icon-red" d="m32 39 8 6M20 32h10" /></>
     case 'mold-testing':
       return <><circle className="icon-blue" cx="22" cy="24" r="16" /><path className="icon-blue" d="M22 8a16 16 0 0 1 0 32" /><path className="icon-red" d="M16 19h.01M25 16h.01M28 25h.01M17 29h.01M32 36l5 5 7-9" /></>
     case 'water-damage':

@@ -171,7 +171,7 @@ export function SiteFooter() {
           <span className="micro-label">Services</span>
           <Link to="/environmental-testing/">Environmental testing</Link>
           {services.slice(0, 6).map(service => <Link key={service.path} to={service.path}>{service.name}</Link>)}
-          <Link to="/services/"><strong>All 17 services</strong></Link>
+          <Link to="/services/"><strong>All {services.length} services</strong></Link>
         </div>
         <div className="footer-column">
           <span className="micro-label">Company</span>

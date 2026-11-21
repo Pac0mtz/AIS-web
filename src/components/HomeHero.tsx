@@ -26,7 +26,7 @@ const slideCopy = [
   {
     slug: 'lead',
     label: 'Dust control & cleanup',
-    title: 'Lead paint removal',
+    title: 'Lead removal & abatement',
     description: 'Get help removing deteriorated lead paint with work-area containment and a thorough cleanup.',
     action: 'Request lead paint removal',
     quoteService: 'Lead Paint Removal',

@@ -114,7 +114,7 @@ export function extractSeoCatalog() {
   ]
   const posts = extractPosts(read('src/data.ts'))
   const areas = extractAreas(read('src/siteContent.ts'))
-  if (services.length < 17) throw new Error(`Expected at least 17 services, found ${services.length}`)
+  if (services.length < 16) throw new Error(`Expected at least 16 services, found ${services.length}`)
   if (posts.length < 4) throw new Error(`Expected at least 4 posts, found ${posts.length}`)
   if (areas.length < 40) throw new Error(`Expected at least 40 service areas, found ${areas.length}`)
 

@@ -47,18 +47,18 @@ export const services: Service[] = [
     ],
   },
   {
-    path: '/lead-paint-removal/', slug: 'lead', name: 'Lead paint removal', shortName: 'Lead', number: '02',
-    eyebrow: 'Testing · Removal · Encapsulation', headline: 'Lead Paint Removal in Chicago',
+    path: '/lead-paint-removal/', slug: 'lead', name: 'Lead removal & abatement', shortName: 'Lead', number: '02',
+    eyebrow: 'Removal · Abatement · Containment', headline: 'Lead Paint Removal & Abatement in Chicago',
     slogan: 'Lead paint, handled with care.',
-    intro: 'Inspection, removal and encapsulation strategies for older painted surfaces—with containment and cleaning built into the work plan.',
-    description: 'Lead paint testing, removal and encapsulation for Chicago-area homes and properties, with careful containment, cleaning and safety procedures.',
+    intro: 'Lead paint removal and abatement for older painted surfaces, with containment, controlled work practices and detailed cleaning built into the plan.',
+    description: 'Lead paint removal and abatement for Chicago-area homes and properties, with careful containment, controlled removal and detailed cleaning.',
     image: '/images/lead-hero.webp', imageAlt: 'Respirator-equipped technician removing deteriorated paint from an older window frame', quoteOption: 'Lead', category: 'Lead & Mold', featured: true,
     scope: 'Lead paint becomes a particular concern when it chips, peels or is disturbed during repairs. We help property owners understand the condition and choose a practical next step.',
     sections: [
-      { id: 'testing', title: 'Find where lead is present', intro: 'Testing helps distinguish suspect paint from confirmed lead-based paint and identifies the surfaces that need attention.', points: ['X-ray fluorescence (XRF) scanning', 'Chemical test kits where appropriate', 'Dust-wipe sampling', 'Soil sampling around the property'] },
-      { id: 'removal', title: 'Control dust at the source', intro: 'Work is planned to isolate the area, limit spread and remove deteriorated paint without turning a localized issue into a property-wide cleanup.', points: ['Sealed work rooms and protected adjacent areas', 'Task-appropriate protective equipment', 'HEPA vacuuming and wet cleaning', 'Post-work cleaning and available air testing'] },
-      { id: 'encapsulation', title: 'A stable surface option', intro: 'Intact lead-painted surfaces may be candidates for encapsulation. A specialized coating seals the paint and creates a durable barrier when the substrate and use conditions are suitable.', points: ['Surface condition is assessed first', 'Damaged or friction surfaces may need another method', 'Coatings create a barrier over the existing paint', 'Future renovations must account for the lead beneath'] },
-      { id: 'safety', title: 'Renovate with a lead-aware plan', intro: 'Older homes and buildings deserve extra care before sanding, cutting or demolition. Work practices should address exposure risks for occupants and workers.', points: ['Discuss planned renovations before work starts', 'Keep occupants away from active work zones', 'Use lead-appropriate work and cleaning practices', 'Ask questions about closeout and clearance testing'] },
+      { id: 'scope-review', title: 'Define the removal scope', intro: 'We review the affected painted components, existing project documentation and planned renovations to organize the removal and abatement work.', points: ['Affected windows, doors, trim and other components', 'Existing lead reports supplied by the property owner', 'Work-area boundaries and access', 'Protection of surrounding rooms and finishes'] },
+      { id: 'removal', title: 'Control dust at the source', intro: 'Work is planned to isolate the area, limit spread and remove deteriorated paint without turning a localized issue into a property-wide cleanup.', points: ['Sealed work rooms and protected adjacent areas', 'Task-appropriate protective equipment', 'HEPA vacuuming and wet cleaning', 'Detailed post-work cleaning and waste handling'] },
+      { id: 'abatement', title: 'Plan the abatement around the surface', intro: 'The affected components and their condition guide the work sequence. We coordinate removal, access and waste handling around the property and the agreed scope.', points: ['Methods matched to the affected components', 'Controlled handling of painted materials', 'Protection of adjacent finishes and occupied spaces', 'Cleanup and disposal coordination'] },
+      { id: 'safety', title: 'Renovate with a lead-aware plan', intro: 'Older homes and buildings deserve extra care before sanding, cutting or demolition. Work practices should address exposure risks for occupants and workers.', points: ['Discuss planned renovations before work starts', 'Keep occupants away from active work zones', 'Use lead-appropriate work and cleaning practices', 'Review the completed scope and closeout documentation'] },
     ],
   },
   {
@@ -138,7 +138,7 @@ export const posts: Post[] = [
     sections: [
       { heading: 'Why lead paint is a concern', paragraphs: ['Lead-based paint was used in many older homes and buildings. When it remains intact and undisturbed it may present a different immediate risk than paint that is peeling, chalking or being sanded and cut during renovation.', 'Lead dust and chips can contaminate floors, soil and other surfaces. Exposure is especially important to discuss with a medical professional when children, pregnant people or other vulnerable occupants are involved.'] },
       { heading: 'Common exposure pathways', paragraphs: ['The concern is not limited to large peeling areas. Normal wear on friction surfaces and ordinary repairs can create dust if the work is not planned appropriately.'], points: ['Deteriorated paint chips and contaminated dust', 'Sanding, scraping, cutting or demolition', 'Opening and closing older painted windows and doors', 'Soil near older exterior painted surfaces'] },
-      { heading: 'Practical next steps', paragraphs: ['Testing identifies where lead is present and helps determine whether removal, encapsulation or ongoing management is appropriate. Work on confirmed lead-based paint should use suitable containment and cleaning procedures.', 'AIS Environmental Inc. offers lead-paint inspection, removal and encapsulation services. We help owners understand the surface conditions and plan the work before dust spreads beyond the repair area.'] },
+      { heading: 'Practical next steps', paragraphs: ['Work on confirmed lead-based paint should use suitable containment, removal and cleaning procedures. Existing project documentation and the affected components help define the abatement scope.', 'AIS Environmental Inc. provides lead paint removal and abatement. We help owners organize the work area and plan controlled removal before dust spreads beyond the repair area.'] },
     ],
   },
   {

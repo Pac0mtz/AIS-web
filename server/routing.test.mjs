@@ -115,6 +115,23 @@ test('known routes without a trailing slash 301 to the canonical slash', async (
   assert.equal(`${location.pathname}${location.search}`, '/get-a-quote/?service=Lead%20Paint')
 })
 
+test('retired lead inspection URLs redirect to removal and preserve the query string', async () => {
+  for (const pathname of ['/lead-paint-inspection', '/lead-paint-inspection/']) {
+    const res = await request(`${pathname}?utm_source=search`)
+    assert.equal(res.status, 301)
+    const location = resolvedLocation(res.location)
+    assert.equal(`${location.pathname}${location.search}`, '/lead-paint-removal/?utm_source=search')
+  }
+  assert.equal((await request('/lead-paint-inspection-extra/')).status, 404)
+})
+
+test('lead service HTML advertises removal and abatement without inspection or testing', async () => {
+  const res = await request('/lead-paint-removal/')
+  assert.equal(res.status, 200)
+  assert.match(res.body, /Lead Paint Removal (?:&amp;|&) Abatement in Chicago/)
+  assert.doesNotMatch(res.body, /lead(?:[- ]paint)?[- ](?:inspection|testing)/i)
+})
+
 test('/thank-you/ 301s to /thank-you and keeps the query string', async () => {
   const res = await request('/thank-you/?utm=ads')
   assert.equal(res.status, 301)

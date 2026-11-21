@@ -77,22 +77,7 @@ export const additionalServices: Service[] = [
     ],
   },
   {
-    path: '/lead-paint-inspection/', slug: 'lead-inspection', name: 'Lead paint inspection', shortName: 'Lead inspection', number: '10', category: 'Lead & Mold',
-    eyebrow: 'Surface testing · Dust assessment · Clear next steps', headline: 'Lead Paint Inspection in Chicago',
-    slogan: 'Know where lead is present.',
-    intro: 'Property-specific lead paint inspection and testing for older homes, multi-family buildings and commercial spaces before repair or renovation.',
-    description: 'Lead paint inspections, surface testing and renovation planning for properties across Illinois, Indiana and Wisconsin.',
-    image: '/images/lead-inspection.webp', imageAlt: 'Technician using an XRF analyzer for lead paint testing', quoteOption: 'Lead Paint Inspection',
-    scope: 'A lead inspection helps separate suspect paint from confirmed lead-based paint and identifies the surfaces that need attention. That information supports safer decisions about maintenance, encapsulation, removal and renovation.',
-    sections: [
-      { id: 'inspection-scope', title: 'Define the inspection scope', intro: 'The review can focus on a planned work area, a specific damaged surface or a broader property assessment. The intended use of the findings guides the inspection.', points: ['Pre-renovation surface reviews', 'Deteriorated paint assessments', 'Multi-unit and common-area inspections', 'Targeted dust or soil concerns'] },
-      { id: 'testing-methods', title: 'Test the relevant surfaces', intro: 'Testing methods are selected for the substrate, coating and question being asked. Results are connected to the actual component and location.', points: ['X-ray fluorescence (XRF) assessment where used', 'Paint-chip sampling where appropriate', 'Component-by-component documentation', 'Dust-wipe or soil sampling when specified'] },
-      { id: 'friction-surfaces', title: 'Look beyond peeling paint', intro: 'Intact paint is only one part of the picture. Friction, impact and deterioration can affect how lead-painted components should be managed.', points: ['Windows and sliding components', 'Doors, frames and trim', 'Stairs, railings and floors', 'Exterior painted surfaces and nearby soil'] },
-      { id: 'inspection-report', title: 'Use the findings to plan', intro: 'Inspection findings help the property team decide which surfaces can remain, which need stabilization and where lead-aware work practices are required.', points: ['Location-specific results', 'Repair and encapsulation considerations', 'Removal scope where appropriate', 'Renovation and clearance-planning context'] },
-    ],
-  },
-  {
-    path: '/mold-testing-inspections/', slug: 'mold-testing', name: 'Mold testing & inspections', shortName: 'Mold testing', number: '11', category: 'Lead & Mold',
+    path: '/mold-testing-inspections/', slug: 'mold-testing', name: 'Mold testing & inspections', shortName: 'Mold testing', number: '10', category: 'Lead & Mold',
     eyebrow: 'Moisture mapping · Sampling · Source review', headline: 'Mold Testing in Chicago',
     slogan: 'Find the growth—and the moisture.',
     intro: 'Mold inspections that connect visible growth, hidden moisture and appropriate testing to a clear remediation decision.',
@@ -107,7 +92,7 @@ export const additionalServices: Service[] = [
     ],
   },
   {
-    path: '/water-damage-restoration/', slug: 'water-damage', name: 'Water damage restoration', shortName: 'Water damage', number: '12', category: 'Water Damage',
+    path: '/water-damage-restoration/', slug: 'water-damage', name: 'Water damage restoration', shortName: 'Water damage', number: '11', category: 'Water Damage',
     eyebrow: 'Water removal · Drying · Material recovery', headline: 'Water Damage Restoration in Chicago',
     slogan: 'Dry the structure. Address the damage.',
     intro: 'A structured response to water intrusion, from initial assessment and water removal through drying, cleaning and repair planning.',
@@ -122,7 +107,7 @@ export const additionalServices: Service[] = [
     ],
   },
   {
-    path: '/flooded-basement-repair/', slug: 'flooded-basement', name: 'Flooded basement repair', shortName: 'Flooded basements', number: '13', category: 'Water Damage',
+    path: '/flooded-basement-repair/', slug: 'flooded-basement', name: 'Flooded basement repair', shortName: 'Flooded basements', number: '12', category: 'Water Damage',
     eyebrow: 'Basement water · Drying · Repair coordination', headline: 'Flooded Basement Repair in Chicago',
     slogan: 'A clear path from flooded to dry.',
     intro: 'Basement water removal, structural drying, affected-material cleanup and practical repair planning for homes and buildings.',
@@ -137,7 +122,7 @@ export const additionalServices: Service[] = [
     ],
   },
   {
-    path: '/roofing-services/', slug: 'roofing', name: 'Roofing services', shortName: 'Roofing', number: '14', category: 'Exterior',
+    path: '/roofing-services/', slug: 'roofing', name: 'Roofing services', shortName: 'Roofing', number: '13', category: 'Exterior',
     eyebrow: 'Roof review · Repair · Replacement', headline: 'Roofing Services in Chicago',
     slogan: 'Protect the property from the top down.',
     intro: 'Roof repair and replacement planning with attention to water entry, surface condition, flashing and the full roof edge.',
@@ -152,7 +137,7 @@ export const additionalServices: Service[] = [
     ],
   },
   {
-    path: '/siding/', slug: 'siding', name: 'Siding installation & repair', shortName: 'Siding', number: '15', category: 'Exterior',
+    path: '/siding/', slug: 'siding', name: 'Siding installation & repair', shortName: 'Siding', number: '14', category: 'Exterior',
     eyebrow: 'Exterior cladding · Repairs · Weather protection', headline: 'Siding Installation in Chicago',
     slogan: 'A cleaner, better-protected exterior.',
     intro: 'Siding repair and installation for appearance, weather protection and a more consistent building envelope.',
@@ -167,7 +152,7 @@ export const additionalServices: Service[] = [
     ],
   },
   {
-    path: '/gutters/', slug: 'gutters', name: 'Gutter installation & repair', shortName: 'Gutters', number: '16', category: 'Exterior',
+    path: '/gutters/', slug: 'gutters', name: 'Gutter installation & repair', shortName: 'Gutters', number: '15', category: 'Exterior',
     eyebrow: 'Drainage · Downspouts · Roof-edge protection', headline: 'Gutter Installation in Chicago',
     slogan: 'Move water away from the building.',
     intro: 'Gutter and downspout work that supports reliable roof drainage and helps reduce uncontrolled water around exterior walls and foundations.',
@@ -182,7 +167,7 @@ export const additionalServices: Service[] = [
     ],
   },
   {
-    path: '/door-replacement/', slug: 'doors', name: 'Door replacement', shortName: 'Doors', number: '17', category: 'Exterior',
+    path: '/door-replacement/', slug: 'doors', name: 'Door replacement', shortName: 'Doors', number: '16', category: 'Exterior',
     eyebrow: 'Entry doors · Fit · Weather sealing', headline: 'Door Replacement in Chicago',
     slogan: 'A better fit at every entrance.',
     intro: 'Door replacement with careful measurement, removal, installation and attention to operation, trim and weather sealing.',

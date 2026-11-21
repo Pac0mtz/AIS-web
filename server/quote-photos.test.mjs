@@ -389,3 +389,20 @@ test('quotes without photos keep the existing JSON lead body', async () => {
   assert.equal(lead.service_needed, 'Roofing')
   assert.equal(Object.hasOwn(lead, 'uploads'), false)
 })
+
+test('lead quotes, including legacy inspection selections, use the removal service in Fieldtaskpro', async () => {
+  for (const service of ['Lead', 'Lead abatement', 'Lead Paint Removal', 'Lead Paint Inspection', 'Lead testing']) {
+    const calls = []
+    const sent = await forwardQuoteToFieldtaskpro({
+      name: 'Website visitor', email: 'visitor@example.com', service,
+    }, 'fullscreen', {
+      fetchImpl: async (_url, init) => {
+        calls.push(JSON.parse(init.body))
+        return { ok: true }
+      },
+    })
+    assert.equal(sent, true)
+    assert.equal(calls.length, 1)
+    assert.equal(calls[0].service_needed, 'Lead Paint Removal', service)
+  }
+})
