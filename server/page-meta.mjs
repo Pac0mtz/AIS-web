@@ -210,6 +210,7 @@ export function getPageMeta(pathname) {
     const place = area.kind === 'state' ? area.name : `${area.name}, ${area.stateCode}`
     return page(pathname, {
       title: `Environmental Testing in ${place} | AIS Environmental`,
+      image: area.image,
       description: area.kind === 'state'
         ? `Environmental testing across ${area.name}, including asbestos testing and mold testing for ${area.context}.`
         : `Environmental testing in ${area.name}, ${area.state}, including asbestos testing and mold testing for ${area.context}.`,

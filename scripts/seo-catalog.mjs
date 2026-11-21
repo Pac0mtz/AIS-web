@@ -113,7 +113,8 @@ export function extractSeoCatalog() {
     ...extractServices(read('src/serviceCatalog.ts')),
   ]
   const posts = extractPosts(read('src/data.ts'))
-  const areas = extractAreas(read('src/siteContent.ts'))
+  const areaPhotos = JSON.parse(read('src/areaMedia.json'))
+  const areas = extractAreas(read('src/siteContent.ts')).map(area => ({ ...area, image: areaPhotos[area.slug].src }))
   if (services.length < 16) throw new Error(`Expected at least 16 services, found ${services.length}`)
   if (posts.length < 4) throw new Error(`Expected at least 4 posts, found ${posts.length}`)
   if (areas.length < 40) throw new Error(`Expected at least 40 service areas, found ${areas.length}`)
@@ -122,6 +123,8 @@ export function extractSeoCatalog() {
   const files = new Set([
     ...services.map(service => service.image),
     ...posts.map(post => post.image),
+    ...areas.map(area => area.image),
+    ...fs.readdirSync(path.join(root, 'public/images'), { recursive: true }).filter(file => /\.webp$/i.test(file)).map(file => `/images/${file.replaceAll('\\', '/')}`),
     '/ais-logo.webp',
     '/ais-logo-dark.webp',
     '/images/asbestos-testing.webp',

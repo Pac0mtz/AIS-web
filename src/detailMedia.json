@@ -1,0 +1,136 @@
+{
+  "damaged-roof-detail": {
+    "src": "/images/details/damaged-roof-detail.webp",
+    "alt": "here in this picture shingles were damaged to poor installation and time.",
+    "caption": "Damaged shingles.jpg",
+    "width": 1181,
+    "height": 886,
+    "author": "Sandul1234",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Damaged_shingles.jpg",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/5/55/Damaged_shingles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  "door-hardware": {
+    "src": "/images/details/door-hardware.webp",
+    "width": 1200,
+    "height": 881,
+    "author": "marya from San Luis Obispo, USA",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Door_handle.jpg",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/8/87/Door_handle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  "hepa-cleaner": {
+    "src": "/images/details/hepa-cleaner.webp",
+    "alt": "True Hepa Vacuum Cleaner",
+    "caption": "True Hepa Vacuum Cleaner.jpg",
+    "width": 636,
+    "height": 900,
+    "author": "Infrogmation",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:True_Hepa_Vacuum_Cleaner.jpg",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/4/40/True_Hepa_Vacuum_Cleaner.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  "moisture-reading": {
+    "src": "/images/details/moisture-reading.webp",
+    "width": 711,
+    "height": 900,
+    "author": "Etan J. Tal",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:MoistureMeter1.jpg",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/9/9c/MoistureMeter1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  "pipe-insulation-condition": {
+    "src": "/images/details/pipe-insulation-condition.webp",
+    "alt": "Thermal insulation of a pipe. The insulation is made from asbestos fibres. The textile enclosing insulating asbestos fibres has been breached.",
+    "caption": "Asbestos pipe insulation close-up.jpg",
+    "width": 1200,
+    "height": 900,
+    "author": "User:EPO",
+    "license": "Attribution",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Asbestos_pipe_insulation_close-up.jpg",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/5/54/Asbestos_pipe_insulation_close-up.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  "pipe-insulation-intact": {
+    "src": "/images/details/pipe-insulation-intact.webp",
+    "alt": "Thermal insulation of a pipe. The insulation is made from asbestos fibres.",
+    "caption": "Asbestos pipe insulation.jpg",
+    "width": 1200,
+    "height": 900,
+    "author": "User:EPO",
+    "license": "Attribution",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Asbestos_pipe_insulation.jpg",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Asbestos_pipe_insulation.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  "roof-drainage": {
+    "src": "/images/details/roof-drainage.webp",
+    "width": 1200,
+    "height": 800,
+    "author": "Shixart1985",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Roof_gutter_under_cloudy_sky_with_water_downspout_on_a_building.jpg",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/8/81/Roof_gutter_under_cloudy_sky_with_water_downspout_on_a_building.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  "sample-vials": {
+    "src": "/images/details/sample-vials.webp",
+    "width": 1200,
+    "height": 782,
+    "author": "division, CSIRO",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_11474_Vials.jpg",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSIRO_ScienceImage_11474_Vials.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  "storm-damaged-roof": {
+    "src": "/images/details/storm-damaged-roof.webp",
+    "alt": "These shingles were damages during a thunder storm. Branches were blown off a nearby tree and they fell onto the roof.",
+    "caption": "Asphalt shingles damage.jpg",
+    "width": 1200,
+    "height": 900,
+    "author": "Samuel Bolton",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Asphalt_shingles_damage.jpg",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/0/01/Asphalt_shingles_damage.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  "survey-plan": {
+    "src": "/images/details/survey-plan.webp",
+    "width": 1200,
+    "height": 739,
+    "author": "Department of Homeland Security. U.S. Coast Guard. 3/1/2003",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Building_517_Dental_Clinic_Asbestos_Containing_Material_(ACM)_Survey,_April_1979_-_DPLA_-_7cc07a616728c27014c61087cbca6e9b.tiff",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Building_517_Dental_Clinic_Asbestos_Containing_Material_%28ACM%29_Survey%2C_April_1979_-_DPLA_-_7cc07a616728c27014c61087cbca6e9b.tiff?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  "weathered-roof": {
+    "src": "/images/details/weathered-roof.webp",
+    "alt": "Severe shrinkage and weathering of asphalt shingles due to age and gradual washing away of the thick petroleum coating. Eventually the paper shrinks so much that entire flaps begin to tear away, exposing the roofing nails under the flaps. Once the nail heads are exposed, water running down the roof can seep around the nail into the interior space, ",
+    "caption": "Failure of asphalt shingles allowing roof leakage.JPG",
+    "width": 1200,
+    "height": 900,
+    "author": "DMahalko, Dale Mahalko, Gilman, WI, USA -- Email: dmahalko@gmail.com",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Failure_of_asphalt_shingles_allowing_roof_leakage.JPG",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/7/72/Failure_of_asphalt_shingles_allowing_roof_leakage.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  "wood-window-fitting": {
+    "src": "/images/details/wood-window-fitting.webp",
+    "alt": "A member of the preservation crew stands behind the white, wooden window frame. The frame is surrounded by stone gable, the stone only coming up about half way up the frame. A black and white sign is leaning against the window frame that reads \"Gettysburg NMP Warfield House Laying Stone Gable North Wall PEPC 85531 8-31-20 Smith.\" There are various ",
+    "caption": "16. Window Frame Installation. (18fb7ca4-ddb2-4ed6-90af-c5d2a624bbed).jpg",
+    "width": 1200,
+    "height": 900,
+    "author": "NPS Photo",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:16._Window_Frame_Installation._(18fb7ca4-ddb2-4ed6-90af-c5d2a624bbed).jpg",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/d/d0/16._Window_Frame_Installation._%2818fb7ca4-ddb2-4ed6-90af-c5d2a624bbed%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  }
+}
