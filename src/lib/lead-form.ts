@@ -32,7 +32,6 @@ export const LEAD_SERVICES = [
   "Asbestos Inspection",
   "Asbestos Removal",
   "Asbestos Survey",
-  "Lead Paint Inspection",
   "Lead Paint Removal",
   "Mold Testing",
   "Mold Remediation",

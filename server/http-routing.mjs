@@ -64,8 +64,10 @@ export function trailingSlashTarget(pathname, knownRoutes) {
   return canonical
 }
 
-/** Retired WordPress URLs. Both slash forms 301 in one hop, before trailing-slash rules. */
+/** Retired service and WordPress URLs. Both slash forms 301 in one hop, before trailing-slash rules. */
 const LEGACY_REDIRECTS = new Map([
+  ['/lead-paint-inspection', '/lead-paint-removal/'],
+  ['/lead-paint-inspection/', '/lead-paint-removal/'],
   ['/book-online', '/get-a-quote/'],
   ['/book-online/', '/get-a-quote/'],
   ['/2023/12/27', '/'],

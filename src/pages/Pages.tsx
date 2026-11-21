@@ -38,7 +38,7 @@ export function HomePage() {
         <div className="service-list">
           {services.filter(service => service.featured).map(service => <ServiceCard service={service} key={service.path} />)}
         </div>
-        <Link to="/services/" className="button button-outline service-view-all">Explore all 17 services <ArrowUpRight size={18} /></Link>
+        <Link to="/services/" className="button button-outline service-view-all">Explore all {services.length} services <ArrowUpRight size={18} /></Link>
         <p><Link to="/environmental-testing/" className="text-link">Environmental testing in Chicago <ArrowUpRight size={18} /></Link></p>
       </section>
 
@@ -110,7 +110,7 @@ export function ServicePage({ service }: { service: Service }) {
   const meta = getPageMeta(service.path)
   const related = [...services.filter(item => item.path !== service.path && item.category === service.category), ...services.filter(item => item.path !== service.path && item.category !== service.category)].slice(0, 3)
   const quoteHref = `/get-a-quote/?service=${encodeURIComponent(service.quoteOption)}`
-  const testingHub = ['asbestos-testing', 'asbestos-surveys', 'mold-testing', 'lead-inspection'].includes(service.slug)
+  const testingHub = ['asbestos-testing', 'asbestos-surveys', 'mold-testing'].includes(service.slug)
   return (
     <Page title={meta.title} description={meta.description} className="service-page">
       <section className="service-hero shell">
@@ -210,7 +210,7 @@ export function AboutPage() {
       <div className="about-image shell"><img src="/images/asbestos-hero.webp" alt="Environmental technicians preparing a contained work area" {...imageAttributes('/images/asbestos-hero.webp')} loading="lazy" decoding="async" /><div className="about-image-word" aria-hidden="true">CARE</div></div>
       <section className="section shell about-story">
         <div><SectionLabel>Who we are</SectionLabel><h2>Local knowledge.<br />Practical solutions.</h2></div>
-        <div className="about-story-copy"><p className="large-copy">AIS Environmental Inc. serves commercial, residential and multi-family properties across Chicago and surrounding areas.</p><p>Our services include asbestos testing, surveys, removal and abatement; lead-paint inspection and removal; mold inspection and remediation; water-damage restoration; and professional roofing, siding, gutter, window and door services. We are fully insured and provide IDPH-licensed services.</p><p>That range reflects a simple idea: property owners deserve a clear plan, careful work and a team that respects the building as much as the people inside it.</p></div>
+        <div className="about-story-copy"><p className="large-copy">AIS Environmental Inc. serves commercial, residential and multi-family properties across Chicago and surrounding areas.</p><p>Our services include asbestos testing, surveys, removal and abatement; lead paint removal and abatement; mold inspection and remediation; water-damage restoration; and professional roofing, siding, gutter, window and door services. We are fully insured and provide IDPH-licensed services.</p><p>That range reflects a simple idea: property owners deserve a clear plan, careful work and a team that respects the building as much as the people inside it.</p></div>
       </section>
       <section className="mission-grid">
         <div className="mission-panel"><SectionLabel light>Our mission</SectionLabel><h2>Make properties safer—and the process clearer.</h2><p>We work to deliver reliable environmental and property services with careful methods, useful communication and respect for every client’s space.</p></div>
@@ -325,8 +325,7 @@ function mapQuoteServiceParam(raw: string | null) {
   if (lower.includes('asbestos')) return 'Asbestos Inspection'
   if (lower.includes('mold') && lower.includes('remed')) return 'Mold Remediation'
   if (lower.includes('mold')) return 'Mold Testing'
-  if (lower.includes('lead') && lower.includes('remov')) return 'Lead Paint Removal'
-  if (lower.includes('lead')) return 'Lead Paint Inspection'
+  if (lower.includes('lead')) return 'Lead Paint Removal'
   if (lower.includes('window') || lower.includes('door')) return 'Windows / Doors'
   if (lower.includes('roof')) return 'Roofing'
   if (lower.includes('siding') || lower.includes('gutter')) return 'Siding / Gutters'

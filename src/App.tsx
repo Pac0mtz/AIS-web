@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { Route, Routes, useLocation } from 'react-router'
+import { Navigate, Route, Routes, useLocation } from 'react-router'
 import { SiteFooter, SiteHeader } from './components/Site'
 import { posts, services } from './data'
 import { serviceAreas } from './siteContent'
@@ -125,6 +125,7 @@ export default function App() {
         <Route path="/service-areas/" element={<ServiceAreasPage />} />
         {serviceAreas.map(area => <Route key={area.path} path={area.path} element={<AreaPage area={area} />} />)}
         {services.map(service => <Route key={service.path} path={service.path} element={<ServicePage service={service} />} />)}
+        <Route path="/lead-paint-inspection/" element={<Navigate to={{ pathname: '/lead-paint-removal/', search: location.search }} replace />} />
         <Route path="/environmental-testing/" element={<EnvironmentalTestingPage />} />
         <Route path="/contact/" element={<ContactPage />} />
         <Route path="/get-a-quote/" element={<QuotePage />} />
