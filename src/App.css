@@ -154,6 +154,10 @@ p { color: var(--text-secondary); line-height: 1.7; }
 .brand-icon .icon-blue { stroke: var(--brand-primary); }
 .brand-icon .icon-red { stroke: var(--brand-accent); }
 .brand-icon .icon-red-fill { fill: var(--brand-accent); stroke: none; }
+.branded-bullet { display: block; width: 1.5rem; height: 1.125rem; flex: 0 0 1.5rem; }
+.branded-bullet-blue { fill: var(--brand-primary); }
+.branded-bullet-red { fill: var(--brand-accent); }
+.service-detail li .branded-bullet, .area-needs .branded-bullet { margin-top: .2em; }
 .service-nav-icon { width: 34px; height: 34px; border-radius: 8px; box-shadow: none; }
 .service-nav-icon .brand-icon { width: 25px; height: 25px; }
 .service-card-icon { position: absolute; left: 20px; bottom: 20px; }

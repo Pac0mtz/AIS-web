@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { Link, useLocation } from 'react-router'
-import { ArrowRight, ArrowUpRight, Check, ChevronRight, Mail, MapPin, Phone } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, ChevronRight, Mail, MapPin, Phone } from 'lucide-react'
 import { contact, posts, processSteps, services, type Post, type Service } from '../data'
 import { FormNotice, Page, QuoteBand, SectionLabel, ServiceCarousel, ShareLinks } from '../components/Site'
 import { ServiceCard } from '../components/ServiceCard'
@@ -10,6 +10,7 @@ import { LeadForm } from '../components/LeadForm'
 import { industries } from '../siteContent'
 import { useEmailDraft } from '../hooks/useEmailDraft'
 import { BrandIcon } from '../components/BrandIcon'
+import { BrandedBullet } from '../components/BrandedBullet'
 import { serviceSectionMedia } from '../serviceMedia'
 import { getRelatedServices } from '../serviceRelations'
 import { LEAD_SERVICES } from '../lib/lead-form'
@@ -152,7 +153,7 @@ export function ServicePage({ service }: { service: Service }) {
                   </figure>
                 ))}
               </div>
-              <ul>{section.points.map(point => <li key={point}><Check size={17} aria-hidden="true" />{point}</li>)}</ul>
+              <ul>{section.points.map(point => <li key={point}><BrandedBullet />{point}</li>)}</ul>
             </section>
           ))}
         </div>

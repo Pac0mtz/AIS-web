@@ -1,7 +1,8 @@
 import { Link } from 'react-router'
-import { ArrowUpRight, Check } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { contact } from '../data'
 import { CityLink } from '../components/CityLink'
+import { BrandedBullet } from '../components/BrandedBullet'
 import { cityAreas } from '../siteContent'
 import { Page, QuoteBand, SectionLabel } from '../components/Site'
 import { getPageMeta, imageAttributes } from '../../server/page-meta.mjs'
@@ -78,7 +79,7 @@ export function EnvironmentalTestingPage() {
             'During property due diligence',
             'Before flooring, roofing or mechanical work',
             'When a room has visible growth, a musty odor or a known leak',
-          ].map(item => <li key={item}><Check size={18} aria-hidden="true" />{item}</li>)}
+          ].map(item => <li key={item}><BrandedBullet />{item}</li>)}
         </ul>
         <p>You cannot confirm asbestos by looking at a material. Mold testing does not fix the moisture that allowed growth.</p>
       </section>
