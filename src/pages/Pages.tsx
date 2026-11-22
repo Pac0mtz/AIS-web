@@ -1,3 +1,4 @@
+import { cityAreas } from '../siteContent'
 import { useMemo } from 'react'
 import { Link, useLocation } from 'react-router'
 import { ArrowRight, ArrowUpRight, ChevronRight, Mail, MapPin, Phone } from 'lucide-react'
@@ -24,7 +25,7 @@ export function HomePage() {
 
       <section className="proof-strip" aria-label="Properties we serve">
         <div className="shell proof-grid">
-          <div><strong>IL · IN · WI</strong><span>41 city service areas</span></div>
+          <div><strong>Illinois</strong><span>{cityAreas.length} city service areas</span></div>
           <div><strong>Residential</strong><span>Homes and living spaces</span></div>
           <div><strong>Commercial</strong><span>Businesses and workplaces</span></div>
           <div><strong>Industrial</strong><span>Facilities and working buildings</span></div>

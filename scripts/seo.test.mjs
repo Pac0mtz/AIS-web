@@ -75,3 +75,19 @@ test('the quote form navigates to /thank-you and does not fire the conversion', 
   assert.match(form, /\/api\/quote-requests/)
   assert.doesNotMatch(form, /gtag\(|thank you\. we received/i)
 })
+
+
+test('service coverage stays within Illinois in routes, media and search content', () => {
+  const catalog = JSON.parse(read('server/seo-catalog.json'))
+  assert.equal(catalog.areas.length, 24)
+  for (const area of catalog.areas) {
+    assert.equal(area.stateCode, 'IL', area.path)
+    assert.equal(area.state, 'Illinois', area.path)
+  }
+  const slugs = catalog.areas.map(area => area.slug).sort()
+  assert.deepEqual(Object.keys(JSON.parse(read('src/areaMedia.json'))).sort(), slugs)
+  assert.doesNotMatch(collectSiteRoutes().join('\n'), /service-areas\/(?:indiana|wisconsin|[^/]+-(?:in|wi))\//)
+  for (const file of ['server/seo-catalog.json', 'server/page-meta.mjs', 'index.html', 'public/manifest.webmanifest', 'src/siteContent.ts', 'src/components/Site.tsx', 'src/pages/Pages.tsx', 'src/pages/ExpandedPages.tsx', 'src/pages/EnvironmentalTestingPage.tsx', 'src/serviceCatalog.ts']) {
+    assert.doesNotMatch(read(file), /Indiana|Wisconsin|Midwest|Three states/i, file)
+  }
+})

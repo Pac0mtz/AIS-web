@@ -23,18 +23,6 @@
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aurora,_Illinois_skyline.jpg",
     "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Aurora%2C_Illinois_skyline.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
   },
-  "beloit-wi": {
-    "src": "/images/cities/beloit-wi.webp",
-    "alt": "Beloit, Wisconsin \u2014 local architecture and surroundings",
-    "caption": "Beloit, Wisconsin",
-    "width": 1280,
-    "height": 848,
-    "author": "Visit Beloit",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Downtown_Beloit,_Wisconsin.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Downtown_Beloit%2C_Wisconsin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
   "berwyn-il": {
     "src": "/images/cities/berwyn-il.webp",
     "alt": "Berwyn, Illinois \u2014 local architecture and surroundings",
@@ -46,18 +34,6 @@
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Berwyn_City_Hall.jpg",
     "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/7/79/Berwyn_City_Hall.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "burlington-wi": {
-    "src": "/images/cities/burlington-wi.webp",
-    "alt": "Burlington, Wisconsin \u2014 local architecture and surroundings",
-    "caption": "Burlington, Wisconsin",
-    "width": 1280,
-    "height": 665,
-    "author": "I, the copyright holder of this work, hereby publish it under the following license:",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Burlington_Downtown_Historic_District_Looking_southwest_WIS36.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Burlington_Downtown_Historic_District_Looking_southwest_WIS36.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
   },
   "chicago-il": {
     "src": "/images/cities/chicago-il.webp",
@@ -83,18 +59,6 @@
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:J._Sterling_Morton_High_School_East_Auditorium.jpg",
     "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/1/1b/J._Sterling_Morton_High_School_East_Auditorium.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
   },
-  "crown-point-in": {
-    "src": "/images/cities/crown-point-in.webp",
-    "alt": "Crown Point, Indiana \u2014 local architecture and surroundings",
-    "caption": "Crown Point, Indiana",
-    "width": 1280,
-    "height": 873,
-    "author": "T. Tolbert",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Old_Lake_County_Courthouse,_Crown_Point_Indiana._Located_in_the_Courthouse_Square_Historic_District.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Old_Lake_County_Courthouse%2C_Crown_Point_Indiana._Located_in_the_Courthouse_Square_Historic_District.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
   "des-plaines-il": {
     "src": "/images/cities/des-plaines-il.webp",
     "alt": "Des Plaines, Illinois \u2014 local architecture and surroundings",
@@ -106,18 +70,6 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Des_Plaines,_IL.jpg",
     "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Des_Plaines%2C_IL.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "east-chicago-in": {
-    "src": "/images/cities/east-chicago-in.webp",
-    "alt": "East Chicago, Indiana \u2014 local architecture and surroundings",
-    "caption": "East Chicago, Indiana",
-    "width": 1280,
-    "height": 720,
-    "author": "Sea Cow",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ameristar_Casino_East_Chicago_2022.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Ameristar_Casino_East_Chicago_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
   },
   "elgin-il": {
     "src": "/images/cities/elgin-il.webp",
@@ -143,18 +95,6 @@
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fountain_Square_Evanston.jpg",
     "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/0/00/Fountain_Square_Evanston.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
   },
-  "gary-in": {
-    "src": "/images/cities/gary-in.webp",
-    "alt": "Gary, Indiana \u2014 local architecture and surroundings",
-    "caption": "Gary, Indiana",
-    "width": 1280,
-    "height": 643,
-    "author": "WeaponizingArchitecture",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gary,_Indiana_(2022).jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Gary%2C_Indiana_%282022%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
   "glenview-il": {
     "src": "/images/cities/glenview-il.webp",
     "alt": "Glenview, Illinois \u2014 local architecture and surroundings",
@@ -166,30 +106,6 @@
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Glen_Town_Center_(2723219030).jpg",
     "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/c/c9/The_Glen_Town_Center_%282723219030%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "green-bay-wi": {
-    "src": "/images/cities/green-bay-wi.webp",
-    "alt": "Green Bay, Wisconsin \u2014 local architecture and surroundings",
-    "caption": "Green Bay, Wisconsin",
-    "width": 1280,
-    "height": 853,
-    "author": "Chris Rand",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Downtown_Green_Bay_CityDeck_along_the_Fox_River.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Downtown_Green_Bay_CityDeck_along_the_Fox_River.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "hammond-in": {
-    "src": "/images/cities/hammond-in.webp",
-    "alt": "Hammond, Indiana \u2014 local architecture and surroundings",
-    "caption": "Hammond, Indiana",
-    "width": 1200,
-    "height": 900,
-    "author": "HammondMan",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:DowntownHammondIn.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/8/8e/DowntownHammondIn.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
   },
   "hinsdale-il": {
     "src": "/images/cities/hinsdale-il.webp",
@@ -215,30 +131,6 @@
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dana-Thomas_House,_Lawrence_Avenue_and_4th_Street,_Springfield,_IL_-_53322374502.jpg",
     "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/8/88/Dana-Thomas_House%2C_Lawrence_Avenue_and_4th_Street%2C_Springfield%2C_IL_-_53322374502.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
   },
-  "indiana": {
-    "src": "/images/cities/indiana.webp",
-    "alt": "Indianapolis \u2014 local architecture and surroundings",
-    "caption": "Indianapolis",
-    "width": 1280,
-    "height": 712,
-    "author": "Carol M. Highsmith",
-    "license": "Public domain",
-    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Indianapolis-1872529_1920_(cropped).jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Indianapolis-1872529_1920_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "janesville-wi": {
-    "src": "/images/cities/janesville-wi.webp",
-    "alt": "Janesville, Wisconsin \u2014 local architecture and surroundings",
-    "caption": "Janesville, Wisconsin",
-    "width": 1280,
-    "height": 853,
-    "author": "Michael Barera",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Janesville_June_2024_105_(Town_Square).jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/5/52/Janesville_June_2024_105_%28Town_Square%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
   "joliet-il": {
     "src": "/images/cities/joliet-il.webp",
     "alt": "Joliet, Illinois \u2014 local architecture and surroundings",
@@ -250,54 +142,6 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Joliet_Illinois_Skyline.jpg",
     "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Joliet_Illinois_Skyline.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "kenosha-wi": {
-    "src": "/images/cities/kenosha-wi.webp",
-    "alt": "Kenosha, Wisconsin \u2014 local architecture and surroundings",
-    "caption": "Kenosha, Wisconsin",
-    "width": 1280,
-    "height": 720,
-    "author": "artistmac",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:South_on_6th_Ave._from_56th_St.,_Kenosha,_WI.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/1/14/South_on_6th_Ave._from_56th_St.%2C_Kenosha%2C_WI.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "madison-wi": {
-    "src": "/images/cities/madison-wi.webp",
-    "alt": "Madison, Wisconsin \u2014 local architecture and surroundings",
-    "caption": "Madison, Wisconsin",
-    "width": 1000,
-    "height": 667,
-    "author": "college.library",
-    "license": "CC BY 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aerial_View_of_Campus,_with_Helen_C._White_Hall_in_foreground_(14070186173).jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/6/69/Aerial_View_of_Campus%2C_with_Helen_C._White_Hall_in_foreground_%2814070186173%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "merrillville-in": {
-    "src": "/images/cities/merrillville-in.webp",
-    "alt": "Merrillville, Indiana \u2014 local architecture and surroundings",
-    "caption": "Merrillville, Indiana",
-    "width": 1280,
-    "height": 561,
-    "author": "Dennisyerger84",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Merrillville_Skyline_with_US_30.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Merrillville_Skyline_with_US_30.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "milwaukee-wi": {
-    "src": "/images/cities/milwaukee-wi.webp",
-    "alt": "Milwaukee, Wisconsin \u2014 local architecture and surroundings",
-    "caption": "Milwaukee, Wisconsin",
-    "width": 1280,
-    "height": 749,
-    "author": "Wikimedia Commons contributor",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Milwaukee_June_2026_(cropped).jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/6/61/Milwaukee_June_2026_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
   },
   "morton-grove-il": {
     "src": "/images/cities/morton-grove-il.webp",
@@ -383,30 +227,6 @@
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peoria_City_Hall.JPG",
     "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/8/89/Peoria_City_Hall.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
   },
-  "pleasant-prairie-wi": {
-    "src": "/images/cities/pleasant-prairie-wi.webp",
-    "alt": "Pleasant Prairie, Wisconsin \u2014 local architecture and surroundings",
-    "caption": "Pleasant Prairie, Wisconsin",
-    "width": 1200,
-    "height": 900,
-    "author": "Garrison Point",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2019-08-15_RecPlex_from_North_Side_Lake_Andrea_(2).jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/a/aa/2019-08-15_RecPlex_from_North_Side_Lake_Andrea_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "racine-wi": {
-    "src": "/images/cities/racine-wi.webp",
-    "alt": "Racine, Wisconsin \u2014 local architecture and surroundings",
-    "caption": "Racine, Wisconsin",
-    "width": 800,
-    "height": 600,
-    "author": "Racine2020",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:City_of_Racine_Monument_Square.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/2/24/City_of_Racine_Monument_Square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
   "rockford-il": {
     "src": "/images/cities/rockford-il.webp",
     "alt": "Rockford, Illinois \u2014 local architecture and surroundings",
@@ -455,54 +275,6 @@
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tinley_Park_Station_September_2016.jpg",
     "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Tinley_Park_Station_September_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
   },
-  "valparaiso-in": {
-    "src": "/images/cities/valparaiso-in.webp",
-    "alt": "Valparaiso, Indiana \u2014 local architecture and surroundings",
-    "caption": "Valparaiso, Indiana",
-    "width": 1200,
-    "height": 900,
-    "author": "Dennisyerger84",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lincolnway_in_downtown_Valparaiso.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/9/91/Lincolnway_in_downtown_Valparaiso.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "waukesha-wi": {
-    "src": "/images/cities/waukesha-wi.webp",
-    "alt": "Waukesha, Wisconsin \u2014 local architecture and surroundings",
-    "caption": "Waukesha, Wisconsin",
-    "width": 1052,
-    "height": 900,
-    "author": "Kenneth C. Zirkel",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Old_Waukesha_County_Courthouse_-_corner_view_2012.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Old_Waukesha_County_Courthouse_-_corner_view_2012.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "wauwatosa-wi": {
-    "src": "/images/cities/wauwatosa-wi.webp",
-    "alt": "Wauwatosa, Wisconsin \u2014 local architecture and surroundings",
-    "caption": "Wauwatosa, Wisconsin",
-    "width": 640,
-    "height": 480,
-    "author": "The original uploader was Schwnj at English Wikipedia.",
-    "license": "CC BY 2.5",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wauwatosa_at_Menomonee_River.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/5/58/Wauwatosa_at_Menomonee_River.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "west-allis-wi": {
-    "src": "/images/cities/west-allis-wi.webp",
-    "alt": "West Allis, Wisconsin \u2014 local architecture and surroundings",
-    "caption": "West Allis, Wisconsin",
-    "width": 1280,
-    "height": 853,
-    "author": "Michael Barera",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:West_Allis_City_Hall_July_2026_1.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/8/8d/West_Allis_City_Hall_July_2026_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
   "wheaton-il": {
     "src": "/images/cities/wheaton-il.webp",
     "alt": "Wheaton, Illinois \u2014 local architecture and surroundings",
@@ -514,17 +286,5 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Downtown_Wheaton_Skyline.jpg",
     "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Downtown_Wheaton_Skyline.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
-  },
-  "wisconsin": {
-    "src": "/images/cities/wisconsin.webp",
-    "alt": "Sheboygan, Wisconsin \u2014 local architecture and surroundings",
-    "caption": "Sheboygan, Wisconsin",
-    "width": 1280,
-    "height": 767,
-    "author": "AsherHeimermann",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sheboygan_Riverfront.jpg",
-    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Sheboygan_Riverfront.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
   }
 }

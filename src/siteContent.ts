@@ -21,7 +21,7 @@ export const industries: Industry[] = [
   { id: 'contractors', number: '08', name: 'General Contractors & Construction Partners', shortName: 'Contractors', summary: 'Environmental scopes that fit the construction sequence.', description: 'We work with project teams on testing, abatement and selective removal so affected materials are addressed before follow-on trades begin.', properties: ['Renovation projects', 'Demolition preparation', 'Tenant improvements', 'Property restoration work'], priorities: ['Pre-construction material review', 'Defined trade and scope boundaries', 'Schedule and access coordination', 'Closeout for the next phase'], serviceSlugs: ['asbestos-testing', 'asbestos-demolition', 'commercial-asbestos', 'lead', 'mold', 'water-damage'] },
 ]
 
-export type StateCode = 'IL' | 'IN' | 'WI'
+export type StateCode = 'IL'
 export type ServiceArea = {
   kind: 'state' | 'city'
   name: string
@@ -36,14 +36,10 @@ export type ServiceArea = {
 
 const stateNeeds: Record<StateCode, string[]> = {
   IL: ['Asbestos surveys for renovation and demolition', 'Lead paint removal and abatement for older painted surfaces', 'Basement water, mold and moisture assessment', 'Roofing, siding, windows and drainage improvements'],
-  IN: ['Asbestos testing before property improvements', 'Lead paint removal and abatement for older homes and buildings', 'Water intrusion and mold remediation', 'Exterior repairs and moisture-control coordination'],
-  WI: ['Asbestos services and lead paint abatement for older properties', 'Basement moisture, flooding and mold concerns', 'Water-damage drying and repair planning', 'Roofing, siding, gutter and window projects'],
 }
 
 const stateSeeds: Array<[string, string, StateCode, string]> = [
   ['Illinois', 'illinois', 'IL', 'homes, multi-unit buildings, offices, schools, industrial facilities and renovation projects across the state'],
-  ['Indiana', 'indiana', 'IN', 'residential neighborhoods, commercial properties, industrial buildings and community facilities across Northwest Indiana and the wider state'],
-  ['Wisconsin', 'wisconsin', 'WI', 'homes, apartments, businesses, manufacturing properties and public buildings across Southeast Wisconsin and the wider state'],
 ]
 
 export const stateAreas: ServiceArea[] = stateSeeds.map(([name, slug, stateCode, context]) => ({
@@ -74,24 +70,6 @@ const citySeeds: Array<[string, string, StateCode, string]> = [
   ['Orland Park', 'orland-park-il', 'IL', 'homes, retail and office properties, schools and community facilities'],
   ['Tinley Park', 'tinley-park-il', 'IL', 'homes, schools, retail spaces, offices and community buildings'],
   ['Wheaton', 'wheaton-il', 'IL', 'homes, schools, professional offices and local commercial properties'],
-  ['Gary', 'gary-in', 'IN', 'older homes, multi-unit properties, industrial facilities, commercial buildings and redevelopment sites'],
-  ['Hammond', 'hammond-in', 'IN', 'residential properties, schools, industrial buildings, offices and local businesses'],
-  ['East Chicago', 'east-chicago-in', 'IN', 'homes, apartment buildings, industrial properties and neighborhood commercial spaces'],
-  ['Merrillville', 'merrillville-in', 'IN', 'homes, offices, retail and hospitality properties, schools and commercial buildings'],
-  ['Valparaiso', 'valparaiso-in', 'IN', 'single-family homes, multi-unit residences, educational properties and local businesses'],
-  ['Crown Point', 'crown-point-in', 'IN', 'homes, professional offices, schools, municipal properties and commercial spaces'],
-  ['Milwaukee', 'milwaukee-wi', 'WI', 'older homes, multi-unit buildings, offices, manufacturing properties and neighborhood businesses'],
-  ['Kenosha', 'kenosha-wi', 'WI', 'homes, apartments, schools, industrial properties and commercial buildings'],
-  ['Racine', 'racine-wi', 'WI', 'older residential properties, manufacturing facilities, offices and local commercial spaces'],
-  ['Madison', 'madison-wi', 'WI', 'homes, apartments, educational and government properties, offices and commercial buildings'],
-  ['Green Bay', 'green-bay-wi', 'WI', 'homes, multi-unit residences, industrial and logistics properties and commercial buildings'],
-  ['Beloit', 'beloit-wi', 'WI', 'older homes, multi-unit properties, industrial buildings and local businesses'],
-  ['Janesville', 'janesville-wi', 'WI', 'homes, schools, manufacturing facilities, offices and neighborhood commercial properties'],
-  ['Waukesha', 'waukesha-wi', 'WI', 'single-family homes, apartments, offices, schools and light-industrial buildings'],
-  ['Wauwatosa', 'wauwatosa-wi', 'WI', 'older homes, multi-unit residences, healthcare and professional properties and local businesses'],
-  ['Pleasant Prairie', 'pleasant-prairie-wi', 'WI', 'homes, offices, retail spaces, warehouses and light-industrial properties'],
-  ['West Allis', 'west-allis-wi', 'WI', 'homes, apartment buildings, schools, manufacturing properties and local businesses'],
-  ['Burlington', 'burlington-wi', 'WI', 'single-family homes, older commercial properties, schools and light-industrial buildings'],
 ]
 
 export const cityAreas: ServiceArea[] = citySeeds.map(([name, slug, stateCode, context]) => {
@@ -105,7 +83,7 @@ export type Faq = { category: string; question: string; answer: string }
 export const faqs: Faq[] = [
   { category: 'Getting started', question: 'How do I know which service to request?', answer: 'Start with what you can see or what work you are planning. You do not need to diagnose the material yourself. Tell us the property location, the affected area and any renovation or repair plans; we can help identify whether testing, inspection, removal or another service is the right first step.' },
   { category: 'Getting started', question: 'Do you provide free estimates?', answer: 'Yes. You can request a free project estimate online or by phone. The estimate process starts with the property address, service needed, affected area and your project goals. Testing or inspection may be needed before a final scope can be defined.' },
-  { category: 'Getting started', question: 'Where does AIS Environmental work?', answer: 'AIS serves communities across Illinois, Indiana and Wisconsin, including Chicago and the surrounding suburbs, Northwest Indiana and Southeast Wisconsin. Visit the Service Areas page for individual state and city pages, or contact us to discuss scheduling for your property.' },
+  { category: 'Getting started', question: 'Where does AIS Environmental work?', answer: 'AIS serves communities across Illinois, including Chicago and the surrounding suburbs. Visit the Service Areas page for Illinois city pages, or contact us to discuss scheduling for your property.' },
   { category: 'Asbestos', question: 'Can I tell whether a material contains asbestos by looking at it?', answer: 'No. Many asbestos-containing materials look like ordinary building products. Testing and laboratory analysis are needed to confirm whether a suspect material contains asbestos. Avoid cutting, sanding or removing it before the material is assessed.' },
   { category: 'Asbestos', question: 'When should an asbestos survey be scheduled?', answer: 'Schedule a survey before renovation, demolition or maintenance work that could disturb suspect materials. A survey can also be useful when older materials are damaged or when a property team needs a documented material inventory.' },
   { category: 'Asbestos', question: 'Does every asbestos-containing material need to be removed?', answer: 'Not always. The appropriate response depends on the material, its condition, its location and whether future work will disturb it. Management in place, encapsulation or removal may be considered after the material is assessed.' },

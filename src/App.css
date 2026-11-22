@@ -596,7 +596,7 @@ input::placeholder, textarea::placeholder { color: var(--text-secondary); }
 .project-service-links a { display: inline-flex; align-items: center; gap: 7px; color: var(--brand-primary); font-size: 13px; font-weight: 600; }
 .project-service-links a:hover { text-decoration: underline; }
 .project-process { background: var(--surface-muted); }
-.state-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.state-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
 .state-card { min-height: 250px; display: flex; flex-direction: column; padding: 28px; background: var(--brand-fill); color: var(--white); border-radius: 4px; }
 .state-card > span { color: var(--white); font-size: 11px; letter-spacing: .08em; }
 .state-card h2 { margin: 30px 0 12px; color: var(--white); font-size: 34px; }

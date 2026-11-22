@@ -36,7 +36,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Occupied buildings · Phased work · Coordination', headline: 'Commercial Asbestos Removal in Chicago',
     slogan: 'Abatement planned around your operation.',
     intro: 'Commercial asbestos removal with attention to occupants, project schedules, adjacent spaces and coordination with property teams.',
-    description: 'Commercial asbestos removal and abatement for offices, retail, industrial, institutional and multi-family properties across the Midwest service area.',
+    description: 'Commercial asbestos removal and abatement for offices, retail, industrial, institutional and multi-family properties across Illinois.',
     image: '/images/commercial-asbestos-pipe-crew.webp', imageAlt: 'Two respirator-equipped abatement workers handling pipe insulation inside a transparent glove bag', quoteOption: 'Commercial Asbestos Removal',
     scope: 'Commercial abatement often involves more than the removal area itself. The plan must account for occupants, building systems, other contractors and a closeout process that supports the next phase of work.',
     sections: [
@@ -51,7 +51,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Floor tile · Mastic · Surface preparation', headline: 'Asbestos Tile Removal in Chicago',
     slogan: 'Remove old flooring without losing control.',
     intro: 'Targeted removal of asbestos-containing floor tile and associated adhesives, with containment and cleaning suited to the space.',
-    description: 'Asbestos floor tile and mastic removal for homes, businesses and renovation projects across Illinois, Indiana and Wisconsin.',
+    description: 'Asbestos floor tile and mastic removal for homes, businesses and renovation projects across Illinois.',
     image: '/images/asbestos-tile-removal-team.webp', imageAlt: 'Technicians in respirators lifting old flooring tile within a contained work area', quoteOption: 'Asbestos Tile Removal',
     scope: 'Older floor systems can include asbestos in the tile, adhesive or both. Testing and a material-specific work plan help prevent a routine flooring upgrade from creating uncontrolled dust or debris.',
     sections: [
@@ -66,7 +66,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Selective demolition · Abatement · Site coordination', headline: 'Asbestos Demolition Services in Chicago',
     slogan: 'Coordinate abatement before demolition.',
     intro: 'Selective demolition and asbestos-removal planning for materials and building areas that must be addressed before broader demolition work.',
-    description: 'Asbestos demolition and selective removal services for renovation and demolition projects in Illinois, Indiana and Wisconsin.',
+    description: 'Asbestos demolition and selective removal services for renovation and demolition projects in Illinois.',
     image: '/images/selective-demolition-team.webp', imageAlt: 'Two protective-suited workers carefully removing a wall section inside a contained room', quoteOption: 'Asbestos Demolition Services',
     scope: 'Demolition can disturb many materials at once. An asbestos-focused demolition plan identifies what must be surveyed, separated, contained or removed before mechanical demolition or interior strip-out proceeds.',
     sections: [
@@ -96,7 +96,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Water removal · Drying · Material recovery', headline: 'Water Damage Restoration in Chicago',
     slogan: 'Dry the structure. Address the damage.',
     intro: 'A structured response to water intrusion, from initial assessment and water removal through drying, cleaning and repair planning.',
-    description: 'Water damage restoration for residential, commercial and multi-family properties in Illinois, Indiana and Wisconsin.',
+    description: 'Water damage restoration for residential, commercial and multi-family properties in Illinois.',
     image: '/images/water-restoration-drying-team.webp', imageAlt: 'Restoration technicians checking wall moisture and setting up drying equipment', quoteOption: 'Water Damage Restoration',
     scope: 'Water can move behind finishes and into structural materials long after the visible puddle is gone. Restoration starts by mapping the affected area, removing water and creating a drying plan based on actual material conditions.',
     sections: [
@@ -111,7 +111,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Basement water · Drying · Repair coordination', headline: 'Flooded Basement Repair in Chicago',
     slogan: 'A clear path from flooded to dry.',
     intro: 'Basement water removal, structural drying, affected-material cleanup and practical repair planning for homes and buildings.',
-    description: 'Flooded basement cleanup, drying and repair services for properties across Illinois, Indiana and Wisconsin.',
+    description: 'Flooded basement cleanup, drying and repair services for properties across Illinois.',
     image: '/images/basement-water-extraction-team.webp', imageAlt: 'Two water mitigation technicians extracting water from a basement floor', quoteOption: 'Flooded Basement Repair',
     scope: 'Basements collect water from plumbing failures, foundation pathways, floor drains and surface runoff. A useful repair plan addresses both the damaged finishes and the conditions that allowed water to remain.',
     sections: [
@@ -126,7 +126,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Roof review · Repair · Replacement', headline: 'Roofing Services in Chicago',
     slogan: 'Protect the property from the top down.',
     intro: 'Roof repair and replacement planning with attention to water entry, surface condition, flashing and the full roof edge.',
-    description: 'Roofing repair and replacement services for homes and properties across Illinois, Indiana and Wisconsin.',
+    description: 'Roofing repair and replacement services for homes and properties across Illinois.',
     image: '/images/roofing.webp', imageAlt: 'Two roofers measuring an asphalt-shingle roof', quoteOption: 'Roofing Services',
     scope: 'A roof is a system of coverings, transitions and drainage details—not just shingles. We review visible conditions and known leaks to define a practical repair or replacement scope.',
     sections: [
@@ -141,7 +141,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Exterior cladding · Repairs · Weather protection', headline: 'Siding Installation in Chicago',
     slogan: 'A cleaner, better-protected exterior.',
     intro: 'Siding repair and installation for appearance, weather protection and a more consistent building envelope.',
-    description: 'Siding installation and repair for residential and commercial exteriors across the AIS Midwest service area.',
+    description: 'Siding installation and repair for residential and commercial exteriors across Illinois.',
     image: '/images/siding-installation-team.webp', imageAlt: 'Installers checking the alignment of horizontal siding below a window', quoteOption: 'Siding Installation & Repair',
     scope: 'Damaged siding can expose transitions and underlying materials to weather. The right scope considers the cladding, trim, moisture barrier and the reason the existing material failed.',
     sections: [
@@ -156,7 +156,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Drainage · Downspouts · Roof-edge protection', headline: 'Gutter Installation in Chicago',
     slogan: 'Move water away from the building.',
     intro: 'Gutter and downspout work that supports reliable roof drainage and helps reduce uncontrolled water around exterior walls and foundations.',
-    description: 'Gutter installation, repair and downspout improvements for properties across Illinois, Indiana and Wisconsin.',
+    description: 'Gutter installation, repair and downspout improvements for properties across Illinois.',
     image: '/images/gutter-installation-team.webp', imageAlt: 'Two installers supporting and fastening a gutter along the roof edge of a house', quoteOption: 'Gutter Installation & Repair',
     scope: 'Overflowing or disconnected gutters can send water back onto the roof edge, siding and foundation. We look at the full drainage path, including slope, outlets and downspout discharge.',
     sections: [
@@ -171,7 +171,7 @@ export const additionalServices: Service[] = [
     eyebrow: 'Entry doors · Fit · Weather sealing', headline: 'Door Replacement in Chicago',
     slogan: 'A better fit at every entrance.',
     intro: 'Door replacement with careful measurement, removal, installation and attention to operation, trim and weather sealing.',
-    description: 'Exterior and interior door replacement services for homes and properties across Illinois, Indiana and Wisconsin.',
+    description: 'Exterior and interior door replacement services for homes and properties across Illinois.',
     image: '/images/door-replacement.webp', imageAlt: 'Installer fitting hardware on a replacement door', quoteOption: 'Door Replacement',
     scope: 'A replacement door needs to fit the opening, operate smoothly and work with the surrounding frame and threshold. We plan the full installation rather than treating it as a simple panel swap.',
     sections: [

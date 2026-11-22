@@ -244,3 +244,24 @@ test('robots.txt allows crawling and publishes the sitemap', async () => {
   assert.match(res.body, /^Sitemap: https:\/\/aisenvironmentalinc\.com\/sitemap\.xml$/m)
   assert.doesNotMatch(res.body, /^Disallow: \/$/m)
 })
+
+
+test('retired out-of-state pages are 404 and noindex in both slash forms', async () => {
+  const retired = ['indiana', 'wisconsin', 'gary-in', 'hammond-in', 'east-chicago-in', 'merrillville-in', 'valparaiso-in', 'crown-point-in', 'milwaukee-wi', 'kenosha-wi', 'racine-wi', 'madison-wi', 'green-bay-wi', 'beloit-wi', 'janesville-wi', 'waukesha-wi', 'wauwatosa-wi', 'pleasant-prairie-wi', 'west-allis-wi', 'burlington-wi']
+  for (const slug of retired) {
+    for (const suffix of ['', '/']) {
+      const url = `/service-areas/${slug}${suffix}`
+      const res = await request(url)
+      assert.equal(res.status, 404, url)
+      assert.equal(res.location, '', url)
+      assert.equal(res.robots, 'noindex, nofollow', url)
+      assert.doesNotMatch(res.body, /Indiana|Wisconsin/i, url)
+    }
+  }
+  for (const url of ['/', '/services/', '/service-areas/', '/service-areas/illinois/', '/service-areas/chicago-il/', '/environmental-testing/', '/asbestos-services/']) {
+    const res = await request(url)
+    assert.equal(res.status, 200, url)
+    assert.match(res.body, /Illinois/, url)
+    assert.doesNotMatch(res.body, /Indiana|Wisconsin/i, url)
+  }
+})

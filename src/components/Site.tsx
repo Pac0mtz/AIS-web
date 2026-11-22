@@ -85,7 +85,7 @@ export function SiteHeader() {
       <a className="skip-link" href="#main-content">Skip to content</a>
       <div className="utility-bar">
         <div className="shell utility-inner">
-          <span>Illinois · Indiana · Wisconsin</span>
+          <span>Illinois</span>
           <span className="utility-center">Residential · Commercial · Industrial</span>
           <a href={contact.phoneHref}><Phone size={12} aria-hidden="true" /> {contact.phoneDisplay}</a>
         </div>
@@ -165,7 +165,7 @@ export function SiteFooter() {
       <div className="shell footer-top">
         <div className="footer-brand">
           <Logo light />
-          <p>Environmental and property services for homes, businesses and industrial properties across Illinois, Indiana and Wisconsin.</p>
+          <p>Environmental and property services for homes, businesses and industrial properties across Illinois.</p>
         </div>
         <div className="footer-column">
           <span className="micro-label">Services</span>

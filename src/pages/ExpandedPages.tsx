@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 import { ArrowRight, ArrowUpRight, Check, ChevronDown, ChevronRight, MapPin, Search } from 'lucide-react'
 import { contact, services, type ServiceCategory } from '../data'
-import { cityAreas, faqs, industries, projectTypes, stateAreas, type ServiceArea, type StateCode } from '../siteContent'
+import { cityAreas, faqs, industries, projectTypes, stateAreas, type ServiceArea } from '../siteContent'
 import { FormNotice, Page, QuoteBand, SectionLabel } from '../components/Site'
 import { getPageMeta } from '../../server/page-meta.mjs'
 import { ServiceCard } from '../components/ServiceCard'
@@ -117,14 +117,13 @@ export function ProjectsPage() {
 
 export function ServiceAreasPage() {
   const meta = getPageMeta('/service-areas/')
-  const [stateFilter, setStateFilter] = useState<'All' | StateCode>('All')
   const [query, setQuery] = useState('')
-  const filtered = cityAreas.filter(area => (stateFilter === 'All' || area.stateCode === stateFilter) && `${area.name} ${area.state}`.toLowerCase().includes(query.trim().toLowerCase()))
+  const filtered = cityAreas.filter(area => `${area.name} ${area.state}`.toLowerCase().includes(query.trim().toLowerCase()))
   return (
     <Page title={meta.title} description={meta.description} className="areas-page">
-      <IndexHero eyebrow="Service areas / Three states" title={meta.h1} intro="AIS serves cities across Illinois, Indiana and Wisconsin, including Chicago and the surrounding communities. Find your city below, then review asbestos testing, mold testing and the other services available for your property." current="Service Areas" />
+      <IndexHero eyebrow="Service areas / Illinois" title={meta.h1} intro="AIS serves cities across Illinois, including Chicago and the surrounding communities. Find your city below, then review asbestos testing, mold testing and the other services available for your property." current="Service Areas" />
       <section className="state-card-grid shell">{stateAreas.map((area, index) => <Link to={area.path} className="state-card" key={area.path}><span>0{index + 1} / {area.stateCode}</span><h2>{area.name}</h2><p>{cityAreas.filter(city => city.stateCode === area.stateCode).length} city service pages</p><strong>Explore {area.name} <ArrowUpRight size={18} /></strong></Link>)}</section>
-      <section className="section shell area-directory"><div className="section-heading split-heading"><SectionLabel>City directory</SectionLabel><h2>Find your service area.</h2><p>Every city page includes local property context, available services and direct contact options.</p></div><div className="area-controls"><label className="area-search"><span>Search by city or state</span><div><Search size={19} /><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Try Chicago or Wisconsin" /></div></label><div className="area-filter" aria-label="Filter service areas by state">{(['All', 'IL', 'IN', 'WI'] as const).map(filter => <button type="button" aria-pressed={stateFilter === filter} onClick={() => setStateFilter(filter)} key={filter}>{filter === 'All' ? 'All states' : filter}</button>)}</div></div><p className="area-result-count" role="status">{filtered.length} {filtered.length === 1 ? 'community' : 'communities'} shown</p><div className="city-link-grid">{filtered.map(area => <CityLink city={area} key={area.path} />)}</div>{filtered.length === 0 && <div className="area-empty"><h3>No matching city found.</h3><p>Clear the search or contact us to discuss your property location.</p><button type="button" className="button button-outline" onClick={() => { setQuery(''); setStateFilter('All') }}>Show all service areas</button></div>}</section>
+      <section className="section shell area-directory"><div className="section-heading split-heading"><SectionLabel>City directory</SectionLabel><h2>Find your service area.</h2><p>Every city page includes local property context, available services and direct contact options.</p></div><div className="area-controls"><label className="area-search"><span>Search Illinois cities</span><div><Search size={19} /><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Try Chicago or Aurora" /></div></label></div><p className="area-result-count" role="status">{filtered.length} {filtered.length === 1 ? 'community' : 'communities'} shown</p><div className="city-link-grid">{filtered.map(area => <CityLink city={area} key={area.path} />)}</div>{filtered.length === 0 && <div className="area-empty"><h3>No matching city found.</h3><p>Clear the search or contact us to discuss your property location.</p><button type="button" className="button button-outline" onClick={() => setQuery('')}>Show all service areas</button></div>}</section>
       <QuoteBand title="Do not see your exact community?" text="Contact us with the property address. We will confirm scheduling and service availability for your location." />
     </Page>
   )
