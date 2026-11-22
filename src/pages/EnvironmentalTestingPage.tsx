@@ -40,7 +40,7 @@ export function EnvironmentalTestingPage() {
             <p className="service-slogan">{meta.slogan}</p>
           </div>
           <div className="service-hero-aside">
-            <p>AIS Environmental Inc. tests properties in Chicago and across Illinois, Indiana and Wisconsin before materials are disturbed. Removal, remediation and repairs stay separate services, quoted only after the testing scope is clear.</p>
+            <p>AIS Environmental Inc. tests properties in Chicago and across Illinois before materials are disturbed. Removal, remediation and repairs stay separate services, quoted only after the testing scope is clear.</p>
             <Link to="/get-a-quote/?service=Asbestos%20Inspection" className="button button-primary">Request a free estimate <ArrowUpRight size={18} /></Link>
           </div>
         </div>
@@ -100,7 +100,7 @@ export function EnvironmentalTestingPage() {
         <div className="city-link-grid">
           {cities.map(city => <CityLink city={city} key={city.path} />)}
         </div>
-        <p><Link to="/service-areas/" className="text-link">All Illinois, Indiana and Wisconsin service areas <ArrowUpRight size={16} /></Link></p>
+        <p><Link to="/service-areas/" className="text-link">All Illinois service areas <ArrowUpRight size={16} /></Link></p>
       </section>
       <QuoteBand title="Need environmental testing before the project starts?" text="Tell us the property, the material or the moisture concern. We will point you to asbestos testing, a survey or mold testing." />
     </Page>

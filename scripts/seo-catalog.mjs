@@ -117,7 +117,7 @@ export function extractSeoCatalog() {
   const areas = extractAreas(read('src/siteContent.ts')).map(area => ({ ...area, image: areaPhotos[area.slug].src }))
   if (services.length < 16) throw new Error(`Expected at least 16 services, found ${services.length}`)
   if (posts.length < 4) throw new Error(`Expected at least 4 posts, found ${posts.length}`)
-  if (areas.length < 40) throw new Error(`Expected at least 40 service areas, found ${areas.length}`)
+  if (areas.length < 24) throw new Error(`Expected at least 24 Illinois service areas, found ${areas.length}`)
 
   const images = {}
   const files = new Set([

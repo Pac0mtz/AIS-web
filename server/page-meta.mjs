@@ -26,8 +26,6 @@ const BUSINESS = {
   },
   areaServed: [
     { '@type': 'State', name: 'Illinois' },
-    { '@type': 'State', name: 'Indiana' },
-    { '@type': 'State', name: 'Wisconsin' },
   ],
 }
 
@@ -38,9 +36,9 @@ const areas = new Map(catalog.areas.map(area => [area.path, area]))
 const STATIC = {
   '/': {
     title: 'Asbestos and Mold Testing in Chicago | AIS Environmental',
-    description: 'Asbestos testing, mold testing and environmental testing in Chicago, plus lead paint, water damage and exterior services across Illinois, Indiana and Wisconsin.',
+    description: 'Asbestos testing, mold testing and environmental testing in Chicago, plus lead paint, water damage and exterior services across Illinois.',
     h1: 'Asbestos and Mold Testing in Chicago',
-    slogan: 'Environmental and property services across Illinois, Indiana and Wisconsin.',
+    slogan: 'Environmental and property services across Illinois.',
     image: '/images/asbestos-sampling-team.webp',
     kind: 'home',
   },
@@ -53,7 +51,7 @@ const STATIC = {
   },
   '/services/': {
     title: 'Asbestos, Mold and Property Services | AIS Environmental',
-    description: 'Asbestos testing, mold testing, lead paint, water damage, roofing, siding, gutter, window and door services across Illinois, Indiana and Wisconsin.',
+    description: 'Asbestos testing, mold testing, lead paint, water damage, roofing, siding, gutter, window and door services across Illinois.',
     h1: 'Asbestos, Mold and Property Services',
     slogan: 'From first question to finished work.',
     kind: 'page',
@@ -96,10 +94,10 @@ const STATIC = {
     kind: 'page',
   },
   '/service-areas/': {
-    title: 'Service Areas in Illinois, Indiana and Wisconsin | AIS',
-    description: 'AIS Environmental serves cities across Illinois, Indiana and Wisconsin, including Chicago, Aurora, Gary, Milwaukee and surrounding communities.',
-    h1: 'Service Areas in Illinois, Indiana and Wisconsin',
-    slogan: 'Environmental and property services across the Midwest.',
+    title: 'Service Areas in Illinois | AIS',
+    description: 'AIS Environmental serves cities across Illinois, including Chicago, Aurora and surrounding communities.',
+    h1: 'Service Areas in Illinois',
+    slogan: 'Environmental and property services across Illinois.',
     kind: 'page',
   },
   '/contact/': {
@@ -302,8 +300,6 @@ export function schemaGraph(meta) {
         : [
           { '@type': 'City', name: 'Chicago' },
           { '@type': 'State', name: 'Illinois' },
-          { '@type': 'State', name: 'Indiana' },
-          { '@type': 'State', name: 'Wisconsin' },
         ],
     })
   }
