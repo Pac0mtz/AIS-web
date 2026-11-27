@@ -21,7 +21,7 @@ export function HomePage() {
   const meta = getPageMeta('/')
   return (
     <Page title={meta.title} description={meta.description} className="home-page">
-      <HomeHero title={meta.h1} slogan={meta.slogan} />
+      <HomeHero />
 
       <section className="proof-strip" aria-label="Properties we serve">
         <div className="shell proof-grid">
